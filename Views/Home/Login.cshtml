@@ -1,0 +1,27 @@
+@{
+    ViewData["Title"] = "Login";
+}
+
+<section class="login-box">
+ <img src="/Imagenes/LogoSolo.png" alt="Logo StartTime">
+     <h1>Login in to StartTime</h1>
+    
+    <form method="post" action='@Url.Action("LogIn", "Account")'>
+        <p>
+            <li>Usuario: 
+                <textarea name="UserName" id="IdUserName" rows="1" cols="20"></textarea>
+            </li>
+
+            <li>Contraseña: 
+                 <input type="password" name="Contraseña" id="IdContraseña">
+            </li>
+            <input type="submit" value="Enviar">
+        </p>
+    </form>
+    <button type="button" class="btn btn-primary btn-lg">Log in</button>
+
+    <p> Si no tenes cuenta, <a>Registrate</a>
+    </p>
+
+   
+</section>
