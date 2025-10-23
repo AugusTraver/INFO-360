@@ -11,7 +11,74 @@
 </head>
 
 <body>
+  <header>
+      <nav class="navbar bg-body-tertiary fixed-top">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">
+    <img src="/Imagenes/LogoSolo.png" alt="Logo StartTime">
+    </a>
+      <a class="navbar-brand" href="#">
+    <img src="/Imagenes/LogoPersona.png" alt="Personita">
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+    
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Offcanvas</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
 
+      <div class="offcanvas-body">
+        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                    
+      <li class="nav-item">
+          <img src="/Imagenes/LogoPersona.png" alt="Personita">
+          <a class="nav-link" href="Link_Perfil">Perfil</a>
+          </li>      
+
+          <li class="nav-item">
+                    <img src="/Imagenes/Casa.png" alt="Casa">
+
+            <a class="nav-link" href="Link_LandingPage">Home</a>
+          </li>
+
+          <li class="nav-item">
+                    <img src="/Imagenes/Calendario.png" alt="Calendario">
+
+            <a class="nav-link" href="CalendarioMes.cshtml">Calendario</a>
+          </li>
+          
+          <li class="nav-item">
+                              <img src="/Imagenes/Tarea.png" alt="Tarea">
+
+            <a class="nav-link" href="Link_Tareas">Tareas</a>
+          </li>
+
+         <li class="nav-item">
+       <img src="/Imagenes/Reloj.png" alt="Reloj">
+            <a class="nav-link" href="Link_Alarmas">Alarmas</a>
+          </li>
+
+              <li class="nav-item">
+                     <img src="/Imagenes/reloj-de-arena.png" alt="Reloj-De-Arena">
+
+            <a class="nav-link" href="TiempoLibre">Tiempo Libre</a>
+          </li>
+
+    <li class="nav-item">
+                         <img src="/Imagenes/LogOut.png" alt="LogOut">
+
+            <a class="nav-link" href="Link_LogOut">Log out</a>
+          </li>
+        </ul>
+
+      </div>
+    </div>
+  </div>
+</nav>
+    </header>
     <main role="main">
         @RenderBody()
     </main>
@@ -24,6 +91,7 @@
 
 
     <footer>
+                         <img src="/Imagenes/LogoGrande.png" alt="LogoGrande">
 
         <section>
         <h3>Gestor del Tiempo ⏳</h3>
@@ -36,8 +104,7 @@
             <li><a href="#">Inicio</a></li>
             <li><a href="#">Tareas</a></li>
             <li><a href="#">Calendario</a></li>
-            <li><a href="#">Estadísticas</a></li>
-            <li><a href="#">Configuración</a></li>
+         
         </ul>
     </section>
 
@@ -55,7 +122,6 @@
             <a href="#">📘 Facebook</a> |
             <a href="#">🐦 Twitter</a> |
             <a href="#">📸 Instagram</a> |
-            <a href="#">💼 LinkedIn</a>
         </p>
     </section>
 
