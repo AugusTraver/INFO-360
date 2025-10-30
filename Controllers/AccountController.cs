@@ -22,7 +22,7 @@ public class AccountController : Controller
         {
             HttpContext.Session.SetString("usuario", usuario.ID.ToString());
 
-            return RedirectToAction("LandingPage", "Home");
+            return RedirectToAction("Tareas", "Home");
         }
     }
     [HttpPost]

@@ -13,6 +13,8 @@ namespace INFO_360.Models
 
         [JsonProperty]
         public string Tipo { get; private set; }
+          [JsonProperty]
+        public string Nombre { get; private set; }
 
         [JsonProperty]
         public DateTime Dia { get;private set; }

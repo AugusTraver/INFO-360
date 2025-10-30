@@ -35,6 +35,7 @@ namespace INFO_360.Models
                 return usuario;
             }
         }
+
         public static bool Registrarse(Usuario usuario)
         {
 
@@ -107,6 +108,46 @@ namespace INFO_360.Models
                 connection.Query(query, new { T = TareaInsert.Titulo, F = TareaInsert.Descripcion, Des = TareaInsert.Descripcion, Dur = TareaInsert.Duracion, I = TareaInsert.IDusuario });
             }
         }
+        public static void CrearAlarma(Alarmas alarma)
+        {
+            using (SqlConnection connection = new SqlConnection(_connectionString))
+            {
+                string query = "INSERT INTO Alarmas (Tipo,Dia,Duracion,Activo,IDusuario) VALUE (@T,@F,@Des,@Dur,@I)";
+                connection.Query(query, new { T = alarma.Tipo, F = alarma.Dia, Des = alarma.Duracion, Dur = alarma.Activo, I = alarma.IDusuario });
+            }
+        }
 
+        public static void BorrarAlarma(int idAlarmaa)
+        {
+            using (SqlConnection connection = new SqlConnection(_connectionString))
+            {
+                string query = "DELETE FROM Alarmas WHERE ID = idAlarma";
+                connection.Query(query, new { idAlarma = idAlarmaa });
+            }
+        }
+        public static void BorrarTarea(int IDT)
+        {
+            using (SqlConnection connection = new SqlConnection(_connectionString))
+            {
+                string query = "DELETE FROM Tarea WHERE ID = IDt";
+                connection.Query(query, new { IDt = IDT });
+            }
+        }
+        public static void ActualizarAlarma(Alarmas alarma)
+        {
+            using (SqlConnection connection = new SqlConnection(_connectionString))
+            {
+                string query = "UPDATE Alarmas SET (Tipo = @T,Dia = @F,Duracion = @Des,Activo = @Dur,IDusuario = @I) WHERE id = @wasd";
+                connection.Query(query, new { T = alarma.Tipo, F = alarma.Dia, Des = alarma.Duracion, Dur = alarma.Activo, I = alarma.IDusuario, wsad = alarma.ID });
+            }
+        }
+                public static void ActualizarTarea(Tarea TareaInsert)
+        {
+            using (SqlConnection connection = new SqlConnection(_connectionString))
+            {
+                string query = "UPDATE Tarea SET (Titulo = @T ,Finalizada = @F ,Descripcion = @Des ,Duracion = @Dur ,IDusuario = @I) WHERE ID = @X";
+                connection.Query(query, new { T = TareaInsert.Titulo, F = TareaInsert.Descripcion, Des = TareaInsert.Descripcion, Dur = TareaInsert.Duracion, I = TareaInsert.IDusuario, X = TareaInsert.ID});
+            }
+        }
     }
 }

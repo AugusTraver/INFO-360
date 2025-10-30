@@ -18,15 +18,22 @@ public class HomeController : Controller
         return View("LandingPage");
     }
 
-    public IActionResult Verificar(string us, string cn)
+
+    public IActionResult Tareas()
     {
 
-        string direccion = "Login";
+        string IDu = HttpContext.Session.GetString("juego");
 
-        if (cn == BD.ObtenerContraseña(us))
-        {
-            direccion = "Tareas";
+        if(IDu == null){
+
+            return View("Login");
         }
-        return RedirectToAction(direccion);     
+
+
+        ViewBag.Tareas = 
+
+
+        return View("Tareas");
+
     }
 }

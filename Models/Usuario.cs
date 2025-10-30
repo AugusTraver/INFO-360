@@ -26,8 +26,11 @@ namespace INFO_360.Models
         [JsonProperty]
         public string Email { get; private set; }
         [JsonProperty]
-        public int TiempoLibreTotal { get; private set; }
-
+        public Dictionary<string, TiempoLibre> TiempoLibrexDia { get; private set; }
+        [JsonProperty]
+        public List<Tarea> ListaTareas { get; private set; }
+        [JsonProperty]
+        public List<Alarmas> ListaAlarmas { get; private set; }
         public Usuario(int pID, string pEmail, string pUsername, string pNombre, string pContraseña, string pFoto)
         {
             ID = pID;
@@ -45,12 +48,54 @@ namespace INFO_360.Models
             Contraseña = pContraseña;
             Foto = pFoto;
         }
+        
 
         public List<Tarea> ObtenerTareas()
         {
             return BD.ObtenerTareas(ID);
         }
 
+        public void CrearTarea(Tarea t)
+        {
+            BD.CrearTarea(t);
+        }
+        public void CrearAlarma(Alarmas a)
+        {
+            BD.CrearAlarma(a);
+        }
+        public void BorrarAlarma(int idAlarma)
+        {
+            BD.BorrarAlarma(idAlarma);
+        }
+        public void BorrarTarea(int T)
+        {
+            BD.BorrarTarea(T);
+        }
+        public void ActualizarAlarma(Alarmas a)
+        {
+            BD.ActualizarAlarma(a);
+        }
+        public void ActualizarTarea(Tarea T)
+        {
+            BD.ActualizarTarea(T);
+        }
+        public int CalcularTiempoLibre()
+        {
+            int TiempoLibreTotal = 0;
+            foreach (TiempoLibre a in TiempoLibrexDia.Values)
+            {
+                TiempoLibreTotal += a.Horas;
+            }
 
+            foreach(Tarea a in ListaTareas)
+            {
+             TiempoLibreTotal -= a.Duracion;
+            }
+            return TiempoLibreTotal;
+        }
     }
 }
+
+
+
+
