@@ -4,14 +4,13 @@
 <section class="register-box">
     <h1>Registrarse en ST</h1>
     
-    <form >
-        <ul>
+       <form action='@Url.Action("Registrarse", "Account")' method="post">
             <li>Mail: 
-                <input type="text" name="UserName" id="IdUserName">
+                <input type="text" name="Email" id="IdUserName">
             </li>
 
             <li>Usuario: 
-                <input type="password" name="Contraseña" id="IdContraseña">
+                <input type="text" name="Username" id="IdContraseña">
             </li>
 
             <li>Nombre: 
@@ -19,7 +18,7 @@
             </li>
 
             <li>Contraseña: 
-                <input type="text" name="Apellido" id="IdApellido">
+                <input type="password" name="Contraseña" id="IdApellido">
             </li>
 
             <li>Foto usuario: 

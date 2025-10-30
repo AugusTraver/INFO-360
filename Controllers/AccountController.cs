@@ -35,7 +35,7 @@ using  INFO_360.Models;
     string username,
     string contraseña,
     string nombre,
-    string apellido,
+    string Email,
     IFormFile fotoFile)
   {
     string Foto = null;
@@ -54,7 +54,7 @@ using  INFO_360.Models;
         }
     }
 
-    Usuario usu = new Usuario(username, contraseña, nombre, Foto);
+    Usuario usu = new Usuario(Email,username, contraseña, nombre, Foto);
 
     bool pudo = BD.Registrarse(usu);
 
