@@ -23,9 +23,12 @@ namespace INFO_360.Models
         [JsonProperty]
         public string Foto { get; set; }
 
-        public Usuario()
+        public Usuario(string pUsername,string pNombre, string pContraseña, string pFoto)
         {
-
+            Nombre = pNombre;
+            Username = pUsername;
+            Contraseña = pContraseña;
+            Foto = pFoto;
         }
 
     }
