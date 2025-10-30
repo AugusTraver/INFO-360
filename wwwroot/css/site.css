@@ -3,6 +3,35 @@ html {
   min-height: 100%;
 }
 
+@font-face {
+  font-family: 'Milaris';
+  src: url('/fonts/Milaris-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Milaris';
+  src: url('/fonts/Milaris-Bold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+/* Y combinás ambas */
+body {
+  font-family: 'Milaris', 'Quicksand', sans-serif;
+}
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap');
+
+body {
+  font-family: 'Quicksand', sans-serif;
+  color: #233840;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Milaris', sans-serif;
+  color: #233840;
+}
 @media (min-width: 768px) {
   html {
     font-size: 16px;
@@ -49,7 +78,7 @@ footer {
   transition: all 0.3s ease;
 }
 
-/* 🟢 Botón LogIn */
+
 .nav-item:first-child .nav-link {
   color: #f2f1f0 !important;
   background-color: #d9c6a7 ;
@@ -64,7 +93,7 @@ footer {
   transform: scale(1.05);
 }
 
-/* 🔵 Botón Registrarse */
+
 .nav-item:last-child .nav-link {
   color: #233840;
   background-color:  #f2f1f0;
@@ -81,3 +110,24 @@ footer {
   transform: scale(1.08);
 }
 
+header{
+  background-color:#4bbfaa ;
+}
+.inicio{
+  text-align: center;
+  
+}
+.inicio h1{
+  font-size: 80px;
+}
+.primeraDeLanding{
+
+  
+}
+.primeraDeLanding div{
+  margin-left: 45%;
+}
+.primeraDeLanding div img{
+  width: 10%;
+  height: 10%;
+}
