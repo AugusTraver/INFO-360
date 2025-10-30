@@ -17,4 +17,16 @@ public class HomeController : Controller
     {
         return View("LandingPage");
     }
+
+    public IActionResult Verificar(string us, string cn)
+    {
+
+        string direccion = "Login";
+
+        if (cn == BD.ObtenerContraseña(us))
+        {
+            direccion = "Tareas";
+        }
+        return RedirectToAction(direccion);     
+    }
 }
