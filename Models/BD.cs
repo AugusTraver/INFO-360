@@ -26,6 +26,43 @@ namespace INFO_360.Models
 
             return ans;
         }
+        public static Usuario IniciarSesion(string username, string password)
+       {
+        using (SqlConnection connection = new SqlConnection(_connectionString))
+        {
+            connection.Open();
+            string query = "SELECT * FROM Usuarios WHERE username = @Username AND password = @Passwod";
+            Usuario usuario = connection.QueryFirstOrDefault<Usuario>(query, new { Username = username, Passwod = password });
+            return usuario;
+        }
+       }  
+          public static bool Registrarse(Usuario usuario)
+    {
+
+        using (SqlConnection connection = new SqlConnection(_connectionString))
+        {
+            bool SeRegistro = true;
+            string checkQuery = "SELECT COUNT(*) FROM Usuarios WHERE nombre = @PNombre ";
+            int count = connection.QueryFirstOrDefault<int>(checkQuery, new { PNombre = usuario.Nombre });
+            if (count != 0)
+            {
+                SeRegistro = false;
+                return SeRegistro;
+            }
+
+            string query = "INSERT INTO Usuarios (Username, Contraseña, Nombre,Foto) VALUES (@Pusername, @Pcontraseña, @Pnombre, @Pfoto";
+            connection.Execute(query, new
+            {
+                Pusername = usuario.Username,
+                Pcontaseña = usuario.Contraseña,
+                Pnombre = usuario.Nombre,
+                Pfoto = usuario.Foto,
+           
+            });
+            return SeRegistro;
+        }
+
+    }
 
     }
 }
