@@ -12,21 +12,32 @@ namespace INFO_360.Models
         public int ID { get; set; }
 
         [JsonProperty]
-        public string Nombre { get; set; }
+        public string Nombre { get; private set; }
 
         [JsonProperty]
-        public string Username { get; set; }
+        public string Username { get; private set; }
 
         [JsonProperty]
-        public string Contraseña { get; set; }
+        public string Contraseña { get; private set; }
 
         [JsonProperty]
-        public string Foto { get; set; }
+        public string Foto { get; private set; }
 
         [JsonProperty]
-        public string Email {get;set;}
+        public string Email { get; private set; }
+        [JsonProperty]
+        public int TiempoLibreTotal { get; private set; }
 
-        public Usuario( string pEmail,string pUsername,string pNombre, string pContraseña, string pFoto)
+        public Usuario(int pID, string pEmail, string pUsername, string pNombre, string pContraseña, string pFoto)
+        {
+            ID = pID;
+            Email = pEmail;
+            Nombre = pNombre;
+            Username = pUsername;
+            Contraseña = pContraseña;
+            Foto = pFoto;
+        }
+        public Usuario(string pEmail, string pUsername, string pNombre, string pContraseña, string pFoto)
         {
             Email = pEmail;
             Nombre = pNombre;
@@ -34,6 +45,12 @@ namespace INFO_360.Models
             Contraseña = pContraseña;
             Foto = pFoto;
         }
+
+        public List<Tarea> ObtenerTareas()
+        {
+            return BD.ObtenerTareas(ID);
+        }
+
 
     }
 }

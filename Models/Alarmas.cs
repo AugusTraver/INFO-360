@@ -6,27 +6,27 @@ using Newtonsoft.Json;
 
 namespace INFO_360.Models
 {
-    public class Alarma
+    public class Alarmas
     {
         [JsonProperty]
         public int ID { get; set; }
 
         [JsonProperty]
-        public string Tipo { get; set; }
+        public string Tipo { get; private set; }
 
         [JsonProperty]
-        public DateTime Día { get; set; }
+        public DateTime Dia { get;private set; }
 
         [JsonProperty]
-        public int Duración { get; set; }
+        public int Duracion { get;private set; }
 
         [JsonProperty]
-        public bool Activo { get; set; }
+        public bool Activo { get;private set; }
 
         [JsonProperty]
-        public int IDtarea { get; set; }
+        public int IDusuario { get;private set; }
 
-        public Alarma()
+        public Alarmas()
         {
 
         }

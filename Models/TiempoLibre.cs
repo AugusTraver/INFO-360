@@ -9,16 +9,16 @@ namespace INFO_360.Models
     public class TiempoLibre
     {
         [JsonProperty]
-        public int ID { get; set; }
+        public int ID { get; private set; }
 
         [JsonProperty]
-        public DateTime Día { get; set; }
+        public DateTime Dia { get;private set; }
 
         [JsonProperty]
-        public int Horas { get; set; }
+        public int Horas { get;private set; }
 
         [JsonProperty]
-        public int IDusuario { get; set; }
+        public int IDusuario { get;private set; }
 
         public TiempoLibre()
         {

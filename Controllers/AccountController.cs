@@ -1,16 +1,16 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
-using  INFO_360.Models;
- namespace INFO_360.Controllers;
+using INFO_360.Models;
+namespace INFO_360.Controllers;
 
 
- public class AccountController : Controller
+public class AccountController : Controller
 {
     public IActionResult DLogin()
     {
         return View("Login");
     }
-     [HttpPost]
+    [HttpPost]
     public IActionResult Login(string username, string contraseña)
     {
         Usuario usuario = BD.IniciarSesion(username, contraseña);
@@ -18,60 +18,55 @@ using  INFO_360.Models;
         {
             return View("Login");
         }
-        else{
-        HttpContext.Session.SetString("usuario", usuario.ID.ToString());
+        else
+        {
+            HttpContext.Session.SetString("usuario", usuario.ID.ToString());
 
-        return RedirectToAction("LandingPage","Home");
+            return RedirectToAction("LandingPage", "Home");
         }
     }
-     [HttpPost]
+    [HttpPost]
     public IActionResult DRegistrarse()
     {
         return View("Registrar");
     }
 
     [HttpPost]
-    public IActionResult Registrarse(
-    string username,
-    string contraseña,
-    string nombre,
-    string Email,
-    IFormFile fotoFile)
-  {
-    string Foto = null;
-
-    if (fotoFile != null && fotoFile.Length > 0)
+    public IActionResult Registrarse(string username,string contraseña,string nombre, string Email, IFormFile fotoFile)
     {
-        string carpeta = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "Imagenes");
-        Directory.CreateDirectory(carpeta);
+        string Foto = null;
 
-        Foto = Path.GetFileName(fotoFile.FileName);
-        string ruta = Path.Combine(carpeta, Foto);
-
-        using (var stream = new FileStream(ruta, FileMode.Create))
+        if (fotoFile != null && fotoFile.Length > 0)
         {
-            fotoFile.CopyTo(stream);
+            string carpeta = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "Imagenes");
+            Directory.CreateDirectory(carpeta);
+
+            Foto = Path.GetFileName(fotoFile.FileName);
+            string ruta = Path.Combine(carpeta, Foto);
+
+            using (var stream = new FileStream(ruta, FileMode.Create))
+            {
+                fotoFile.CopyTo(stream);
+            }
+        }
+
+        Usuario usu = new Usuario(Email, username, contraseña, nombre, Foto);
+
+        bool pudo = BD.Registrarse(usu);
+
+        if (pudo)
+        {
+            return RedirectToAction("DLogin", "Account");
+        }
+        else
+        {
+            ViewBag.pudo = pudo;
+            return View("Registrar", "Account");
         }
     }
-
-    Usuario usu = new Usuario(Email,username, contraseña, nombre, Foto);
-
-    bool pudo = BD.Registrarse(usu);
-
-    if (pudo)
-    {
-        return RedirectToAction("DLogin","Account");
-    }
-    else
-    {
-        ViewBag.pudo = pudo;
-        return View("Registrar","Account");
-    }
-  }
 
 
 
 
 
 }
- 
