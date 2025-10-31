@@ -81,4 +81,17 @@ public class HomeController : Controller
         HttpContext.Session.SetString("usuario", usuario.ToString());
         return View("Alarmas");
     }
+    public IActionResult DAlarmas()
+    {
+        return View("Alarmas");
+    }
+    public IActionResult DHorasLibres()
+    {
+        return View("HorasLibres");
+    }
+    public IActionResult DPerfil()
+    {
+        return View("Perfil");
+    }
+   
 }
