@@ -63,9 +63,4 @@ public class AccountController : Controller
             return View("Registrar", "Account");
         }
     }
-
-
-
-
-
 }
