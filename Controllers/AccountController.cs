@@ -25,7 +25,6 @@ public class AccountController : Controller
             return RedirectToAction("Tareas", "Home");
         }
     }
-    [HttpPost]
     public IActionResult DRegistrarse()
     {
         return View("Registrarse");
