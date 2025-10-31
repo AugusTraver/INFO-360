@@ -20,7 +20,7 @@ public class AccountController : Controller
         }
         else
         {
-            HttpContext.Session.SetString("usuario", usuario.ID.ToString());
+            HttpContext.Session.SetString("usuario", usuario.ToString());
 
             return RedirectToAction("Tareas", "Home");
         }
@@ -32,7 +32,7 @@ public class AccountController : Controller
     }
 
     [HttpPost]
-    public IActionResult Registrarse(string username,string contraseña,string nombre, string Email, IFormFile fotoFile)
+    public IActionResult Registrarse(string username, string contraseña, string nombre, string Email, IFormFile fotoFile)
     {
         string Foto = null;
 
@@ -50,10 +50,10 @@ public class AccountController : Controller
             }
         }
 
-        Usuario usu = new Usuario(Email, username, contraseña, nombre, Foto);
+        Usuario usuario = new Usuario(Email, username, contraseña, nombre, Foto);
 
-        bool pudo = BD.Registrarse(usu);
-
+        bool pudo = BD.Registrarse(usuario);
+        HttpContext.Session.SetString("usuario", usuario.ToString());
         if (pudo)
         {
             return RedirectToAction("DLogin", "Account");

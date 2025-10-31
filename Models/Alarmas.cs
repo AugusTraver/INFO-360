@@ -13,23 +13,29 @@ namespace INFO_360.Models
 
         [JsonProperty]
         public string Tipo { get; private set; }
-          [JsonProperty]
+        [JsonProperty]
         public string Nombre { get; private set; }
 
         [JsonProperty]
-        public DateTime Dia { get;private set; }
+        public DateTime Dia { get; private set; }
 
         [JsonProperty]
-        public int Duracion { get;private set; }
+        public int Duracion { get; private set; }
 
         [JsonProperty]
-        public bool Activo { get;private set; }
+        public bool Activo { get; private set; }
 
         [JsonProperty]
-        public int IDusuario { get;private set; }
+        public int IDusuario { get; private set; }
 
-        public Alarmas()
+        public Alarmas(string T, string N, DateTime D, int Dur, bool A, int IDU)
         {
+            Tipo = T;
+            Nombre = N;
+            Dia = D;
+            Duracion = Dur;
+            Activo = A;
+            IDusuario = IDU;
 
         }
 
