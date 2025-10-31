@@ -28,7 +28,7 @@ public class AccountController : Controller
     [HttpPost]
     public IActionResult DRegistrarse()
     {
-        return View("Registrar");
+        return View("Registrarse");
     }
 
     [HttpPost]
