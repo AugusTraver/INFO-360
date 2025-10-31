@@ -48,7 +48,7 @@ namespace INFO_360.Models
             Contraseña = pContraseña;
             Foto = pFoto;
         }
-        
+
 
         public List<Tarea> ObtenerTareas()
         {
@@ -87,12 +87,37 @@ namespace INFO_360.Models
                 TiempoLibreTotal += a.Horas;
             }
 
-            foreach(Tarea a in ListaTareas)
+            foreach (Tarea a in ListaTareas)
             {
-             TiempoLibreTotal -= a.Duracion;
+                TiempoLibreTotal -= a.Duracion;
             }
             return TiempoLibreTotal;
         }
+
+        public Dictionary<double, Tarea> OrganizarDía(Dictionary<double, Tarea> Pendientes)
+        {
+            Dictionary<double, Tarea> agenda = new Dictionary<double, Tarea>();
+
+            foreach (double t in Pendientes.Keys)
+            {
+                double c = Pendientes[1].Duracion * 4.0;
+
+                for (double i = t; i <= c; i += 0.25)
+                {
+                    if (Pendientes.ContainsKey(i))
+                    {
+                        agenda.Add(i, Pendientes[i]);
+                    }
+                    else
+                    {
+                        agenda.Add(i, null);
+                    }
+                }
+            }
+
+            return agenda;
+        }
+
     }
 }
 
