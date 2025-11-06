@@ -1,3 +1,8 @@
+*{
+  padding: 0%;
+  margin: 0%;
+
+}
 html {
   font-size: 14px;
   min-height: 100%;
@@ -119,9 +124,9 @@ header{
 footer {
   background-color: #4bbfaa;
   color: #f2f1f0;
-  padding: 40px 60px;
+ 
   font-family: 'Quicksand', sans-serif;
-  margin-top: 60px;
+ margin-top: none !important;
 }
 footer img{
   width: 20%;
@@ -150,36 +155,14 @@ footer img{
 }
 
 
-.social-links a {
-  color: #f2f1f0;
-  text-decoration: none;
-  margin: 0 3px;
-}
-
-.social-links a:hover {
-  color: #233840;
-}
-
-.footer hr {
+footer hr {
   border: none;
   border-top: 1px solid #f2f1f0;
-  margin: 30px auto;
+
   width: 90%;
 }
 
-.footer-bottom {
-  text-align: center;
-  font-size: 14px;
-  color: #233840;
-}
 
-
-.fondo{
-  background-color: #3ec8b3;
-}
-.login-box{
-background-color:#F2F1F0;
-}
 
 
 
@@ -413,6 +396,66 @@ background-color:#F2F1F0;
   padding-bottom: 1%;
 }
 
+.fondo{
+  background-color: #3ec8b3 !important;
+}
+.login-box{
+background-color:#3ec8b3 ;
+}
+.cajaImagen{
+  display: inline-block;
+  padding-top: 1%;
+  padding-bottom: 1%;
+  padding-right: 1%;
+  padding-left: 1%;
+  background-color: #F2F1F0;
+  width: 40%;
+  height: 30% !important;
+ margin-top: 2%;
+  margin-left: 45%;
+  margin-bottom: 1%;
+border-radius: 100%;
+ 
+}
+.login-box img{
+ margin-left: 8%  ;
+ padding-bottom: 3%;
+}
+.login-box h1{
+  text-align: center;
+  margin-bottom: 2%;
+}
+.form-floating{
+  width: 20%;
+  text-align: center;
+  margin-left: 40%;
+}
+
+.botonLogIn{
+
+text-align: center;
+margin-bottom: 0%;
+
+}
+.botonLogIn button{
+  margin-bottom: 1%;
+  margin-top: 1%;
+}
+.botonLogIn p{
+  margin-bottom: 0%;
+  padding-bottom: 1%;
+}
+.btn-lg{
+  background-color: #d9c6a7;
+  border:  #d9c6a7;
+}
+.login{
+  background-color: #3ec8b3 ;
+}
+
+footer{
+  margin-top: 0%;
+}
 /* --- Responsive --- */
 @media (max-width: 768px) {
   .accordion-body {

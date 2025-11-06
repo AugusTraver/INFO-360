@@ -1,32 +1,39 @@
 @{
     ViewData["Title"] = "Login";
 }
-
+<body class = login>
 <section class="fondo">
 
 <section class="login-box">
- <img src="/Imagenes/LogoSolo.png" alt="Logo StartTime">
+
+<div class="cajaImagen" style="width:160px; height:160px;">
+ <img src="/Imagenes/LogoSolo.png"  style="width:90%; height:90%; object-fit:cover;" alt="Logo StartTime">
+</div>
+
      <h1>Login in to StartTime</h1>
     
     <form method="post" action='@Url.Action("Login", "Account")'>
 
        <div class="form-floating mb-3">
         <input type="text" class="form-control" id="IdUsername" placeholder="franxo123">
-        <label for="floatingInput">Usuario</label>
+        <label for="floatingInput" style= "color:  #d9c6a7;">Usuario</label>
       </div>
 
       <div class="form-floating">
         <input type="password" class="form-control" id="IdContraseña" placeholder="Password">
-        <label for="IdContraseña">Password</label>
+        <label for="IdContraseña" style= "color:  #d9c6a7;">Password</label>
      </div>
 
     </form>
-    <button type="submit" class="btn btn-primary btn-lg">Log in</button>
+    <div class = "botonLogIn">
+    <button type="submit" class="btn btn-primary btn-lg" style= " background-color: #d9c6a7;  border:  #d9c6a7; color:black;">Login</button>
 
     <p> Si no tenes cuenta, <a href='@Url.Action("DRegistrarse", "Account")'> Registrate</a>
     </p>
-
+    </div>
    
 </section>
 
 </section>
+
+</body>
