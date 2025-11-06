@@ -15,23 +15,23 @@
     <form method="post" action='@Url.Action("Login", "Account")'>
 
        <div class="form-floating mb-3">
-        <input type="text" class="form-control" id="IdUsername" placeholder="franxo123">
-        <label for="floatingInput" style= "color:  #d9c6a7;">Usuario</label>
+        <input type="text" class="form-control" id="IdUsername" name="username" placeholder="franxo123">
+        <label for="floatingInput" style= "color:  #d9c6a7;">Usuario</label> <!-- -->
       </div>
 
       <div class="form-floating">
-        <input type="password" class="form-control" id="IdContraseña" placeholder="Password">
-        <label for="IdContraseña" style= "color:  #d9c6a7;">Password</label>
+        <input type="password" class="form-control" id="IdContraseña" name="contraseña" placeholder="Password">
+        <label for="IdContraseña" style= "color:  #d9c6a7;">Password</label> <!-- -->
      </div>
 
-    </form>
     <div class = "botonLogIn">
     <button type="submit" class="btn btn-primary btn-lg" style= " background-color: #d9c6a7;  border:  #d9c6a7; color:black;">Login</button>
 
     <p> Si no tenes cuenta, <a href='@Url.Action("DRegistrarse", "Account")'> Registrate</a>
     </p>
     </div>
-   
+       </form>
+
 </section>
 
 </section>

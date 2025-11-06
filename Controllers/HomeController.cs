@@ -87,6 +87,15 @@ public class HomeController : Controller
     }
     public IActionResult DHorasLibres()
     {
+        string? x = HttpContext?.Session.GetString("juego");
+        Usuario? usuario = Objeto.StringToObject<Usuario>(x);
+
+
+        ViewBag.DicTiempoLibre = usuario.TiempoLibrexDia;
+        ViewBag.TiempoLibreTotal = usuario.CalcularTiempoLibre();
+        ViewBag.ListaTareas = usuario.ListaTareas;
+        ViewBag.TiempoTareas = usuario.CalcularTiempoTareas();
+
         return View("HorasLibres");
     }
     public IActionResult DPerfil()

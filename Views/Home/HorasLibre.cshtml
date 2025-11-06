@@ -2,24 +2,37 @@
     ViewData["Title"] = "Tiempo Libre";
 }
 
-<h1>Tenés ____ horas libres</h1>
+<h1>Tenés @(ViewBag.TiempoLibre) horas libres</h1>
 
 <section>
 
     <h2>Tiempo Libre</h2>
 
-    <img src="wwwroot/Imagenes/TareasPendientes.png" alt="alternative text"></img>
+    @foreach(Tarea t in ViewBag.DicTiempoLibre)
+    {
+        <div>
+            
 
-    <h5>Total: ____</h5>
+        </div>
+    }
+
+    <h5>Total: @ViewBag.TiempoLibreTotal</h5>
 </section>
 
-    <section>
 
-    <h2>Tiempo Libre</h2>
+<section>
+
+    <h2>Horas Usadas por Tareas</h2>
 
 
-    <img src="wwwroot/Imagenes/TiempoLibre.png" alt="alternative text"></img>
+    @foreach(Tarea t in ViewBag.ListaTareas)
+    {
+        <div>
+            
 
-    <h5>Total: ____</h5>
+        </div>
+    }
+
+    <h5>Total: @(ViewBag.TiempoTareas)</h5>
 </section>
 

@@ -79,6 +79,17 @@ namespace INFO_360.Models
         {
             BD.ActualizarTarea(T);
         }
+
+        public int CalcularTiempoTareas(){
+
+            int tTotal = 0;
+            foreach(Tarea t in ListaTareas){
+
+                tTotal += t.Duracion;
+            }
+
+            return tTotal;
+        }
         public int CalcularTiempoLibre()
         {
             int TiempoLibreTotal = 0;
@@ -114,15 +125,15 @@ namespace INFO_360.Models
                         agenda.Add(i, null);
                     }
 
-                    
-                }   
+
+                }
 
             }
 
             return agenda;
         }
 
-   }
+    }
 }
 
 
