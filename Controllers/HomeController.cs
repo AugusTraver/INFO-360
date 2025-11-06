@@ -93,5 +93,15 @@ public class HomeController : Controller
     {
         return View("Perfil");
     }
-   
+
+    public IActionResult OrganizarAgenda(Dictionary<double, Tarea> a)
+    {
+        string x = HttpContext.Session.GetString("juego");
+        Usuario usuario = Objeto.StringToObject<Usuario>(x);
+
+        usuario.OrganizarDía(a);
+
+        return View("Agenda");
+    }
+
 }

@@ -98,11 +98,12 @@ namespace INFO_360.Models
         {
             Dictionary<double, Tarea> agenda = new Dictionary<double, Tarea>();
 
-            foreach (double t in Pendientes.Keys)
+            foreach (double inicio in Pendientes.Keys)
             {
-                double c = Pendientes[1].Duracion * 4.0;
+                Tarea t = Pendientes[inicio];
+                double fin = inicio + t.Duracion;
 
-                for (double i = t; i <= c; i += 0.25)
+                for (double i = inicio; i < fin; i += 0.25)
                 {
                     if (Pendientes.ContainsKey(i))
                     {
@@ -112,13 +113,16 @@ namespace INFO_360.Models
                     {
                         agenda.Add(i, null);
                     }
-                }
+
+                    
+                }   
+
             }
 
             return agenda;
         }
 
-    }
+   }
 }
 
 
