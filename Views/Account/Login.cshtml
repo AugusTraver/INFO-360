@@ -2,26 +2,31 @@
     ViewData["Title"] = "Login";
 }
 
+<section class="fondo">
+
 <section class="login-box">
  <img src="/Imagenes/LogoSolo.png" alt="Logo StartTime">
      <h1>Login in to StartTime</h1>
     
     <form method="post" action='@Url.Action("Login", "Account")'>
-        <p>
-            <li>Usuario: 
-                <textarea name="UserName" id="IdUsername" rows="1" cols="20"></textarea>
-            </li>
 
-            <li>Contraseña: 
-                 <input type="password" name="Contraseña" id="IdContraseña">
-            </li>
-            <input type="submit" value="Enviar">
-        </p>
+       <div class="form-floating mb-3">
+        <input type="text" class="form-control" id="IdUsername" placeholder="franxo123">
+        <label for="floatingInput">Usuario</label>
+      </div>
+
+      <div class="form-floating">
+        <input type="password" class="form-control" id="IdContraseña" placeholder="Password">
+        <label for="IdContraseña">Password</label>
+     </div>
+
     </form>
-    <button type="button" class="btn btn-primary btn-lg">Log in</button>
+    <button type="submit" class="btn btn-primary btn-lg">Log in</button>
 
-    <p> Si no tenes cuenta, <a>Registrate</a>
+    <p> Si no tenes cuenta, <a href='@Url.Action("DRegistrarse", "Account")'> Registrate</a>
     </p>
 
    
+</section>
+
 </section>
