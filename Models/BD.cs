@@ -20,7 +20,7 @@ namespace INFO_360.Models
 
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
-                string query = "SELECT Contraseña from Usuarios where Nombre = @pNom";
+                string query = "SELECT Contraseña from Usuario where Username = @pNom";
                 ans = connection.QueryFirstOrDefault<string>(query, new { pNom = texto });
             }
 
@@ -30,8 +30,8 @@ namespace INFO_360.Models
         {
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
-                string query = "SELECT * FROM Usuarios WHERE username = @Username AND password = @Passwod";
-                Usuario usuario = connection.QueryFirstOrDefault<Usuario>(query, new { Username = username, Passwod = password });
+                string query = "SELECT * FROM Usuario WHERE Username = @Username AND Contraseña = @Password";
+                Usuario usuario = connection.QueryFirstOrDefault<Usuario>(query, new { Username = username, Password = password });
                 return usuario;
             }
         }
@@ -42,7 +42,7 @@ namespace INFO_360.Models
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
                 bool SeRegistro = true;
-                string checkQuery = "SELECT COUNT(*) FROM Usuarios WHERE nombre = @PNombre ";
+                string checkQuery = "SELECT COUNT(*) FROM Usuario WHERE Nombre = @PNombre";
                 int count = connection.QueryFirstOrDefault<int>(checkQuery, new { PNombre = usuario.Nombre });
                 if (count != 0)
                 {
@@ -50,7 +50,7 @@ namespace INFO_360.Models
                     return SeRegistro;
                 }
 
-                string query = "INSERT INTO Usuarios (Username, Contraseña, Nombre,Foto) VALUES (@Pusername, @Pcontraseña, @Pnombre, @Pfoto";
+                string query = "INSERT INTO Usuario (Username, Contraseña, Nombre, Foto) VALUES (@Pusername, @Pcontraseña, @Pnombre, @Pfoto)";
                 connection.Execute(query, new
                 {
                     Pusername = usuario.Username,
@@ -104,7 +104,7 @@ namespace INFO_360.Models
         {
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
-                string query = "INSERT INTO Tarea (Titulo,Finalizada,Descripcion,Duracion,IDusuario) VALUE (@T,@F,@Des,@Dur,@I)";
+                string query = "INSERT INTO Tarea (Titulo,Finalizada,Descripcion,Duracion,IDusuario) VALUES (@T,@F,@Des,@Dur,@I)";
                 connection.Query(query, new { T = TareaInsert.Titulo, F = TareaInsert.Descripcion, Des = TareaInsert.Descripcion, Dur = TareaInsert.Duracion, I = TareaInsert.IDusuario });
             }
         }
@@ -112,7 +112,7 @@ namespace INFO_360.Models
         {
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
-                string query = "INSERT INTO Alarmas (Tipo,Dia,Duracion,Activo,IDusuario) VALUE (@T,@F,@Des,@Dur,@I)";
+                string query = "INSERT INTO Alarmas (Tipo,Dia,Duracion,Activo,IDusuario) VALUES (@T,@F,@Des,@Dur,@I)";
                 connection.Query(query, new { T = alarma.Tipo, F = alarma.Dia, Des = alarma.Duracion, Dur = alarma.Activo, I = alarma.IDusuario });
             }
         }
@@ -121,7 +121,7 @@ namespace INFO_360.Models
         {
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
-                string query = "DELETE FROM Alarmas WHERE ID = idAlarma";
+                string query = "DELETE FROM Alarmas WHERE ID = @idAlarma";
                 connection.Query(query, new { idAlarma = idAlarmaa });
             }
         }
@@ -129,7 +129,7 @@ namespace INFO_360.Models
         {
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
-                string query = "DELETE FROM Tarea WHERE ID = IDt";
+                string query = "DELETE FROM Tarea WHERE ID = @IDt";
                 connection.Query(query, new { IDt = IDT });
             }
         }
@@ -137,16 +137,16 @@ namespace INFO_360.Models
         {
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
-                string query = "UPDATE Alarmas SET (Tipo = @T,Dia = @F,Duracion = @Des,Activo = @Dur,IDusuario = @I) WHERE id = @wasd";
+                string query = "UPDATE Alarmas SET Tipo = @T,Dia = @F,Duracion = @Des,Activo = @Dur,IDusuario = @I WHERE id = @wasd";
                 connection.Query(query, new { T = alarma.Tipo, F = alarma.Dia, Des = alarma.Duracion, Dur = alarma.Activo, I = alarma.IDusuario, wsad = alarma.ID });
             }
         }
-                public static void ActualizarTarea(Tarea TareaInsert)
+        public static void ActualizarTarea(Tarea TareaInsert)
         {
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
-                string query = "UPDATE Tarea SET (Titulo = @T ,Finalizada = @F ,Descripcion = @Des ,Duracion = @Dur ,IDusuario = @I) WHERE ID = @X";
-                connection.Query(query, new { T = TareaInsert.Titulo, F = TareaInsert.Descripcion, Des = TareaInsert.Descripcion, Dur = TareaInsert.Duracion, I = TareaInsert.IDusuario, X = TareaInsert.ID});
+                string query = "UPDATE Tarea SET Titulo = @T ,Finalizada = @F ,Descripcion = @Des ,Duracion = @Dur ,IDusuario = @I WHERE ID = @X";
+                connection.Query(query, new { T = TareaInsert.Titulo, F = TareaInsert.Descripcion, Des = TareaInsert.Descripcion, Dur = TareaInsert.Duracion, I = TareaInsert.IDusuario, X = TareaInsert.ID });
             }
         }
     }
