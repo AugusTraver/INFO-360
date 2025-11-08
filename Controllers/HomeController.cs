@@ -21,7 +21,7 @@ public class HomeController : Controller
 
     public IActionResult DTareas()
     {
-        string IDu = HttpContext.Session.GetString("juego");
+        string IDu = HttpContext.Session.GetString("usuario");
         if (IDu == null)
         {
 
@@ -31,54 +31,54 @@ public class HomeController : Controller
     }
     public IActionResult CrearTarea(string Titulo, bool Finalizada, string Descripcion, int Duracion, int IDusuario)
     {
-        string x = HttpContext.Session.GetString("juego");
+        string x = HttpContext.Session.GetString("usuario");
         Usuario usuario = Objeto.StringToObject<Usuario>(x);
         Tarea TareaCrear = new Tarea(Titulo, Finalizada, Descripcion, Duracion, IDusuario);
         usuario.CrearTarea(TareaCrear);
-        HttpContext.Session.SetString("usuario", usuario.ToString());
+        HttpContext.Session.SetString("usuario", Objeto.ObjectToString(usuario));
         return View("Tareas");
     }
     public IActionResult ActualizarTarea(string Titulo, bool Finalizada, string Descripcion, int Duracion, int IDusuario)
     {
-        string x = HttpContext.Session.GetString("juego");
+        string x = HttpContext.Session.GetString("usuario");
         Usuario usuario = Objeto.StringToObject<Usuario>(x);
         Tarea TareaCrear = new Tarea(Titulo, Finalizada, Descripcion, Duracion, IDusuario);
         usuario.ActualizarTarea(TareaCrear);
-        HttpContext.Session.SetString("usuario", usuario.ToString());
+        HttpContext.Session.SetString("usuario", Objeto.ObjectToString(usuario));
         return View("Tareas");
     }
     public IActionResult BorrarTarea(int idTarea)
     {
-        string x = HttpContext.Session.GetString("juego");
+        string x = HttpContext.Session.GetString("usuario");
         Usuario usuario = Objeto.StringToObject<Usuario>(x);
         usuario.BorrarTarea(idTarea);
-        HttpContext.Session.SetString("usuario", usuario.ToString());
+        HttpContext.Session.SetString("usuario", Objeto.ObjectToString(usuario));
         return View("Tareas");
     }
     public IActionResult CrearAlarma(string Tipo, string Nombre, DateTime Dia, int Duracion, int IDusuario, bool Activo)
     {
-        string? x = HttpContext?.Session.GetString("juego");
+        string? x = HttpContext?.Session.GetString("usuario");
         Usuario? usuario = Objeto.StringToObject<Usuario>(x);
         Alarmas? AlarmaCrear = new Alarmas(Tipo, Nombre, Dia, Duracion, Activo, IDusuario);
         usuario?.CrearAlarma(AlarmaCrear);
-        HttpContext.Session.SetString("usuario", usuario.ToString());
+        HttpContext.Session.SetString("usuario", Objeto.ObjectToString(usuario));
         return View("Alarmas");
     }
     public IActionResult ActualizarAlarma(string Tipo, string Nombre, DateTime Dia, int Duracion, int IDusuario, bool Activo)
     {
-        string? x = HttpContext?.Session.GetString("juego");
+        string? x = HttpContext?.Session.GetString("usuario");
         Usuario? usuario = Objeto.StringToObject<Usuario>(x);
         Alarmas? AlarmaCrear = new Alarmas(Tipo, Nombre, Dia, Duracion, Activo, IDusuario);
         usuario?.ActualizarAlarma(AlarmaCrear);
-        HttpContext.Session.SetString("usuario", usuario.ToString());
+        HttpContext.Session.SetString("usuario", Objeto.ObjectToString(usuario));
         return View("Alarmas");
     }
     public IActionResult BorrarAlarma(int IDA)
     {
-        string? x = HttpContext?.Session.GetString("juego");
+        string? x = HttpContext?.Session.GetString("usuario");
         Usuario? usuario = Objeto.StringToObject<Usuario>(x);
         usuario?.BorrarAlarma(IDA);
-        HttpContext.Session.SetString("usuario", usuario.ToString());
+        HttpContext.Session.SetString("usuario", Objeto.ObjectToString(usuario));
         return View("Alarmas");
     }
     public IActionResult DAlarmas()
@@ -87,7 +87,7 @@ public class HomeController : Controller
     }
     public IActionResult DHorasLibres()
     {
-        string? x = HttpContext?.Session.GetString("juego");
+        string? x = HttpContext?.Session.GetString("usuario");
         Usuario? usuario = Objeto.StringToObject<Usuario>(x);
 
 
@@ -105,7 +105,7 @@ public class HomeController : Controller
 
     public IActionResult OrganizarAgenda(Dictionary<double, Tarea> a)
     {
-        string x = HttpContext.Session.GetString("juego");
+        string x = HttpContext.Session.GetString("usuario");
         Usuario usuario = Objeto.StringToObject<Usuario>(x);
 
         usuario.OrganizarDía(a);

@@ -20,9 +20,9 @@ public class AccountController : Controller
         }
         else
         {
-            HttpContext.Session.SetString("usuario", usuario.ToString());
+            HttpContext.Session.SetString("usuario", Objeto.ObjectToString(usuario));
 
-            return RedirectToAction("Tareas", "Home");
+            return RedirectToAction("DTareas", "Home");
         }
     }
     public IActionResult DRegistrarse()
@@ -52,7 +52,7 @@ public class AccountController : Controller
         Usuario usuario = new Usuario(Email, username, contraseña, nombre, Foto);
 
         bool pudo = BD.Registrarse(usuario);
-        HttpContext.Session.SetString("usuario", usuario.ToString());
+        HttpContext.Session.SetString("usuario", Objeto.ObjectToString(usuario));
         if (pudo)
         {
             return RedirectToAction("DLogin", "Account");

@@ -31,6 +31,11 @@ namespace INFO_360.Models
         public List<Tarea> ListaTareas { get; private set; }
         [JsonProperty]
         public List<Alarmas> ListaAlarmas { get; private set; }
+     
+        public Usuario()
+        {
+
+        }
         public Usuario(int pID, string pEmail, string pUsername, string pNombre, string pContraseña, string pFoto)
         {
             ID = pID;
