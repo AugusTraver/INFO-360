@@ -5,8 +5,9 @@
 }
 html {
   font-size: 14px;
-  min-height: 100%;
+  height: 100%;
 }
+
 
 @font-face {
   font-family: 'Milaris';
@@ -24,6 +25,9 @@ html {
 
 body {
   font-family: 'Milaris', 'Quicksand', sans-serif;
+  padding: 0% !important;
+  margin: 0% !important;
+  
 }
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap');
 
@@ -43,9 +47,8 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
-body {
-  margin: 10px;
-  padding: 10px;
+.inicio{
+      padding-top: 12%;
 }
 
 
@@ -65,12 +68,24 @@ footer {
  
 }
 header{
-  position:relative;
+    position: fixed; 
+  top: 0; 
+  left: 0;
+  right: 0; 
+  width: 100%; 
+  background-color: #4bbfaa !important; 
+  padding: 0 !important;
+  
+  z-index: 1030;
 }
 .navbar {
-  background-color: #4bbfaa; 
-  box-shadow: 0 2px 8px rgba(35, 56, 64, 0.15);
+ background-color: #4bbfaa !important; 
  
+  margin: 0; 
+ 
+  padding: 0;
+ 
+  box-shadow: 0 2px 8px rgba(35, 56, 64, 0.15);
 }
 
 .navbar-nav {
@@ -119,51 +134,57 @@ header{
   color: #f2f1f0;
   box-shadow: 0 0 14px 3px rgba(130, 217, 201, 0.7);
   transform: scale(1.08);
-}
-
-footer {
+}footer {
   background-color: #4bbfaa;
   color: #f2f1f0;
- 
   font-family: 'Quicksand', sans-serif;
- margin-top: none !important;
-}
-footer img{
-  width: 20%;
-}
-.footerSection{
-
-  width: 25%;
-  height: 25%;
-  float: left;
-  text-align: center;
-  margin-top: 5%;
-  margin-bottom: 1%;
-  margin-left: 5%;
+  margin-top: 0;
+  padding: 30px 20px 10px 20px;
   
-
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: flex-start;
 }
+
+.footerSection {
+  float: none; 
+  margin: 15px 10px;
+  
+  width: 200px; 
+  
+  text-align: left; 
+}
+
 .footerSection ul {
   list-style: none;
-  padding: 0%;
-  margin: 0%;
-}
-.footerSection img{
-  width: 10%;
-  height: 10%;
-  margin-right: 2%;
+  padding: 0;
+  margin: 0;
 }
 
+.footerSection h4 {
+    margin-top: 0;
+}
+
+footer img {
+  width: 150px;
+  height: auto;
+  margin-bottom: 20px;
+}
+
+.footerSection img {
+  width: 30px;
+  height: 30px;
+  margin-right: 10px;
+}
 
 footer hr {
   border: none;
   border-top: 1px solid #f2f1f0;
-
   width: 90%;
+  margin-top: 20px;
+  margin-bottom: 10px;
 }
-
-
-
 
 
 
@@ -200,9 +221,9 @@ footer hr {
 }
 .primeraDeLanding {
   display: flex;
-  align-items: center;   /* centra verticalmente */
-  justify-content: space-between;  /* separa un poco pero los mantiene en fila */
-  gap: 30px;  /* espacio entre imagen y texto */
+  align-items: center;   
+  justify-content: center;  
+  gap: 30px; 
   margin: 60px auto;
   max-width: 1200px;
   padding: 0 40px;
@@ -222,18 +243,17 @@ footer hr {
     
   border: 1px solid black;
   background-color: white;
- 
-  padding-bottom: 4%;
-  padding-top: 2%;
   border-radius: 30px;
-  width: 100% !important;
-  margin-left: 18%;
-  margin-bottom: 3%;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
+
+   display: flex;
   align-items: center;
-  margin-top: 3%;
+  
+  gap: 30px;
+  margin: 60px auto 3% auto; 
+  max-width: 1200px; 
+  width: 90%; 
+  padding: 2% 40px 4% 40px; 
+  
  
 }
 
@@ -263,7 +283,6 @@ footer hr {
   background-color: #d9c6a7;
   color: #233840;
 }
-
 .beneficios h2 {
   text-align: center;
 }
@@ -293,18 +312,17 @@ footer hr {
    
   border: 1px solid black;
   background-color: white;
- 
-  padding-bottom: 4%;
-  padding-top: 2%;
-  border-radius: 30px;
-  width: 100% !important;
-  margin-left: 18%;
-  margin-bottom: 3%;
+ border-radius: 30px;
+
   display: flex;
-  flex-direction: row;
-  justify-content: space-around;
   align-items: center;
-  margin-top: 3%;
+  
+  gap: 30px;
+  margin: 60px auto 3% auto; 
+  max-width: 1200px; 
+  width: 90%; 
+  padding: 2% 40px 4% 40px; 
+  
  
 }
 
@@ -315,6 +333,7 @@ footer hr {
   color: #233840;
   width: 74%;
   margin-left: 13%;
+  
 }
 
 .paraOrganizarce h2 {
@@ -392,43 +411,60 @@ footer hr {
  
 }
 .h2Usuario{
-  margin-left: 42%;
-  padding-bottom: 1%;
+  text-align: center;
+  
+}
+.login{
+  padding: 0% !important;
+  margin: 0% !important;
+  background-color:#3ec8b3 ;
+  min-height: 100vh; 
+  margin-bottom: 40%;
 }
 
-.fondo{
-  background-color: #3ec8b3 !important;
-}
-.login-box{
+.loginRegistrase-box{
 background-color:#3ec8b3 ;
+  margin: 0; 
+  width: 100%;
+  padding-top: 50px;
+
+
+
 }
+
 .cajaImagen{
-  display: inline-block;
-  padding-top: 1%;
-  padding-bottom: 1%;
-  padding-right: 1%;
-  padding-left: 1%;
-  background-color: #F2F1F0;
-  width: 40%;
-  height: 30% !important;
- margin-top: 2%;
-  margin-left: 45%;
-  margin-bottom: 1%;
-border-radius: 100%;
+  display: flex; 
+  
  
+  margin: 0 auto; 
+  
+
+ 
+  width: 160px; 
+  height: 160px;   
+  padding: 1%;
+  background-color: #F2F1F0;
+  margin-bottom: 1%;
+  border-radius: 100%;
+  justify-content: center;
 }
-.login-box img{
- margin-left: 8%  ;
- padding-bottom: 3%;
+.loginRegistrase-box img{
+  display: flex;
+  justify-content: center;
+ margin-left: 1%;
 }
-.login-box h1{
+.loginRegistrase-box h1{
+  display: flex;
+  justify-content: center;
   text-align: center;
   margin-bottom: 2%;
 }
 .form-floating{
-  width: 20%;
-  text-align: center;
-  margin-left: 40%;
+  margin: 1% auto; 
+  width: 300px;
+}
+.mb-3{
+  margin-top: 1%;
 }
 
 .botonLogIn{
@@ -449,9 +485,7 @@ margin-bottom: 0%;
   background-color: #d9c6a7;
   border:  #d9c6a7;
 }
-.login{
-  background-color: #3ec8b3 ;
-}
+
 
 footer{
   margin-top: 0%;

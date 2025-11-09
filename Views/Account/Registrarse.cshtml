@@ -1,35 +1,53 @@
 @{
     ViewData["Title"] = "Registrarse";
 }
-<section class="register-box">
-    <h1>Registrarse en ST</h1>
+
+
+  <section class="loginRegistrase-box">
+
+       <div class="cajaImagen" style="width:160px; height:160px;">
+        <img src="/Imagenes/LogoSolo.png"  style="width:90%; height:90%; object-fit:cover;" alt="Logo StartTime">
+      </div>
+
+      <h1>Registrarse en ST</h1>
     
-       <form action='@Url.Action("Registrarse", "Account")' method="post">
-            <li>Mail: 
-                <input type="text" name="Email" id="IdUserName">
-            </li>
+      <form action='@Url.Action("Registrarse", "Account")' method="post">
+          
+           <div class="form-floating mb-3">
+             <input type="email" class="form-control" id="Mail" name= "mail" placeholder="name@example.com">
+             <label for="floatingInput" style= "color:  #d9c6a7;">Email</label>
+           </div>
+           
+             <div class="form-floating mb-3">
+        <input type="text" class="form-control" id="IdUsername" name="username" placeholder="franxo123">
+        <label for="floatingInput" style= "color:  #d9c6a7;">Usuario</label> 
+      </div>
 
-            <li>Usuario: 
-                <input type="text" name="Username" id="IdContraseña">
-            </li>
+            <div class="form-floating mb-3">
+        <input type="text" class="form-control" id="IdUsername" name="Nombre" placeholder="franxo">
+        <label for="floatingInput" style= "color:  #d9c6a7;">Nombre</label> 
+      </div>
 
-            <li>Nombre: 
-                <input type="text" name="Nombre" id="IdNombre">
-            </li>
+           <div class="form-floating">
+        <input type="password" class="form-control" id="IdContraseña" name="contraseña" placeholder="Password">
+        <label for="IdContraseña" style= "color:  #d9c6a7;">Password</label>
+     </div>
 
-            <li>Contraseña: 
-                <input type="password" name="Contraseña" id="IdApellido">
-            </li>
+        <div class="form-floating mb-3">
+         <div class="mb-3">
+  
+         <input class="form-control" type="file" id="formFile">
+       </div>
+         </div>
+     </form>
+ <div class = "botonLogIn">
+    <button type="submit" class="btn btn-primary btn-lg" style= " background-color: #d9c6a7;  border:  #d9c6a7; color:black;">Crear Usuario</button>
 
-            <li>Foto usuario: 
-                <input type="text" name="Foto" id="IdFoto">
-            </li>
-        </ul>
- 
-        <button type="submit" class="btn btn-primary btn-lg">Crear Usuario</button>
-    </form>
-
-    <p>Ya tenés cuenta, 
-        <a>Log In</a>
+    <p>Ya tenés cuenta,  <a href='@Url.Action("DLogin", "Account")'>Log In</a>
     </p> 
+    </div>
+
+      
+
+   
 </section>
