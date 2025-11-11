@@ -11,7 +11,7 @@
 
       <h1>Registrarse en ST</h1>
     
-      <form action='@Url.Action("Registrarse", "Account")' method="post">
+<form action='@Url.Action("Registrarse", "Account")' method="post" enctype="multipart/form-data">
           
            <div class="form-floating mb-3">
              <input type="email" class="form-control" id="Mail" name= "mail" placeholder="name@example.com">
@@ -36,12 +36,14 @@
         <div class="form-floating mb-3">
          <div class="mb-3">
   
-         <input class="form-control" type="file" id="formFile">
+         <input class="form-control" type="file" name="imagen" id="imagen" accept="image/*" required>
        </div>
          </div>
+
+             <button type="submit" class="btn btn-primary btn-lg" style= " background-color: #d9c6a7;  border:  #d9c6a7; color:black;">Crear Usuario</button>
+
      </form>
  <div class = "botonLogIn">
-    <button type="submit" class="btn btn-primary btn-lg" style= " background-color: #d9c6a7;  border:  #d9c6a7; color:black;">Crear Usuario</button>
 
     <p>Ya tenés cuenta,  <a href='@Url.Action("DLogin", "Account")'>Log In</a>
     </p> 

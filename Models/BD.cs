@@ -50,9 +50,10 @@ namespace INFO_360.Models
                     return SeRegistro;
                 }
 
-                string query = "INSERT INTO Usuario (Username, Contraseña, Nombre, Foto) VALUES (@Pusername, @Pcontraseña, @Pnombre, @Pfoto)";
+                string query = "INSERT INTO Usuario (Email, Username, Contraseña, Nombre, Foto) VALUES (@Pemail, @Pusername, @Pcontraseña, @Pnombre, @Pfoto)";
                 connection.Execute(query, new
                 {
+                    Pemial = usuario.Email,
                     Pusername = usuario.Username,
                     Pcontaseña = usuario.Contraseña,
                     Pnombre = usuario.Nombre,
