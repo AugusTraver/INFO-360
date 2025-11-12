@@ -106,11 +106,13 @@ public class HomeController : Controller
         string x = HttpContext.Session.GetString("usuario");
         Usuario usuario = Objeto.StringToObject<Usuario>(x);
 
-        string x = HttpContext.Session.GetString("temporales");
-        Dictionary<double, Tarea> temporales = Objeto.StringToObject<Dictionary<double, Tarea>>(x);
+        string y = HttpContext.Session.GetString("temporales");
+        Dictionary<double, Tarea> temporales = Objeto.StringToObject<Dictionary<double, Tarea>>(y);
 
-        
-        usuario.OrganizarDía(temporales);
+
+        Dictionary<DateTime, Dictionary<double, Tarea>> AGENDA = usuario.OrganizarSemana(temporales);
+
+        ViewBag.AGENDA = AGENDA;    
 
         return View("Agenda");
     }

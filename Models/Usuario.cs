@@ -26,12 +26,12 @@ namespace INFO_360.Models
         [JsonProperty]
         public string Email { get; private set; }
         [JsonProperty]
-        public Dictionary<string, TiempoLibre> TiempoLibrexDia { get; private set; }
+        public Dictionary<DateTime, TiempoLibre> TiempoLibrexDia { get; private set; }
         [JsonProperty]
         public List<Tarea> ListaTareas { get; private set; }
         [JsonProperty]
         public List<Alarmas> ListaAlarmas { get; private set; }
-     
+
         public Usuario()
         {
 
@@ -85,10 +85,12 @@ namespace INFO_360.Models
             BD.ActualizarTarea(T);
         }
 
-        public double CalcularTiempoTareas(){
+        public double CalcularTiempoTareas()
+        {
 
             double tTotal = 0;
-            foreach(Tarea t in ListaTareas){
+            foreach (Tarea t in ListaTareas)
+            {
 
                 tTotal += t.Duracion;
             }
@@ -110,33 +112,93 @@ namespace INFO_360.Models
             return TiempoLibreTotal;
         }
 
-        public Dictionary<double, Tarea> OrganizarDía(Dictionary<double, Tarea> Pendientes)
+        public Dictionary<DateTime, Dictionary<double, Tarea>> OrganizarSemana(Dictionary<double, Tarea> temporales)
         {
-            Dictionary<double, Tarea> agenda = new Dictionary<double, Tarea>();
+            Dictionary<DateTime, Dictionary<double, Tarea>> agendaSemanal = new Dictionary<DateTime, Dictionary<double, Tarea>>();
 
-            foreach (double inicio in Pendientes.Keys)
+            List<TiempoLibre> tiemposLibres = BD.ObtenerTiempoLibre(this.ID);
+
+            if (tiemposLibres == null || tiemposLibres.Count == 0 || temporales == null || temporales.Count == 0)
             {
-                Tarea t = Pendientes[inicio];
-                double fin = inicio + t.Duracion;
+                return agendaSemanal;
+            }
 
-                for (double i = inicio; i < fin; i += 0.25)
+            DateTime hoy = DateTime.Today;
+            DateTime finSemana = hoy.AddDays(7);
+
+            List<TiempoLibre> libresSemana = new List<TiempoLibre>();
+            for (int i = 0; i < tiemposLibres.Count; i++)
+            {
+                TiempoLibre t = tiemposLibres[i];
+                if (t.Dia >= hoy && t.Dia < finSemana)
                 {
-                    if (Pendientes.ContainsKey(i))
+                    libresSemana.Add(t);
+                }
+            }
+
+            for (int i = 0; i < libresSemana.Count - 1; i++)
+            {
+                for (int j = i + 1; j < libresSemana.Count; j++)
+                {
+                    if (libresSemana[i].Dia > libresSemana[j].Dia)
                     {
-                        agenda.Add(i, Pendientes[i]);
+                        TiempoLibre a = libresSemana[i];
+                        libresSemana[i] = libresSemana[j];
+                        libresSemana[j] = a;
+                    }
+                }
+            }
+
+            List<Tarea> tareasPendientes = new List<Tarea>();
+            double[] clavesTemporales = new double[temporales.Keys.Count];
+            temporales.Keys.CopyTo(clavesTemporales, 0);
+            for (int i = 0; i < clavesTemporales.Length; i++)
+            {
+                double clave = clavesTemporales[i];
+                Tarea t = temporales[clave];
+                tareasPendientes.Add(t);
+            }
+
+
+            for (int i = 0; i < libresSemana.Count; i++)
+            {
+                TiempoLibre tl = libresSemana[i];
+                double horasDisponibles = tl.Horas;
+
+                Dictionary<double, Tarea> agendaDia = new Dictionary<double, Tarea>();
+                double horaActual = 8.0;
+                int j = 0;
+                while (j < tareasPendientes.Count && horasDisponibles > 0)
+                {
+                    Tarea tarea = tareasPendientes[j];
+
+                    if (tarea.Duracion <= horasDisponibles && horaActual + tarea.Duracion <= 20.0)
+                    {
+                        double fin = horaActual + tarea.Duracion;
+
+                        for (double h = horaActual; h < fin; h += 0.25)
+                        {
+                            agendaDia[h] = tarea;
+                        }
+
+                        horaActual = horaActual + tarea.Duracion;
+                        horasDisponibles = horasDisponibles - tarea.Duracion;
+
+                        tareasPendientes.RemoveAt(j);
                     }
                     else
                     {
-                        agenda.Add(i, null);
+                        j++;
                     }
-
-
                 }
 
+                agendaSemanal[tl.Dia] = agendaDia;
             }
 
-            return agenda;
+
+            return agendaSemanal;
         }
+
 
     }
 }

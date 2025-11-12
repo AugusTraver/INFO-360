@@ -150,5 +150,33 @@ namespace INFO_360.Models
                 connection.Query(query, new { T = TareaInsert.Titulo, F = TareaInsert.Descripcion, Des = TareaInsert.Descripcion, Dur = TareaInsert.Duracion, I = TareaInsert.IDusuario, X = TareaInsert.ID });
             }
         }
+
+        public static List<TiempoLibre> ObtenerTiempoLibre(int idUsuario)
+        {
+            using (SqlConnection connection = new SqlConnection(_connectionString))
+            {
+                string query = "SELECT * FROM TiempoLibre WHERE IDusuario = @idUsuario";
+                List<TiempoLibre> tiempos = connection.Query<TiempoLibre>(query, new { idUsuario = idUsuario }).ToList();
+                return tiempos;
+            }
+        }
+
+        public static void CrearTiempoLibre(TiempoLibre tiempo)
+        {
+            using (SqlConnection connection = new SqlConnection(_connectionString))
+            {
+                string query = "INSERT INTO TiempoLibre (Dia, Horas, IDusuario) VALUES (@Dia, @Horas, @IDusuario)";
+                connection.Execute(query, new { Dia = tiempo.Dia, Horas = tiempo.Horas, IDusuario = tiempo.IDusuario });
+            }
+        }
+
+        public static void BorrarTiempoLibre(int idTiempo)
+        {
+            using (SqlConnection connection = new SqlConnection(_connectionString))
+            {
+                string query = "DELETE FROM TiempoLibre WHERE ID = @idTiempo";
+                connection.Execute(query, new { idTiempo = idTiempo });
+            }
+        }   
     }
 }
