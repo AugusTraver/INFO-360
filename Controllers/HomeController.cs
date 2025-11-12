@@ -24,10 +24,9 @@ public class HomeController : Controller
         string IDu = HttpContext.Session.GetString("usuario");
         if (IDu == null)
         {
-
             return View("Login");
         }
-        return View("Tareas");
+        return View("Organizador");
     }
     public IActionResult CrearTarea(string Titulo, bool Finalizada, string Descripcion, int Duracion, int IDusuario)
     {
@@ -102,15 +101,59 @@ public class HomeController : Controller
     {
         return View("Perfil");
     }
-
-    public IActionResult OrganizarAgenda(Dictionary<double, Tarea> a)
+    public IActionResult OrganizarAgenda()
     {
         string x = HttpContext.Session.GetString("usuario");
         Usuario usuario = Objeto.StringToObject<Usuario>(x);
 
-        usuario.OrganizarDía(a);
+        string x = HttpContext.Session.GetString("temporales");
+        Dictionary<double, Tarea> temporales = Objeto.StringToObject<Dictionary<double, Tarea>>(x);
+
+        
+        usuario.OrganizarDía(temporales);
 
         return View("Agenda");
+    }
+    public IActionResult DOrganizador()
+    {
+        string x = HttpContext.Session.GetString("temporales");
+        Dictionary<double, Tarea> temporales = new Dictionary<double, Tarea>();
+
+        if (!string.IsNullOrEmpty(x))
+            temporales = Objeto.StringToObject<Dictionary<double, Tarea>>(x);
+
+        ViewBag.Temporales = temporales;
+
+        return View("Organizador");
+    }
+
+    [HttpPost]
+    public IActionResult AgregarTemporal(string titulo, double duracion)
+    {
+        string x = HttpContext.Session.GetString("temporales");
+        Dictionary<double, Tarea> temporales = new Dictionary<double, Tarea>();
+
+        if (x != null)
+        {
+            temporales = Objeto.StringToObject<Dictionary<double, Tarea>>(x);
+
+        }
+
+        Tarea t = new Tarea(titulo, duracion);
+
+        double clave = temporales.Count + 1;
+        temporales[clave] = t;
+
+        HttpContext.Session.SetString("temporales", Objeto.ObjectToString(temporales));
+
+        return RedirectToAction("DOrganizador");
+    }
+
+    [HttpPost]
+    public ActionResult LimpiarTemporales()
+    {
+        HttpContext.Session.Remove("temporales");
+        return RedirectToAction("DOrganizador");
     }
 
 }

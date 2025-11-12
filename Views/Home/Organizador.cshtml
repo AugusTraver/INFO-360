@@ -1,0 +1,63 @@
+@{
+    ViewBag.Title = "Organizador";
+    Dictionary<double, Tarea> D = ViewBag.Temporales;
+}
+
+<h2>Organizador de tareas</h2>
+
+@if (ViewBag.Temporales != null && ViewBag.Temporales.Count > 0)
+{
+    <ul>
+        @foreach (var par in (Dictionary<double, Tarea>)ViewBag.Temporales)
+        {
+            var t = par.Value;
+
+            double totalMinutos = t.Duracion * 60;
+            int horas = (int)(totalMinutos / 60);
+            int minutos = (int)(totalMinutos % 60);
+            string duracionFormateada = $"{horas:D2}:{minutos:D2}";
+
+            <li>
+                <strong>@t.Titulo</strong> — @duracionFormateada hs
+            </li>
+        }
+    </ul>
+}
+else
+{
+    <p>No hay tareas temporales cargadas.</p>
+}
+
+
+<hr />
+
+<form method="post" action='@Url.Action("AgregarTemporal", "Home")'>
+    <label>Título:</label>
+    <input type="text" name="titulo" required />
+    <br />
+    <label>Tiempo Necesario:</label>
+    <select name="duracion">
+
+        @for (double i = 0.25; i <= 6; i += 0.25)
+        {
+            double mTotal = i * 60;
+            int h = (int)(mTotal / 60);
+            int m = (int)(mTotal % 60);
+
+            <option value="@i" name="duracion">@($"{h:D2} : {m:D2}")</option>
+
+        }
+
+    </select>
+
+    <br />
+    <button type="submit">Agregar</button>
+</form>
+
+<form action="@Url.Action("LimpiarTemporales", "Home")" method="post" style="margin-top: 15px;">
+    <button type="submit">Borrar todas</button>
+</form>
+
+<form action="@Url.Action("OrganizarAgenda", "Home")" method="post" style="margin-top: 15px;">
+    <button type="submit">Organizar Semana</button>
+</form>
