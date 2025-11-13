@@ -53,9 +53,9 @@ namespace INFO_360.Models
                 string query = "INSERT INTO Usuario (Email, Username, Contraseña, Nombre, Foto) VALUES (@Pemail, @Pusername, @Pcontraseña, @Pnombre, @Pfoto)";
                 connection.Execute(query, new
                 {
-                Pemailmial = usuario.Email,
+                Pemail = usuario.Email, 
                     Pusername = usuario.Username,
-                Pcontraseñaseña = usuario.Contraseña,
+                Pcontraseña = usuario.Contraseña,
                     Pnombre = usuario.Nombre,
                     Pfoto = usuario.Foto,
 
