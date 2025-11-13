@@ -26,6 +26,7 @@ namespace INFO_360.Models
         [JsonProperty]
         public int IDusuario { get; private set; }
 
+
         public Tarea(string Ptitulo, bool Pfin, string Pdesc, int Pdur, int idU)
         {
             Titulo = Ptitulo;

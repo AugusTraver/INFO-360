@@ -5,6 +5,7 @@ using System.Web;
 using Newtonsoft.Json;
 using Microsoft.Data.SqlClient;
 using Dapper;
+using System.Data;
 
 
 
@@ -42,8 +43,8 @@ DataBase=StartTime; Integrated Security=True; TrustServerCertificate=True;";
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
                 bool SeRegistro = true;
-                string checkQuery = "SELECT COUNT(*) FROM Usuario WHERE Nombre = @PNombre";
-                int count = connection.QueryFirstOrDefault<int>(checkQuery, new { PNombre = usuario.Nombre });
+                string checkQuery = "SELECT COUNT(*) FROM Usuario WHERE Username = @AUsername";
+                int count = connection.QueryFirstOrDefault<int>(checkQuery, new { AUsername = usuario.Username });
                 if (count != 0)
                 {
                     SeRegistro = false;
@@ -142,14 +143,26 @@ DataBase=StartTime; Integrated Security=True; TrustServerCertificate=True;";
                 connection.Query(query, new { T = alarma.Tipo, F = alarma.Dia, Des = alarma.Duracion, Dur = alarma.Activo, I = alarma.IDusuario, wsad = alarma.ID });
             }
         }
-        public static void ActualizarTarea(Tarea TareaInsert)
+        public static void ActualizarTarea(Tarea tarea)
         {
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
-                string query = "UPDATE Tarea SET Titulo = @T ,Finalizado = @F ,Descripcion = @Des ,Duracion = @Dur ,IDusuario = @I WHERE ID = @X";
-                connection.Execute(query, new { T = TareaInsert.Titulo, F = TareaInsert.Finalizado, Des = TareaInsert.Descripcion, Dur = TareaInsert.Duracion, I = TareaInsert.IDusuario, X = TareaInsert.ID });
+                string SP = "ActualizarTarea"; 
+        
+
+                connection.Execute(SP, new
+                {
+                    Titulo = tarea.Titulo,
+                    Finalizado = tarea.Finalizado,
+                    Descripcion = tarea.Descripcion,
+                    Duracion = tarea.Duracion,
+                    IDusuario = tarea.IDusuario,
+                    ID = tarea.ID
+                },
+                commandType: CommandType.StoredProcedure);
             }
         }
+
         public static List<TiempoLibre> ObtenerTiempoLibre(int idUsuario)
         {
             using (SqlConnection connection = new SqlConnection(_connectionString))
