@@ -28,35 +28,37 @@ public class HomeController : Controller
             return View("Login");
         }
         Usuario usuario = Objeto.StringToObject<Usuario>(IDu);
+        usuario.ListaTareas = usuario.ObtenerTareas();
+
         ViewBag.Tareas = usuario.ListaTareas;
         ViewBag.IDUsuario = usuario.ID;
         return View("Tareas");
     }
     public IActionResult CrearTarea(string Titulo, bool Finalizado, string Descripcion, int Duracion, int IDusuario)
-    {   
+    {
         string x = HttpContext.Session.GetString("usuario");
         Usuario usuario = Objeto.StringToObject<Usuario>(x);
         Tarea TareaCrear = new Tarea(Titulo, Finalizado, Descripcion, Duracion, usuario.ID);
         usuario.CrearTarea(TareaCrear);
-        
+
 
         usuario.ListaTareas = usuario.ObtenerTareas();
-        
+
         HttpContext.Session.SetString("usuario", Objeto.ObjectToString(usuario));
         ViewBag.Tareas = usuario.ListaTareas;
         ViewBag.IDUsuario = usuario.ID;
         return View("Tareas");
     }
-    public IActionResult ActualizarTarea(string Titulo, bool Finalizada, string Descripcion, int Duracion, int IDusuario)
+    public IActionResult ActualizarTarea(string Titulo, bool Finalizada, string Descripcion, int Duracion,int ID, int IDusuario)
     {
         string x = HttpContext.Session.GetString("usuario");
         Usuario usuario = Objeto.StringToObject<Usuario>(x);
-        Tarea TareaCrear = new Tarea(Titulo, Finalizada, Descripcion, Duracion, usuario.ID);
-        usuario.ActualizarTarea(TareaCrear);
-        
+        Tarea TareaCrear = new Tarea( Titulo, Finalizada, Descripcion, Duracion, usuario.ID);
+        usuario.ActualizarTarea(TareaCrear, ID);
+
 
         usuario.ListaTareas = usuario.ObtenerTareas();
-        
+
         HttpContext.Session.SetString("usuario", Objeto.ObjectToString(usuario));
         ViewBag.Tareas = usuario.ListaTareas;
         ViewBag.IDUsuario = usuario.ID;
@@ -67,10 +69,10 @@ public class HomeController : Controller
         string x = HttpContext.Session.GetString("usuario");
         Usuario usuario = Objeto.StringToObject<Usuario>(x);
         usuario.BorrarTarea(idTarea);
-        
-       
+
+
         usuario.ListaTareas = usuario.ObtenerTareas();
-        
+
         HttpContext.Session.SetString("usuario", Objeto.ObjectToString(usuario));
         ViewBag.Tareas = usuario.ListaTareas;
         ViewBag.IDUsuario = usuario.ID;
@@ -123,7 +125,7 @@ public class HomeController : Controller
     {
         return View("Perfil");
     }
-  public IActionResult OrganizarAgenda()
+    public IActionResult OrganizarAgenda()
     {
         string x = HttpContext.Session.GetString("usuario");
         Usuario usuario = Objeto.StringToObject<Usuario>(x);
@@ -134,7 +136,7 @@ public class HomeController : Controller
 
         Dictionary<DateTime, Dictionary<double, Tarea>> AGENDA = usuario.OrganizarSemana(temporales);
 
-        ViewBag.AGENDA = AGENDA;    
+        ViewBag.AGENDA = AGENDA;
 
         return View("Agenda");
     }

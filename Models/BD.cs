@@ -5,6 +5,7 @@ using System.Data;
 using Newtonsoft.Json;
 using Microsoft.Data.SqlClient;
 using Dapper;
+using System.Data;
 
 
 
@@ -33,11 +34,17 @@ DataBase=StartTime; Integrated Security=True; TrustServerCertificate=True;";
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
                 bool SeRegistro = true;
+<<<<<<< HEAD
                 string storedProcedure = "Registrarse";
              int registrado = connection.QueryFirstOrDefault<int>(storedProcedure, new { PNombre = usuario.Nombre });
                
                
                 connection.QueryFirstOrDefault(storedProcedure, new
+=======
+                string checkQuery = "SELECT COUNT(*) FROM Usuario WHERE Username = @AUsername";
+                int count = connection.QueryFirstOrDefault<int>(checkQuery, new { AUsername = usuario.Username });
+                if (count != 0)
+>>>>>>> d737e0490360873812dca37cdf5e2297f0b0617a
                 {
                     UsuarioNombre = usuario.Nombre,
                 UsuarioEmail = usuario.Email,
@@ -54,8 +61,12 @@ DataBase=StartTime; Integrated Security=True; TrustServerCertificate=True;";
             }
         }
         public static List<Tarea> ObtenerTareas(int idU)
+<<<<<<< HEAD
         {
              List<Tarea> tareasusu = null;
+=======
+        { 
+>>>>>>> d737e0490360873812dca37cdf5e2297f0b0617a
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
                 string storedProcedure = "ObtenerTareas";
@@ -142,17 +153,26 @@ DataBase=StartTime; Integrated Security=True; TrustServerCertificate=True;";
                 );
             }
         }
-       
-        public static void ActualizarTarea(Tarea TareaInsert)
+        public static void ActualizarTarea(Tarea tarea, int PD)
         {
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
-                string storedProcedure = "ActualizarTarea";
-                connection.Execute(storedProcedure, new { T = TareaInsert.Titulo, F = TareaInsert.Finalizado, Des = TareaInsert.Descripcion, Dur = TareaInsert.Duracion, I = TareaInsert.IDusuario, X = TareaInsert.ID },
-                 commandType: CommandType.StoredProcedure
-                );
+                string SP = "ActualizarTarea"; 
+        
+
+                connection.Execute(SP, new
+                {
+                    Titulo = tarea.Titulo,
+                    Finalizado = tarea.Finalizado,
+                    Descripcion = tarea.Descripcion,
+                    Duracion = tarea.Duracion,
+                    IDusuario = tarea.IDusuario,
+                    ID = PD
+                },
+                commandType: CommandType.StoredProcedure);
             }
         }
+
         public static List<TiempoLibre> ObtenerTiempoLibre(int idUsuario)
         {
             using (SqlConnection connection = new SqlConnection(_connectionString))

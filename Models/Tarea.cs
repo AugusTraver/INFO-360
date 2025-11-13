@@ -26,6 +26,7 @@ namespace INFO_360.Models
         [JsonProperty]
         public int IDusuario { get; private set; }
 
+
         public Tarea(string Ptitulo, bool Pfin, string Pdesc, int Pdur, int idU)
         {
             Titulo = Ptitulo;
@@ -38,10 +39,14 @@ namespace INFO_360.Models
         {
 
         }
-              public Tarea(string Ptitulo, int Pdur)
+        public Tarea(string Ptitulo, int Pdur)
         {
             Titulo = Ptitulo;
             Duracion = Pdur;
+        }
+
+        public void modificarDur(int duracionParcial){
+            Duracion -= duracionParcial;
         }
     }
 }
