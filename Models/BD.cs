@@ -136,32 +136,31 @@ DataBase=StartTime; Integrated Security=True; TrustServerCertificate=True;";
         {
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
-                string query = "DELETE FROM Tarea WHERE ID = @IDt";
-                connection.Query(query, new { IDt = IDT });
+                string storedProcedure = "DELETE FROM Tarea WHERE ID = @IDt";
+                connection.Query(storedProcedure, new { IDt = IDT },
+                  commandType: CommandType.StoredProcedure
+                );
             }
         }
-        public static void ActualizarAlarma(Alarmas alarma)
-        {
-            using (SqlConnection connection = new SqlConnection(_connectionString))
-            {
-                string query = "UPDATE Alarmas SET Tipo = @T,Dia = @F,Duracion = @Des,Activo = @Dur,IDusuario = @I WHERE id = @wasd";
-                connection.Query(query, new { T = alarma.Tipo, F = alarma.Dia, Des = alarma.Duracion, Dur = alarma.Activo, I = alarma.IDusuario, wsad = alarma.ID });
-            }
-        }
+       
         public static void ActualizarTarea(Tarea TareaInsert)
         {
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
-                string query = "UPDATE Tarea SET Titulo = @T ,Finalizado = @F ,Descripcion = @Des ,Duracion = @Dur ,IDusuario = @I WHERE ID = @X";
-                connection.Execute(query, new { T = TareaInsert.Titulo, F = TareaInsert.Finalizado, Des = TareaInsert.Descripcion, Dur = TareaInsert.Duracion, I = TareaInsert.IDusuario, X = TareaInsert.ID });
+                string storedProcedure = "ActualizarTarea";
+                connection.Execute(storedProcedure, new { T = TareaInsert.Titulo, F = TareaInsert.Finalizado, Des = TareaInsert.Descripcion, Dur = TareaInsert.Duracion, I = TareaInsert.IDusuario, X = TareaInsert.ID },
+                 commandType: CommandType.StoredProcedure
+                );
             }
         }
         public static List<TiempoLibre> ObtenerTiempoLibre(int idUsuario)
         {
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
-                string query = "SELECT * FROM TiempoLibre WHERE IDusuario = @idUsuario";
-                List<TiempoLibre> tiempos = connection.Query<TiempoLibre>(query, new { idUsuario = idUsuario }).ToList();
+                string storedProcedure = "ObtenerTiempoLibre";
+                List<TiempoLibre> tiempos = connection.Query<TiempoLibre>(storedProcedure, new { idUsuario = idUsuario },
+                 commandType: CommandType.StoredProcedure
+                ).ToList();
                 return tiempos;
             }
         }
