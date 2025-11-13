@@ -8,10 +8,10 @@
 
     <h2>Tiempo Libre</h2>
 
-    @foreach(Tarea t in ViewBag.DicTiempoLibre)
+    @foreach(Tarea t in ViewBag.DiaTiempoLibre)
     {
         <div>
-            
+            <p> </p>            
 
         </div>
     }
@@ -28,7 +28,7 @@
     @foreach(Tarea t in ViewBag.ListaTareas)
     {
         <div>
-            
+            <p> @ViewBag.ListaTareas.Nombre  Duracion: @ViewBag.ListaTareas.Duracion </p>
 
         </div>
     }

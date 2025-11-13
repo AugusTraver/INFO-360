@@ -33,7 +33,7 @@ public class HomeController : Controller
         return View("Tareas");
     }
     public IActionResult CrearTarea(string Titulo, bool Finalizado, string Descripcion, int Duracion, int IDusuario)
-    {
+    {   
         string x = HttpContext.Session.GetString("usuario");
         Usuario usuario = Objeto.StringToObject<Usuario>(x);
         Tarea TareaCrear = new Tarea(Titulo, Finalizado, Descripcion, Duracion, usuario.ID);
@@ -112,7 +112,7 @@ public class HomeController : Controller
         Usuario? usuario = Objeto.StringToObject<Usuario>(x);
 
 
-        ViewBag.DicTiempoLibre = usuario.TiempoLibrexDia;
+        ViewBag.DiaTiempoLibre = usuario.TiempoLibrexDia;
         ViewBag.TiempoLibreTotal = usuario.CalcularTiempoLibre();
         ViewBag.ListaTareas = usuario.ListaTareas;
         ViewBag.TiempoTareas = usuario.CalcularTiempoTareas();

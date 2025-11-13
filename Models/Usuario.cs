@@ -97,9 +97,9 @@ namespace INFO_360.Models
 
             return tTotal;
         }
-        public double CalcularTiempoLibre()
+        public int CalcularTiempoLibre()
         {
-            double TiempoLibreTotal = 0;
+            int TiempoLibreTotal = 0;
             foreach (TiempoLibre a in TiempoLibrexDia.Values)
             {
                 TiempoLibreTotal += a.Horas;
@@ -126,25 +126,25 @@ namespace INFO_360.Models
             DateTime hoy = DateTime.Today;
             DateTime finSemana = hoy.AddDays(7);
 
-            List<TiempoLibre> libresSemana = new List<TiempoLibre>();
+            List<TiempoLibre> tlXsemana = new List<TiempoLibre>();
             for (int i = 0; i < tiemposLibres.Count; i++)
             {
                 TiempoLibre t = tiemposLibres[i];
                 if (t.Dia >= hoy && t.Dia < finSemana)
                 {
-                    libresSemana.Add(t);
+                    tlXsemana.Add(t);
                 }
             }
 
-            for (int i = 0; i < libresSemana.Count - 1; i++)
+            for (int i = 0; i < tlXsemana.Count - 1; i++)
             {
-                for (int j = i + 1; j < libresSemana.Count; j++)
+                for (int j = i + 1; j < tlXsemana.Count; j++)
                 {
-                    if (libresSemana[i].Dia > libresSemana[j].Dia)
+                    if (tlXsemana[i].Dia > tlXsemana[j].Dia)
                     {
-                        TiempoLibre a = libresSemana[i];
-                        libresSemana[i] = libresSemana[j];
-                        libresSemana[j] = a;
+                        TiempoLibre a = tlXsemana[i];
+                        tlXsemana[i] = tlXsemana[j];
+                        tlXsemana[j] = a;
                     }
                 }
             }
@@ -160,9 +160,9 @@ namespace INFO_360.Models
             }
 
 
-            for (int i = 0; i < libresSemana.Count; i++)
+            for (int i = 0; i < tlXsemana.Count; i++)
             {
-                TiempoLibre tl = libresSemana[i];
+                TiempoLibre tl = tlXsemana[i];
                 double horasDisponibles = tl.Horas;
 
                 Dictionary<double, Tarea> agendaDia = new Dictionary<double, Tarea>();

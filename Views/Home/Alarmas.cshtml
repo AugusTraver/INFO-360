@@ -4,16 +4,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="estilo.css">
+    <link rel="stylesheet" href="styles.css">
+    
 </head>
-<body>
+<header></header>
+<body class="box">
       <h1 >Alarmas </h1>
-     <button type="button">Agregar</button>
-    <button type="button">Buscar</button>
+      <div class="botones-superiores">
+      <a href="#" type="button" id="mostrarBuscar" class="boton">Buscar Alarma</a>
+      </div>
+    
+      <div id="buscadorContainer" style="display:none;">
+        <input type="text" id="buscador" placeholder="Buscar...">
+        <ul id="lista"></ul>
+      </div>      
+    <div id="infoBox"></div>
+    <button type="button" onclick="NuevaAlarma()">Nueva Alarma</button>
+    
+    <div hidden id="Hidden">
+        
+    Nombre <input type="text" id="NombreAlarma" >
+    Hora <input type ="datetime-local" id ="AlarmaTime" >
+    <button type="button" onclick="AgregarAlarma()">Agregar</button>
+    </div>
+    <p id="ErrorCrearAlarma"></p>
+    <h2 id="AlarmaCreada"></h2>
      
-     <input type ="time  " id ="AlarmaTime">
-<!-- Usar js -->
-
-
-
+    <script src="Util.js"></script>
+    
 </body>
+<footer></footer>
+    

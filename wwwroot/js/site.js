@@ -1,4 +1,13 @@
-﻿// Please see documentation at https://learn.microsoft.com/aspnet/core/client-side/bundling-and-minification
-// for details on configuring this project to bundle and minify static web assets.
+﻿function mostrarFormularioCrear() {
+    const form = document.getElementById("formCrearTarea");
+    form.style.display = "inline-block";
+}
 
-// Write your JavaScript code.
+function mostrarFormularioActualizar(idTarea) {
+    const form = document.getElementById(`formActualizarTarea-${idTarea}`);
+    if (form.style.display === "none" || form.style.display === "") {
+        form.style.display = "block";
+    } else {
+        form.style.display = "none";
+    }
+}

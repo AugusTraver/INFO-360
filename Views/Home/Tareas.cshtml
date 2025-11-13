@@ -1,92 +1,112 @@
-
 @{
     ViewData["Title"] = "Tareas";
 }
 
+<!DOCTYPE html>
+<html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tus Tareas</title>
-  <link rel="stylesheet" href="site.css">
-  <script src="site.js" defer></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tus Tareas</title>
+    <link rel="stylesheet" href="site.css">
+    <script src="site.js" defer></script>
 </head>
 <body>
+    <div class="tareas-page">
+        <h1>Tus Tareas</h1>
 
-   <div class="tareas-page ">
-    <h1>Tus Tareas</h1>
+        <!-- Buscador -->
+        <div id="buscadorContainer" style="display: none;">
+            <input type="text" id="buscador" placeholder="Buscar tarea...">
+            <ul id="lista"></ul>
+        </div>
 
-  <div class="botones-superiores">
-    <a href="#" id="abrirAgregar" class="boton">Agregar</a>
-    <a href="#" id="mostrarBuscar" class="boton">Buscar</a>
-  </div>
-
-  <div id="buscadorContainer" style="display:none;">
-    <input type="text" id="buscador" placeholder="Buscar tarea...">
-    <ul id="lista"></ul>
-  </div>
-
-  <div id="tareasContainer" dispaly="block">
-    <a href="#" class="tarea-btn" id="verTareaBtn">
-      <span>📄 Tarea EFSI</span>
-      <span>Finalizado</span>
-    </a>
-  </div>
-
-  <div id="detalleTarea" hidden>
-    <div class="top-bar">
-      <a href="#" id="volver" class="boton">← Volver</a>
-      <a href="#" id="abrirEditar" class="boton">Editar</a>
-    </div>
-    @foreach (var tarea in ViewBag.Tareas ?? new List<Tarea>()) {
-
-        <div class="card">
+        <!-- Listado de tareas -->
+     @foreach (var tarea in ViewBag.Tareas ?? new List<Tarea>())
+{
+    <div class="card">
         <strong>@tarea.Titulo</strong>
         <span>@tarea.Descripcion</span>
-       <span>@(tarea.Finalizada ? "Finalizado" : "Pendiente")</span>
-        <form action='@Url.Action("BorrarTarea", "Home")' method="post" style="display:inline;">
-  
-          <input type="hidden" name="idTarea" value="@tarea.ID" />
-          <button type="submit">Eliminar</button>
+        <span>@(tarea.Finalizado ? "Finalizado" : "Pendiente")</span>
+
+        <form action='@Url.Action("BorrarTarea", "Home")' method="post" style="display: inline;">
+            <input type="hidden" name="idTarea" value="@tarea.ID" />
+            <button type="submit">Eliminar</button>
+        </form>
+
+        <button type="button" onclick="mostrarFormularioActualizar(@tarea.ID)" id="btnMostrarActualizar-@tarea.ID">
+            Actualizar tarea
+        </button>
+
+        <form id="formActualizarTarea-@tarea.ID"
+              action='@Url.Action("ActualizarTarea", "Home")'
+              method="post"
+              style="display: none;">
+
+            <label for="tituloActualizar-@tarea.ID">Título:</label>
+            <input type="text" name="Titulo" id="tituloActualizar-@tarea.ID" placeholder="Título" required>
+
+            <label for="descripcionActualizar-@tarea.ID">Descripción:</label>
+            <input type="text" name="Descripcion" id="descripcionActualizar-@tarea.ID" placeholder="Descripción" required>
+
+            <label for="duracionActualizar-@tarea.ID">Duración:</label>
+            <select name="Duracion" id="duracionActualizar-@tarea.ID" required>
+                <option value="0.25">15 minutos</option>
+                <option value="0.5">30 minutos</option>
+                <option value="0.75">45 minutos</option>
+                <option value="1">1 hora</option>
+                <option value="1.5">1 hora y 30 minutos</option>
+                <option value="2">2 horas</option>
+                <option value="3">3 horas</option>
+                <option value="4">4 horas</option>
+            </select>
+
+            <input type="hidden" name="IDusuario" value="@ViewBag.IDUsuario" />
+ <label for="duracionActualizar-@tarea.ID">Finalizada:</label>
+            <select name="Duracion" id="duracionActualizar-@tarea.ID" required>
+                <option value="true">si</option>
+                <option value="false">no</option>
+               
+            </select>            <input type="hidden" name="ID" value="@tarea.ID" />
+
+            <input type="submit" value="Guardar cambios">
         </form>
     </div>
-    }
-  </div>
+}
+        <!-- Botón y formulario para crear tarea -->
+        <button type="button" onclick="mostrarFormularioCrear()" id="btnMostrar">
+            Agregar nueva tarea
+        </button>
 
-  <div id="editarTarea" hidden>
-    <div class="top-bar">
-      <a href="#" id="volverDetalle" class="boton">← Volver</a>
-      <h2>Editar Tarea</h2>
-    </div>
-    <div class="card">
-    <form action='@Url.Action("ActualizarTarea", "Home")' method="post">
-        <input type="text" name="Titulo" placeholder="Título" required>
-        <input type="text" name="Descripcion" placeholder="Descripción" required>
-        <input type="hidden" name="Duracion" value="0" />
-        <input type="hidden" name="IDusuario" value="@ViewBag.IDUsuario" />
-        <input type="hidden" name="Finalizada" value="false" />
-        <input type="submit" value="Guardar">
-    </form>
-</div>
-  </div>
+        <form id="formCrearTarea"
+              action='@Url.Action("CrearTarea", "Home")'
+              method="post"
+              style="display: none;">
 
-  <div id="agregarTarea" hidden>
-    <div class="top-bar">
-      <a href="#" id="volverLista" class="boton">← Volver</a>
-      <h2>Agregar Tarea</h2>
+            <label for="tituloAgregar">Título:</label>
+            <input type="text" name="Titulo" id="tituloAgregar" required>
+
+            <label for="descripcionAgregar">Descripción:</label>
+            <textarea name="Descripcion" id="descripcionAgregar"></textarea>
+
+            <label for="duracionAgregar">Duración:</label>
+            <select name="Duracion" id="duracionAgregar" required>
+                <option value="0.25">15 minutos</option>
+                <option value="0.5">30 minutos</option>
+                <option value="0.75">45 minutos</option>
+                <option value="1">1 hora</option>
+                <option value="1.5">1 hora y 30 minutos</option>
+                <option value="2">2 horas</option>
+                <option value="3">3 horas</option>
+                <option value="4">4 horas</option>
+            </select>
+
+            <input type="hidden" name="Finalizado" value="false" />
+            <input type="hidden" name="IDusuario" value="@ViewBag.IDUsuario" />
+            <input type="submit" value="Guardar">
+        </form>
     </div>
-    <div class="card">
-      <form action='@Url.Action("CrearTarea", "Home")' method="post">
-        <label for="tituloAgregar">Título:</label>
-        <input type="text" name="Titulo" id="tituloAgregar" required>
-        <label for="descripcionAgregar">Descripción:</label>
-        <textarea name="Descripcion" id="descripcionAgregar"></textarea>
-        <input type="hidden" name="Finalizado" value="false" />
-        <input type="hidden" name="Duracion" value="0" />
-        <input type="hidden" name="IDusuario" value="@ViewBag.IDUsuario" />
-        <input type="submit" value="Guardar">
-      </form>
-    </div>
-  </div>
-</div>
+
+    <script src="~/js/tareas.js"></script>
 </body>
 </html>

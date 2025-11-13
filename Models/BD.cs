@@ -12,8 +12,8 @@ namespace INFO_360.Models
 {
     public static class BD
     {
-         private static string _connectionString =
-        "Server=localhost\\SQLEXPRESS;Database=StartTime;Integrated Security=True;TrustServerCertificate=True;";
+        private static string _connectionString = @"Server=localhost;
+DataBase=StartTime; Integrated Security=True; TrustServerCertificate=True;";
         public static string ObtenerContraseña(string texto)
         {
             string ans;
@@ -53,9 +53,9 @@ namespace INFO_360.Models
                 string query = "INSERT INTO Usuario (Email, Username, Contraseña, Nombre, Foto) VALUES (@Pemail, @Pusername, @Pcontraseña, @Pnombre, @Pfoto)";
                 connection.Execute(query, new
                 {
-                Pemail = usuario.Email, 
+                    Pemail = usuario.Email,
                     Pusername = usuario.Username,
-                Pcontraseña = usuario.Contraseña,
+                    Pcontraseña = usuario.Contraseña,
                     Pnombre = usuario.Nombre,
                     Pfoto = usuario.Foto,
 
@@ -150,7 +150,7 @@ namespace INFO_360.Models
                 connection.Execute(query, new { T = TareaInsert.Titulo, F = TareaInsert.Finalizado, Des = TareaInsert.Descripcion, Dur = TareaInsert.Duracion, I = TareaInsert.IDusuario, X = TareaInsert.ID });
             }
         }
-         public static List<TiempoLibre> ObtenerTiempoLibre(int idUsuario)
+        public static List<TiempoLibre> ObtenerTiempoLibre(int idUsuario)
         {
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
@@ -176,10 +176,9 @@ namespace INFO_360.Models
                 string query = "DELETE FROM TiempoLibre WHERE ID = @idTiempo";
                 connection.Execute(query, new { idTiempo = idTiempo });
             }
-        }   
+        }
     }
 }
 
 
 
-  

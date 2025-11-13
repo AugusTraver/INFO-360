@@ -1,6 +1,5 @@
 @{
     ViewBag.Title = "Organizador";
-    Dictionary<double, Tarea> D = ViewBag.Temporales;
 }
 
 <h2>Organizador de tareas</h2>
@@ -15,17 +14,17 @@
             double totalMinutos = t.Duracion * 60;
             int horas = (int)(totalMinutos / 60);
             int minutos = (int)(totalMinutos % 60);
-            string duracionFormateada = $"{horas:D2}:{minutos:D2}";
+            string duracion = $"{horas:D2}:{minutos:D2}";
 
             <li>
-                <strong>@t.Titulo</strong> — @duracionFormateada hs
+                <strong>@t.Titulo</strong> — @duracion hs
             </li>
         }
     </ul>
 }
 else
 {
-    <p>No hay tareas temporales cargadas.</p>
+    <p>No hay tareas cargadas.</p>
 }
 
 

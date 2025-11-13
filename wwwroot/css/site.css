@@ -134,7 +134,17 @@ header{
   color: #f2f1f0;
   box-shadow: 0 0 14px 3px rgba(130, 217, 201, 0.7);
   transform: scale(1.08);
-}footer {
+
+}
+.footerLogin{
+  background-color:  #4bbfaa;
+}
+.footerRegistrar{
+  background-color:  #4bbfaa;
+}
+
+
+footer {
   background-color: #4bbfaa;
   color: #f2f1f0;
   font-family: 'Quicksand', sans-serif;
@@ -504,7 +514,7 @@ footer{
   width: 100%;
   max-width: 300px;
 }
-/* --- Responsive --- */
+
 @media (max-width: 768px) {
   .accordion-body {
     flex-direction: column;
