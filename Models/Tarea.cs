@@ -15,34 +15,33 @@ namespace INFO_360.Models
         public string Titulo { get; private set; }
 
         [JsonProperty]
-        public bool Finalizada { get; private set; }
+        public bool Finalizado { get; private set; }
 
         [JsonProperty]
         public string Descripcion { get; private set; }
 
         [JsonProperty]
-        public double Duracion { get; private set; }
+        public int Duracion { get; private set; }
 
         [JsonProperty]
         public int IDusuario { get; private set; }
-        public Tarea(string Ptitulo, bool Pfin, string Pdesc, double Pdur, int idU)
+
+        public Tarea(string Ptitulo, bool Pfin, string Pdesc, int Pdur, int idU)
         {
             Titulo = Ptitulo;
-            Finalizada = Pfin;
+            Finalizado = Pfin;
             Descripcion = Pdesc;
             Duracion = Pdur;
             IDusuario = idU;
         }
+        public Tarea()
+        {
 
-        public Tarea(string Ptitulo, double Pdur)
+        }
+              public Tarea(string Ptitulo, int Pdur)
         {
             Titulo = Ptitulo;
             Duracion = Pdur;
         }
-
-        public Tarea()
-        {
-        }
-
     }
 }

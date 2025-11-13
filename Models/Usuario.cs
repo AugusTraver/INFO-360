@@ -28,7 +28,7 @@ namespace INFO_360.Models
         [JsonProperty]
         public Dictionary<DateTime, TiempoLibre> TiempoLibrexDia { get; private set; }
         [JsonProperty]
-        public List<Tarea> ListaTareas { get; private set; }
+        public List<Tarea> ListaTareas { get;  set; }
         [JsonProperty]
         public List<Alarmas> ListaAlarmas { get; private set; }
 

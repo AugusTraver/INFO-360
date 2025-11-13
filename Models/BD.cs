@@ -12,8 +12,8 @@ namespace INFO_360.Models
 {
     public static class BD
     {
-        private static string _connectionString = "Server=localhost;Database=StartTime;Integrated Security=True;TrustServerCertificate=True;";
-
+         private static string _connectionString =
+        "Server=localhost\\SQLEXPRESS;Database=StartTime;Integrated Security=True;TrustServerCertificate=True;";
         public static string ObtenerContraseña(string texto)
         {
             string ans;
@@ -53,9 +53,9 @@ namespace INFO_360.Models
                 string query = "INSERT INTO Usuario (Email, Username, Contraseña, Nombre, Foto) VALUES (@Pemail, @Pusername, @Pcontraseña, @Pnombre, @Pfoto)";
                 connection.Execute(query, new
                 {
-                    Pemial = usuario.Email,
+                Pemailmial = usuario.Email,
                     Pusername = usuario.Username,
-                    Pcontaseña = usuario.Contraseña,
+                Pcontraseñaseña = usuario.Contraseña,
                     Pnombre = usuario.Nombre,
                     Pfoto = usuario.Foto,
 
@@ -105,8 +105,8 @@ namespace INFO_360.Models
         {
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
-                string query = "INSERT INTO Tarea (Titulo,Finalizada,Descripcion,Duracion,IDusuario) VALUES (@T,@F,@Des,@Dur,@I)";
-                connection.Query(query, new { T = TareaInsert.Titulo, F = TareaInsert.Descripcion, Des = TareaInsert.Descripcion, Dur = TareaInsert.Duracion, I = TareaInsert.IDusuario });
+                string query = "INSERT INTO Tarea (Titulo,Finalizado,Descripcion,Duracion,IDusuario) VALUES (@T,@F,@Des,@Dur,@I)";
+                connection.Execute(query, new { T = TareaInsert.Titulo, F = TareaInsert.Finalizado, Des = TareaInsert.Descripcion, Dur = TareaInsert.Duracion, I = TareaInsert.IDusuario });
             }
         }
         public static void CrearAlarma(Alarmas alarma)
@@ -146,12 +146,11 @@ namespace INFO_360.Models
         {
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
-                string query = "UPDATE Tarea SET Titulo = @T ,Finalizada = @F ,Descripcion = @Des ,Duracion = @Dur ,IDusuario = @I WHERE ID = @X";
-                connection.Query(query, new { T = TareaInsert.Titulo, F = TareaInsert.Descripcion, Des = TareaInsert.Descripcion, Dur = TareaInsert.Duracion, I = TareaInsert.IDusuario, X = TareaInsert.ID });
+                string query = "UPDATE Tarea SET Titulo = @T ,Finalizado = @F ,Descripcion = @Des ,Duracion = @Dur ,IDusuario = @I WHERE ID = @X";
+                connection.Execute(query, new { T = TareaInsert.Titulo, F = TareaInsert.Finalizado, Des = TareaInsert.Descripcion, Dur = TareaInsert.Duracion, I = TareaInsert.IDusuario, X = TareaInsert.ID });
             }
         }
-
-        public static List<TiempoLibre> ObtenerTiempoLibre(int idUsuario)
+         public static List<TiempoLibre> ObtenerTiempoLibre(int idUsuario)
         {
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
@@ -180,3 +179,7 @@ namespace INFO_360.Models
         }   
     }
 }
+
+
+
+  
