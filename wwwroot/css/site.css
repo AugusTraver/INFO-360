@@ -531,3 +531,117 @@ footer{
   }
 
 }
+header.nav-principal {
+  width: 100%;
+  background-color: #4bbfaa;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 24px;
+  box-shadow: 0 2px 8px rgba(35, 56, 64, 0.15);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1030;
+}
+
+/* Navbar interior */
+header.nav-principal .navbar {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: transparent !important;
+  padding: 0;
+  margin: 0;
+}
+
+/* Contenedor derecho (persona + menú) */
+.navbar-right {
+  display: flex;
+align-items: center;
+gap: 20px;
+}
+
+/* Logo principal */
+header.nav-principal .navbar-brand img[alt="Logo StartTime"] {
+  height: 50px;
+  width: auto;
+}
+
+/* Ícono de persona */
+header.nav-principal .navbar-brand img[alt="Personita"] {
+  height: 35px;
+  width: auto;
+}
+
+/* Botón hamburguesa */
+header.nav-principal .navbar-toggler {
+  border: none;
+  background: transparent;
+  padding: 0;
+}
+
+header.nav-principal .navbar-toggler-icon {
+  filter: invert(0);
+}
+
+/* ======== OFFCANVAS MENU ======== */
+.offcanvas-menu {
+  background-color: #f5f5f5;
+}
+
+.offcanvas-menu .offcanvas-header h5 {
+  font-weight: bold;
+  color: #233840;
+}
+
+.offcanvas-menu .offcanvas-body ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.offcanvas-menu .offcanvas-body li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 0;
+}
+
+.offcanvas-menu .offcanvas-body li img {
+  height: 24px;
+  width: 24px;
+}
+
+.offcanvas-menu .offcanvas-body li a {
+  text-decoration: none;
+  color: #233840;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.offcanvas-menu .offcanvas-body li a:hover {
+  color: #4bbfaa;
+}
+
+/* ======== RESPONSIVE ======== */
+@media (max-width: 768px) {
+  header.nav-principal {
+    padding: 4px 16px;
+  }
+
+  header.nav-principal .navbar-brand img[alt="Logo StartTime"] {
+    height: 40px;
+  }
+
+  header.nav-principal .navbar-brand img[alt="Personita"] {
+    height: 28px;
+  }
+}
+
+
+
+
+

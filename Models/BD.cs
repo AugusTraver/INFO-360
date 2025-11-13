@@ -65,7 +65,7 @@ DataBase=StartTime; Integrated Security=True; TrustServerCertificate=True;";
             }
         }
         public static List<Tarea> ObtenerTareas(int idU)
-        {
+        { 
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
                 string query = "SELECT * FROM Tarea WHERE IDusuario = @idu";
@@ -143,7 +143,7 @@ DataBase=StartTime; Integrated Security=True; TrustServerCertificate=True;";
                 connection.Query(query, new { T = alarma.Tipo, F = alarma.Dia, Des = alarma.Duracion, Dur = alarma.Activo, I = alarma.IDusuario, wsad = alarma.ID });
             }
         }
-        public static void ActualizarTarea(Tarea tarea)
+        public static void ActualizarTarea(Tarea tarea, int PD)
         {
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
@@ -157,7 +157,7 @@ DataBase=StartTime; Integrated Security=True; TrustServerCertificate=True;";
                     Descripcion = tarea.Descripcion,
                     Duracion = tarea.Duracion,
                     IDusuario = tarea.IDusuario,
-                    ID = tarea.ID
+                    ID = PD
                 },
                 commandType: CommandType.StoredProcedure);
             }

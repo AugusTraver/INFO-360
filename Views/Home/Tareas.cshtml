@@ -1,5 +1,5 @@
 @{
-    ViewData["Title"] = "Tareas";
+    ViewData["MostrarHeader"] = true;
 }
 @section FooterContent {
     <partial name="_FooterPartial" /> 
@@ -62,15 +62,13 @@
                 <option value="3">3 horas</option>
                 <option value="4">4 horas</option>
             </select>
-
-            <input type="hidden" name="IDusuario" value="@ViewBag.IDUsuario" />
- <label for="duracionActualizar-@tarea.ID">Finalizada:</label>
+            <input type="hidden" name="ID" value="@tarea.ID" />
+            <input type="hidden" name="IDusuario2" value="@ViewBag.IDUsuario" />
+            <label for="duracionActualizar-@tarea.ID">Finalizada:</label>
             <select name="Duracion" id="duracionActualizar-@tarea.ID" required>
                 <option value="true">si</option>
                 <option value="false">no</option>
-               
-            </select>            <input type="hidden" name="ID" value="@tarea.ID" />
-
+            </select>
             <input type="submit" value="Guardar cambios">
         </form>
     </div>

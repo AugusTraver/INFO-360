@@ -39,10 +39,14 @@ namespace INFO_360.Models
         {
 
         }
-              public Tarea(string Ptitulo, int Pdur)
+        public Tarea(string Ptitulo, int Pdur)
         {
             Titulo = Ptitulo;
             Duracion = Pdur;
+        }
+
+        public void modificarDur(int duracionParcial){
+            Duracion -= duracionParcial;
         }
     }
 }

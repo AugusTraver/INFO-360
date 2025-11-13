@@ -80,9 +80,9 @@ namespace INFO_360.Models
         {
             BD.ActualizarAlarma(a);
         }
-        public void ActualizarTarea(Tarea T)
+        public void ActualizarTarea(Tarea T, int ID)
         {
-            BD.ActualizarTarea(T);
+            BD.ActualizarTarea(T, ID);
         }
 
         public double CalcularTiempoTareas()
@@ -168,6 +168,7 @@ namespace INFO_360.Models
                 Dictionary<double, Tarea> agendaDia = new Dictionary<double, Tarea>();
                 double horaActual = 8.0;
                 int j = 0;
+
                 while (j < tareasPendientes.Count && horasDisponibles > 0)
                 {
                     Tarea tarea = tareasPendientes[j];
@@ -181,14 +182,36 @@ namespace INFO_360.Models
                             agendaDia[h] = tarea;
                         }
 
-                        horaActual = horaActual + tarea.Duracion;
-                        horasDisponibles = horasDisponibles - tarea.Duracion;
-
-                        tareasPendientes.RemoveAt(j);
+                        horaActual += tarea.Duracion;
+                        horasDisponibles -= tarea.Duracion;
+                        tareasPendientes.RemoveAt(j); 
                     }
                     else
                     {
-                        j++;
+                        double duracionParcial = Math.Min(horasDisponibles, 20.0 - horaActual);
+
+                        if (duracionParcial > 0)
+                        {
+                            double fin = horaActual + duracionParcial;
+
+                            for (double h = horaActual; h < fin; h += 0.25)
+                            {
+                                agendaDia[h] = tarea;
+                            }
+
+                            tarea.modificarDur((int)duracionParcial);
+                            horaActual += duracionParcial;
+                            horasDisponibles -= duracionParcial;
+                        }
+
+                        if (tarea.Duracion <= 0)
+                        {
+                            tareasPendientes.RemoveAt(j);
+                        }
+                        else
+                        {
+                            j++; 
+                        }
                     }
                 }
 
@@ -198,6 +221,7 @@ namespace INFO_360.Models
 
             return agendaSemanal;
         }
+
 
 
     }

@@ -1,7 +1,6 @@
 @{
-    ViewBag.Title = "Organizador";
+    ViewData["MostrarHeader"] = true;
 }
-
 <h2>Organizador de tareas</h2>
 
 @if (ViewBag.Temporales != null && ViewBag.Temporales.Count > 0)
@@ -37,7 +36,7 @@ else
     <label>Tiempo Necesario:</label>
     <select name="duracion">
 
-        @for (double i = 0.25; i <= 6; i += 0.25)
+        @for (int i = 1; i <= 6; i++)
         {
             double mTotal = i * 60;
             int h = (int)(mTotal / 60);
