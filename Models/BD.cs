@@ -34,17 +34,11 @@ DataBase=StartTime; Integrated Security=True; TrustServerCertificate=True;";
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
                 bool SeRegistro = true;
-<<<<<<< HEAD
                 string storedProcedure = "Registrarse";
              int registrado = connection.QueryFirstOrDefault<int>(storedProcedure, new { PNombre = usuario.Nombre });
                
                
                 connection.QueryFirstOrDefault(storedProcedure, new
-=======
-                string checkQuery = "SELECT COUNT(*) FROM Usuario WHERE Username = @AUsername";
-                int count = connection.QueryFirstOrDefault<int>(checkQuery, new { AUsername = usuario.Username });
-                if (count != 0)
->>>>>>> d737e0490360873812dca37cdf5e2297f0b0617a
                 {
                     UsuarioNombre = usuario.Nombre,
                 UsuarioEmail = usuario.Email,
@@ -61,12 +55,7 @@ DataBase=StartTime; Integrated Security=True; TrustServerCertificate=True;";
             }
         }
         public static List<Tarea> ObtenerTareas(int idU)
-<<<<<<< HEAD
-        {
-             List<Tarea> tareasusu = null;
-=======
-        { 
->>>>>>> d737e0490360873812dca37cdf5e2297f0b0617a
+        { List<Tarea> tareasusu = null;
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
                 string storedProcedure = "ObtenerTareas";
@@ -153,14 +142,26 @@ DataBase=StartTime; Integrated Security=True; TrustServerCertificate=True;";
                 );
             }
         }
+
+            public static void ActualizarAlarma(Alarmas alarma)  //Falta Hacer el StoreProcedure de este
+        {
+            using (SqlConnection connection = new SqlConnection(_connectionString))
+            {
+                string query = "UPDATE Alarmas SET Tipo = @T,Dia = @F,Duracion = @Des,Activo = @Dur,IDusuario = @I WHERE id = @wasd";
+                connection.Query(query, new { T = alarma.Tipo, F = alarma.Dia, Des = alarma.Duracion, Dur = alarma.Activo, I = alarma.IDusuario, wsad = alarma.ID });
+
+
+            }
+        }
+
         public static void ActualizarTarea(Tarea tarea, int PD)
         {
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
-                string SP = "ActualizarTarea"; 
+                string storedProcedure = "ActualizarTarea"; 
         
 
-                connection.Execute(SP, new
+                connection.Execute(storedProcedure, new
                 {
                     Titulo = tarea.Titulo,
                     Finalizado = tarea.Finalizado,
