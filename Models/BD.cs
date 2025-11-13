@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-
+using System.Data;
 using Newtonsoft.Json;
 using Microsoft.Data.SqlClient;
 using Dapper;
@@ -14,24 +14,15 @@ namespace INFO_360.Models
     {
         private static string _connectionString = @"Server=localhost;
 DataBase=StartTime; Integrated Security=True; TrustServerCertificate=True;";
-        public static string ObtenerContraseña(string texto)
-        {
-            string ans;
-
-            using (SqlConnection connection = new SqlConnection(_connectionString))
-            {
-                string query = "SELECT Contraseña from Usuario where Username = @pNom";
-                ans = connection.QueryFirstOrDefault<string>(query, new { pNom = texto });
-            }
-
-            return ans;
-        }
-        public static Usuario IniciarSesion(string username, string password)
+      
+       public static Usuario IniciarSesion(string username, string password)
         {
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
-                string query = "SELECT * FROM Usuario WHERE Username = @Username AND Contraseña = @Password";
-                Usuario usuario = connection.QueryFirstOrDefault<Usuario>(query, new { Username = username, Password = password });
+                string storedProcedure = "IniciarSesion";
+                Usuario usuario = connection.QueryFirstOrDefault<Usuario>(storedProcedure, new { Username = username, Password = password },
+                 commandType: CommandType.StoredProcedure
+                );
                 return usuario;
             }
         }
@@ -42,42 +33,47 @@ DataBase=StartTime; Integrated Security=True; TrustServerCertificate=True;";
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
                 bool SeRegistro = true;
-                string checkQuery = "SELECT COUNT(*) FROM Usuario WHERE Nombre = @PNombre";
-                int count = connection.QueryFirstOrDefault<int>(checkQuery, new { PNombre = usuario.Nombre });
-                if (count != 0)
+                string storedProcedure = "Registrarse";
+             int registrado = connection.QueryFirstOrDefault<int>(storedProcedure, new { PNombre = usuario.Nombre });
+               
+               
+                connection.QueryFirstOrDefault(storedProcedure, new
                 {
-                    SeRegistro = false;
-                    return SeRegistro;
-                }
+                    UsuarioNombre = usuario.Nombre,
+                UsuarioEmail = usuario.Email,
+                UsuarioContraseña = usuario.Contraseña,
+                UsuarioUsername = usuario.Username,
+                UsuarioFoto = usuario.Foto
+                },
 
-                string query = "INSERT INTO Usuario (Email, Username, Contraseña, Nombre, Foto) VALUES (@Pemail, @Pusername, @Pcontraseña, @Pnombre, @Pfoto)";
-                connection.Execute(query, new
-                {
-                    Pemail = usuario.Email,
-                    Pusername = usuario.Username,
-                    Pcontraseña = usuario.Contraseña,
-                    Pnombre = usuario.Nombre,
-                    Pfoto = usuario.Foto,
-
-                });
+                commandType: CommandType.StoredProcedure
+                );
+                 SeRegistro = (registrado == 0);
+        
                 return SeRegistro;
             }
         }
         public static List<Tarea> ObtenerTareas(int idU)
         {
+             List<Tarea> tareasusu = null;
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
-                string query = "SELECT * FROM Tarea WHERE IDusuario = @idu";
-                List<Tarea> tareasusu = connection.Query<Tarea>(query, new { idu = idU }).ToList();
+                string storedProcedure = "ObtenerTareas";
+                 tareasusu = connection.Query<Tarea>(storedProcedure, new { idu = idU } ,  commandType: CommandType.StoredProcedure).ToList() ;
+
                 return tareasusu;
             }
+            
+            
         }
         public static Tarea ObtenerTarea(int iDT)
         {
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
-                string query = "SELECT * FROM Tarea WHERE ID = @idT";
-                Tarea tareasusu = connection.QueryFirstOrDefault(query, new { idT = iDT });
+                string storedProcedure = "ObtenerTarea";
+                Tarea tareasusu = connection.QueryFirstOrDefault(storedProcedure, new { idT = iDT },
+                commandType: CommandType.StoredProcedure
+                );
                 return tareasusu;
             }
         }
@@ -86,8 +82,10 @@ DataBase=StartTime; Integrated Security=True; TrustServerCertificate=True;";
         {
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
-                string query = "SELECT * FROM Alarmas WHERE IDusuario = @idu";
-                List<Alarmas> tareasusu = connection.Query<Alarmas>(query, new { idu = idU }).ToList();
+                string storedProcedure = "ObtenerAlarmas";
+                List<Alarmas> tareasusu = connection.Query<Alarmas>(storedProcedure, new { idu = idU }, 
+                commandType: CommandType.StoredProcedure
+                ).ToList();
                 return tareasusu;
             }
         }
@@ -96,8 +94,10 @@ DataBase=StartTime; Integrated Security=True; TrustServerCertificate=True;";
         {
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
-                string query = "SELECT * FROM Alarmas WHERE ID = @IDA";
-                Alarmas alarmas1 = connection.QueryFirstOrDefault(query, new { IDA = iDA });
+                string storedProcedure = "ObtenerAlarma";
+                Alarmas alarmas1 = connection.QueryFirstOrDefault(storedProcedure, new { IDA = iDA }
+                , commandType: CommandType.StoredProcedure
+                );
                 return alarmas1;
             }
         }
@@ -105,16 +105,20 @@ DataBase=StartTime; Integrated Security=True; TrustServerCertificate=True;";
         {
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
-                string query = "INSERT INTO Tarea (Titulo,Finalizado,Descripcion,Duracion,IDusuario) VALUES (@T,@F,@Des,@Dur,@I)";
-                connection.Execute(query, new { T = TareaInsert.Titulo, F = TareaInsert.Finalizado, Des = TareaInsert.Descripcion, Dur = TareaInsert.Duracion, I = TareaInsert.IDusuario });
+                string storedProcedure = "CrearTarea";
+                connection.Execute(storedProcedure, new { T = TareaInsert.Titulo, F = TareaInsert.Finalizado, Des = TareaInsert.Descripcion, Dur = TareaInsert.Duracion, I = TareaInsert.IDusuario },
+                commandType: CommandType.StoredProcedure
+                );
             }
         }
         public static void CrearAlarma(Alarmas alarma)
         {
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
-                string query = "INSERT INTO Alarmas (Tipo,Dia,Duracion,Activo,IDusuario) VALUES (@T,@F,@Des,@Dur,@I)";
-                connection.Query(query, new { T = alarma.Tipo, F = alarma.Dia, Des = alarma.Duracion, Dur = alarma.Activo, I = alarma.IDusuario });
+                string storedProcedure = "CrearAlarma";
+                connection.Query(storedProcedure, new { T = alarma.Tipo, Dia = alarma.Dia, Des = alarma.Duracion, Dur = alarma.Activo, I = alarma.IDusuario },
+                  commandType: CommandType.StoredProcedure
+                );
             }
         }
 
@@ -122,8 +126,10 @@ DataBase=StartTime; Integrated Security=True; TrustServerCertificate=True;";
         {
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
-                string query = "DELETE FROM Alarmas WHERE ID = @idAlarma";
-                connection.Query(query, new { idAlarma = idAlarmaa });
+                string storedProcedure = "BorrarAlarma";
+                connection.Query(storedProcedure, new { idAlarma = idAlarmaa },
+                  commandType: CommandType.StoredProcedure
+                );
             }
         }
         public static void BorrarTarea(int IDT)
