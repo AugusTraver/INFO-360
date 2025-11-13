@@ -27,33 +27,27 @@ DataBase=StartTime; Integrated Security=True; TrustServerCertificate=True;";
                 return usuario;
             }
         }
+    public static bool Registrarse(Usuario usuario)
+    {
+    using (SqlConnection connection = new SqlConnection(_connectionString))
+    {
+        string storedProcedure = "Registrarse";
 
-        public static bool Registrarse(Usuario usuario)
+       
+        int resultado = connection.Execute(storedProcedure, new
         {
+            UsuarioNombre = usuario.Nombre,
+            UsuarioEmail = usuario.Email,
+            UsuarioContraseña = usuario.Contraseña,
+            UsuarioUsername = usuario.Username,
+            UsuarioFoto = usuario.Foto
+        },
+        commandType: CommandType.StoredProcedure);
 
-            using (SqlConnection connection = new SqlConnection(_connectionString))
-            {
-                bool SeRegistro = true;
-                string storedProcedure = "Registrarse";
-             int registrado = connection.QueryFirstOrDefault<int>(storedProcedure, new { PNombre = usuario.Nombre });
-               
-               
-                connection.QueryFirstOrDefault(storedProcedure, new
-                {
-                    UsuarioNombre = usuario.Nombre,
-                UsuarioEmail = usuario.Email,
-                UsuarioContraseña = usuario.Contraseña,
-                UsuarioUsername = usuario.Username,
-                UsuarioFoto = usuario.Foto
-                },
-
-                commandType: CommandType.StoredProcedure
-                );
-                 SeRegistro = (registrado == 0);
-        
-                return SeRegistro;
-            }
-        }
+     
+        return resultado > 0;
+    }
+}
         public static List<Tarea> ObtenerTareas(int idU)
         { List<Tarea> tareasusu = null;
             using (SqlConnection connection = new SqlConnection(_connectionString))

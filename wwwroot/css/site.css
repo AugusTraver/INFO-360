@@ -136,6 +136,26 @@ header{
   transform: scale(1.08);
 
 }
+
+
+@media (max-width: 768px) {
+ .navbar-brand img{
+  width: 35%;
+ }
+ .navbar-brand{
+  width: auto;
+ }
+ .navbar-toggler{
+
+ }
+  
+
+}
+
+
+
+
+
 .footerLogin{
   background-color:  #4bbfaa;
 }
@@ -295,6 +315,13 @@ footer hr {
 }
 .beneficios h2 {
   text-align: center;
+}
+.beneficios{
+  width: 70%;
+  max-width: 1100px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 40px 20px;
 }
 
 .card{
