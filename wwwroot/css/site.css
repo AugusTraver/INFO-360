@@ -136,24 +136,245 @@ header{
   transform: scale(1.08);
 
 }
-
-
 @media (max-width: 768px) {
- .navbar-brand img{
-  width: 35%;
- }
- .navbar-brand{
-  width: auto;
- }
- .navbar-toggler{
+  .navbar-brand img{
+    width: 90px; 
+  }
+  .navbar-brand{
+    width: auto;
+    flex-shrink: 0; 
+    margin-right: 5px; 
+    padding: 0; 
+  }
+  .container-fluid {
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    flex-wrap: nowrap; 
+    padding-left: 10px; 
+    padding-right: 10px; 
+  }
+  #navbarNav {
+    display: flex; 
+  }
+  .navbar-nav {
+    display: flex;
+    flex-direction: row; 
+    margin-left: 0; 
+    align-items: center;
+    padding-left: 0;
+  }
+  .nav-item {
+    white-space: nowrap; 
+    display: flex;
+  }
+  .nav-link {
+    padding: 3px 6px; 
+    margin: 0 2px; 
+    font-size: 0.70rem; 
+    line-height: 1; 
+  }
+  footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    text-align: center;
+    padding: 20px 10px; 
+  }
 
- }
+  footer  img {
+    width: 50% !important;
+    margin-bottom: 20px;
+  margin-left:25% !important ;
+  }
+  .redSocial {
+    width: 10% !important;
+    margin-left: -1% !important;
+  }
   
+  .footerSection {
+    width: 100% !important;
+    padding: 10px 0;
+    margin-bottom: 15px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1); 
+ 
+  }
 
+  .footerSection h3,
+  .footerSection h4,
+  .footerSection p {
+    text-align: center; /* Centra títulos y párrafos */
+  }
+  
+  .footerSection:last-of-type {
+    border-bottom: none;
+    margin-bottom: 0;
+  }
+  
+  .footerSection ul {
+    padding-left: 0;
+    list-style: none;
+    text-align: center; /* Centra la lista */
+  }
+  
+  .footerSection ul li {
+    padding: 5px 0;
+  }
+
+  footer hr {
+      width: 80%;
+      margin: 15px auto;
+  }
+  .accordion-body {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .accordion-body p {
+    max-width: 100%;
+    text-align: center;
+  }
+
+  .accordion-body .calendarioImg {
+    width: 70%;
+  }
+  header.nav-principal {
+    padding: 4px 16px;
+  }
+
+  header.nav-principal .navbar-brand img[alt="Logo StartTime"] {
+    height: 40px;
+  }
+
+  header.nav-principal .navbar-brand img[alt="Personita"] {
+    height: 28px;
+  }
+
+  .inicio{
+  padding-top: 20%;
+  }
+  .primeraDeLanding {
+    flex-direction: column; 
+    padding: 30px 15px; 
+  }
+
+  .primeraDeLanding img {
+    padding-top: 2%;
+    width: 80% !important;
+  }
+
+  .divDePrimeraLanding {
+    
+    width: 100%; 
+    padding: 0;
+  }
+  
+  .divDePrimeraLanding h2 {
+  text-align: center;
+  }
+
+  .divDePrimeraLanding p {
+  
+    text-align: center; 
+  }
+
+  .divDePrimeraLanding a {
+    display: inline-block; 
+    margin-top: 15px;
+   text-align: center;
+   
+  }
+
+  
+  .comoEmpezo {
+    flex-direction: column; 
+    padding: 30px 15px; 
+  }
+
+  .comoEmpezo img {
+    padding-top: 2%;
+    width: 80% !important;
+  }
+
+  .comoEmpezo div{
+    
+    width: 100%; 
+    padding: 0;
+  }
+  
+  .comoEmpezo div h2 {
+  text-align: center;
+  }
+
+  .comoEmpezo div p {
+  
+    text-align: center; 
+  }
+
+  .comoEmpezo div a {
+    display: inline-block; 
+    margin-top: 15px;
+   text-align: center;
+   
+  }
+  .accordion-header{
+    width: 50%;
+  }
+  .organizarh2{
+    width: 190% !important;
+    margin-left: 30%;
+    padding-bottom: 4%;
+  }
+  .paraOrganizarce{
+    margin-left: -13% !important;
+  }
+  .accordion{
+    width: 256% !important;
+  }
+  .accordion-button{
+    width: 200% !important;
+  }.usuarios {
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+    padding: 10px;
+}
+
+.card {
+    width: 90% !important; 
+    max-width: 400px !important;
+    margin: 10px auto !important; 
+}
+
+.card .row {
+    display: flex;
+    flex-direction: column; 
+}
+
+.card .col-md-4,
+.card .col-md-8 {
+    width: 100%; 
+    padding: 0;
+}
+
+.card .col-md-4 img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 0.375rem 0.375rem 0 0 !important; 
+}
+
+.card-body {
+    text-align: left;
+    padding: 15px;
+}
+.beneficios{
+  width: 80% !important;
 }
 
 
 
+}
 
 
 .footerLogin{
@@ -219,21 +440,6 @@ footer hr {
 
 
 
-@media (max-width: 768px) {
-  .footer-container {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
-
-  .footer-section, .footer-logo {
-    width: 100%;
-  }
-
-  .footer-logo img {
-    margin: 0 auto 10px;
-  }
-}
 
 
 
@@ -542,22 +748,7 @@ footer{
   max-width: 300px;
 }
 
-@media (max-width: 768px) {
-  .accordion-body {
-    flex-direction: column;
-    text-align: center;
-  }
 
-  .accordion-body p {
-    max-width: 100%;
-    text-align: center;
-  }
-
-  .accordion-body .calendarioImg {
-    width: 70%;
-  }
-
-}
 header.nav-principal {
   width: 100%;
   background-color: #4bbfaa;
@@ -653,20 +844,7 @@ header.nav-principal .navbar-toggler-icon {
   color: #4bbfaa;
 }
 
-/* ======== RESPONSIVE ======== */
-@media (max-width: 768px) {
-  header.nav-principal {
-    padding: 4px 16px;
-  }
 
-  header.nav-principal .navbar-brand img[alt="Logo StartTime"] {
-    height: 40px;
-  }
-
-  header.nav-principal .navbar-brand img[alt="Personita"] {
-    height: 28px;
-  }
-}
 
 
 
