@@ -31,7 +31,7 @@ public class AccountController : Controller
     }
 
     [HttpPost]
-    public IActionResult Registrarse(string username, string contraseña, string nombre, string Email, IFormFile fotoFile)
+    public IActionResult Registrarse(string Email, string username, string nombre, string contraseña, IFormFile fotoFile)
     {
         string Foto = null;
 

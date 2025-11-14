@@ -34,26 +34,26 @@ public class HomeController : Controller
         ViewBag.IDUsuario = usuario.ID;
         return View("Tareas");
     }
-    public IActionResult CrearTarea(string Titulo, bool Finalizado, string Descripcion, int Duracion, int IDusuario)
+    [HttpPost]
+    public IActionResult CrearTarea(string Titulo, bool Finalizado, string Descripcion, int Duracion, int IDusuario, DateTime fecha)
     {
         string x = HttpContext.Session.GetString("usuario");
         Usuario usuario = Objeto.StringToObject<Usuario>(x);
-        Tarea TareaCrear = new Tarea(Titulo, Finalizado, Descripcion, Duracion, usuario.ID);
+        Tarea TareaCrear = new Tarea(Titulo, Finalizado, Descripcion, Duracion, usuario.ID,fecha);
         usuario.CrearTarea(TareaCrear);
-
 
         usuario.ListaTareas = usuario.ObtenerTareas();
 
         HttpContext.Session.SetString("usuario", Objeto.ObjectToString(usuario));
         ViewBag.Tareas = usuario.ListaTareas;
         ViewBag.IDUsuario = usuario.ID;
-        return View("Tareas");
+        return RedirectToAction ("DTareas");
     }
-    public IActionResult ActualizarTarea(string Titulo, bool Finalizada, string Descripcion, int Duracion,int ID, int IDusuario)
+    public IActionResult ActualizarTarea(string Titulo, bool Finalizada, string Descripcion, int Duracion,int ID, int IDusuario, DateTime fecha)
     {
         string x = HttpContext.Session.GetString("usuario");
         Usuario usuario = Objeto.StringToObject<Usuario>(x);
-        Tarea TareaCrear = new Tarea( Titulo, Finalizada, Descripcion, Duracion, usuario.ID);
+        Tarea TareaCrear = new Tarea( Titulo, Finalizada, Descripcion, Duracion, usuario.ID,fecha);
         usuario.ActualizarTarea(TareaCrear, ID);
 
 

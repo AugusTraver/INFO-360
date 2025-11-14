@@ -45,7 +45,7 @@ namespace INFO_360.Models
             Contraseña = pContraseña;
             Foto = pFoto;
         }
-        public Usuario(string pEmail, string pUsername, string pNombre, string pContraseña, string pFoto)
+        public Usuario(string pEmail, string pUsername, string pContraseña, string pNombre, string pFoto)
         {
             Email = pEmail;
             Nombre = pNombre;
