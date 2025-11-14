@@ -25,15 +25,17 @@ namespace INFO_360.Models
 
         [JsonProperty]
         public int IDusuario { get; private set; }
+      [JsonProperty]
+        public DateTime Fecha { get; private set; }
 
-
-        public Tarea(string Ptitulo, bool Pfin, string Pdesc, int Pdur, int idU)
+        public Tarea(string Ptitulo, bool Pfin, string Pdesc, int Pdur, int idU, DateTime Fech)
         {
             Titulo = Ptitulo;
             Finalizado = Pfin;
             Descripcion = Pdesc;
             Duracion = Pdur;
             IDusuario = idU;
+            Fecha = Fech;
         }
         public Tarea()
         {

@@ -15,57 +15,57 @@ namespace INFO_360.Models
     {
         private static string _connectionString = @"Server=localhost;
 DataBase=StartTime; Integrated Security=True; TrustServerCertificate=True;";
-      
-       public static Usuario IniciarSesion(string username, string password)
+
+        public static Usuario IniciarSesion(string username, string password)
         {
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
                 string storedProcedure = "IniciarSesion";
-                Usuario usuario = connection.QueryFirstOrDefault<Usuario>(storedProcedure, new { Username = username, Password = password },
-                 commandType: CommandType.StoredProcedure
-                );
+                Usuario usuario = connection.QueryFirstOrDefault<Usuario>(storedProcedure, new { PUserName = username, PContraseña = password },
+                 commandType: CommandType.StoredProcedure);
                 return usuario;
             }
         }
-    public static bool Registrarse(Usuario usuario)
-    {
-    using (SqlConnection connection = new SqlConnection(_connectionString))
-    {
-        string storedProcedure = "Registrarse";
-
-       
-        int resultado = connection.Execute(storedProcedure, new
+        public static bool Registrarse(Usuario usuario)
         {
-            UsuarioNombre = usuario.Nombre,
-            UsuarioEmail = usuario.Email,
-            UsuarioContraseña = usuario.Contraseña,
-            UsuarioUsername = usuario.Username,
-            UsuarioFoto = usuario.Foto
-        },
-        commandType: CommandType.StoredProcedure);
+            using (SqlConnection connection = new SqlConnection(_connectionString))
+            {
+                string storedProcedure = "Registrarse";
 
-     
-        return resultado > 0;
-    }
-}
-        public static List<Tarea> ObtenerTareas(int idU)
-        { List<Tarea> tareasusu = null;
+
+                int resultado = connection.Execute(storedProcedure, new
+                {
+                    UsuarioNombre = usuario.Nombre,
+                    UsuarioEmail = usuario.Email,
+                    UsuarioContraseña = usuario.Contraseña,
+                    UsuarioUsername = usuario.Username,
+                    UsuarioFoto = usuario.Foto
+                },
+                commandType: CommandType.StoredProcedure);
+
+
+                return resultado > 0;
+            }
+        }
+        public static List<Tarea> ObtenerTareas(int widU)
+        {
+            List<Tarea> tareasusu = null;
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
                 string storedProcedure = "ObtenerTareas";
-                 tareasusu = connection.Query<Tarea>(storedProcedure, new { idu = idU } ,  commandType: CommandType.StoredProcedure).ToList() ;
+                tareasusu = connection.Query<Tarea>(storedProcedure, new { IdU = widU }, commandType: CommandType.StoredProcedure).ToList();
 
                 return tareasusu;
             }
-            
-            
+
+
         }
         public static Tarea ObtenerTarea(int iDT)
         {
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
                 string storedProcedure = "ObtenerTarea";
-                Tarea tareasusu = connection.QueryFirstOrDefault(storedProcedure, new { idT = iDT },
+                Tarea tareasusu = connection.QueryFirstOrDefault(storedProcedure, new { Idt = iDT },
                 commandType: CommandType.StoredProcedure
                 );
                 return tareasusu;
@@ -77,7 +77,7 @@ DataBase=StartTime; Integrated Security=True; TrustServerCertificate=True;";
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
                 string storedProcedure = "ObtenerAlarmas";
-                List<Alarmas> tareasusu = connection.Query<Alarmas>(storedProcedure, new { idu = idU }, 
+                List<Alarmas> tareasusu = connection.Query<Alarmas>(storedProcedure, new { idu = idU },
                 commandType: CommandType.StoredProcedure
                 ).ToList();
                 return tareasusu;
@@ -137,7 +137,7 @@ DataBase=StartTime; Integrated Security=True; TrustServerCertificate=True;";
             }
         }
 
-            public static void ActualizarAlarma(Alarmas alarma)  //Falta Hacer el StoreProcedure de este
+        public static void ActualizarAlarma(Alarmas alarma)  //Falta Hacer el StoreProcedure de este
         {
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
@@ -152,8 +152,8 @@ DataBase=StartTime; Integrated Security=True; TrustServerCertificate=True;";
         {
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
-                string storedProcedure = "ActualizarTarea"; 
-        
+                string storedProcedure = "ActualizarTarea";
+
 
                 connection.Execute(storedProcedure, new
                 {
@@ -179,13 +179,22 @@ DataBase=StartTime; Integrated Security=True; TrustServerCertificate=True;";
                 return tiempos;
             }
         }
-
         public static void CrearTiempoLibre(TiempoLibre tiempo)
         {
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
-                string query = "INSERT INTO TiempoLibre (Dia, Horas, IDusuario) VALUES (@Dia, @Horas, @IDusuario)";
-                connection.Execute(query, new { Dia = tiempo.Dia, Horas = tiempo.Horas, IDusuario = tiempo.IDusuario });
+                string storedProcedure = "CrearTiempoLibre";
+
+                connection.Execute(
+                    storedProcedure,
+                    new
+                    {
+                        Dia = tiempo.Dia,
+                        Horas = tiempo.Horas,
+                        IDusuario = tiempo.IDusuario
+                    },
+                    commandType: CommandType.StoredProcedure
+                );
             }
         }
 
@@ -193,10 +202,16 @@ DataBase=StartTime; Integrated Security=True; TrustServerCertificate=True;";
         {
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
-                string query = "DELETE FROM TiempoLibre WHERE ID = @idTiempo";
-                connection.Execute(query, new { idTiempo = idTiempo });
+                string storedProcedure = "BorrarTiempoLibre";
+
+                connection.Execute(
+                    storedProcedure,
+                    new { idTiempo = idTiempo },
+                    commandType: CommandType.StoredProcedure
+                );
             }
         }
+
     }
 }
 

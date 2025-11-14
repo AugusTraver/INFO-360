@@ -34,11 +34,11 @@ public class HomeController : Controller
         ViewBag.IDUsuario = usuario.ID;
         return View("Tareas");
     }
-    public IActionResult CrearTarea(string Titulo, bool Finalizado, string Descripcion, int Duracion, int IDusuario)
+    public IActionResult CrearTarea(string Titulo, bool Finalizado, string Descripcion, int Duracion, int IDusuario, DateTime fecha)
     {
         string x = HttpContext.Session.GetString("usuario");
         Usuario usuario = Objeto.StringToObject<Usuario>(x);
-        Tarea TareaCrear = new Tarea(Titulo, Finalizado, Descripcion, Duracion, usuario.ID);
+        Tarea TareaCrear = new Tarea(Titulo, Finalizado, Descripcion, Duracion, usuario.ID,fecha);
         usuario.CrearTarea(TareaCrear);
 
 
@@ -49,11 +49,11 @@ public class HomeController : Controller
         ViewBag.IDUsuario = usuario.ID;
         return View("Tareas");
     }
-    public IActionResult ActualizarTarea(string Titulo, bool Finalizada, string Descripcion, int Duracion,int ID, int IDusuario)
+    public IActionResult ActualizarTarea(string Titulo, bool Finalizada, string Descripcion, int Duracion,int ID, int IDusuario, DateTime fecha)
     {
         string x = HttpContext.Session.GetString("usuario");
         Usuario usuario = Objeto.StringToObject<Usuario>(x);
-        Tarea TareaCrear = new Tarea( Titulo, Finalizada, Descripcion, Duracion, usuario.ID);
+        Tarea TareaCrear = new Tarea( Titulo, Finalizada, Descripcion, Duracion, usuario.ID,fecha);
         usuario.ActualizarTarea(TareaCrear, ID);
 
 
