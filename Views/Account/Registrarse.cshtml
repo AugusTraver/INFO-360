@@ -12,37 +12,37 @@
       <h1>Registrarse en ST</h1>
     
 <form action='@Url.Action("Registrarse", "Account")' method="post" enctype="multipart/form-data">
-          
-           <div class="form-floating mb-3">
-             <input type="email" class="form-control" id="Mail" name= "mail" placeholder="name@example.com">
-             <label for="floatingInput" style= "color:  #d9c6a7;">Email</label>
-           </div>
-           
-             <div class="form-floating mb-3">
+
+    <div class="form-floating mb-3">
+        <input type="email" class="form-control" id="Mail" name="Email" placeholder="name@example.com">
+        <label for="Mail" style="color: #d9c6a7;">Email</label>
+    </div>
+
+    <div class="form-floating mb-3">
         <input type="text" class="form-control" id="IdUsername" name="username" placeholder="franxo123">
-        <label for="floatingInput" style= "color:  #d9c6a7;">Usuario</label> 
-      </div>
+        <label for="IdUsername" style="color: #d9c6a7;">Usuario</label>
+    </div>
 
-            <div class="form-floating mb-3">
-        <input type="text" class="form-control" id="IdUsername" name="Nombre" placeholder="franxo">
-        <label for="floatingInput" style= "color:  #d9c6a7;">Nombre</label> 
-      </div>
+    <div class="form-floating mb-3">
+        <input type="text" class="form-control" id="IdNombre" name="nombre" placeholder="franxo">
+        <label for="IdNombre" style="color: #d9c6a7;">Nombre</label>
+    </div>
 
-           <div class="form-floating">
+    <div class="form-floating mb-3">
         <input type="password" class="form-control" id="IdContraseña" name="contraseña" placeholder="Password">
-        <label for="IdContraseña" style= "color:  #d9c6a7;">Password</label>
-     </div>
+        <label for="IdContraseña" style="color: #d9c6a7;">Password</label>
+    </div>
 
-        <div class="form-floating mb-3">
-         <div class="mb-3">
-  
-         <input class="form-control" type="file" name="imagen" id="imagen" accept="image/*" required>
-       </div>
-         </div>
+    <div class="mb-3">
+        <input class="form-control" type="file" name="fotoFile" id="fotoFile" accept="image/*" required>
+    </div>
 
-             <button type="submit" class="btn btn-primary btn-lg" style= " background-color: #d9c6a7;  border:  #d9c6a7; color:black;">Crear Usuario</button>
+    <button type="submit" class="btn btn-primary btn-lg" 
+        style="background-color: #d9c6a7; border: #d9c6a7; color:black;">Crear Usuario
+    </button>
 
-     </form>
+</form>
+
      
  <div class = "botonLogIn">
 
