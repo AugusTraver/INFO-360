@@ -138,7 +138,7 @@ header{
 }
 @media (max-width: 768px) {
   .navbar-brand img{
-    width: 90px; 
+    width: 120px; 
   }
   .navbar-brand{
     width: auto;
@@ -154,16 +154,15 @@ header{
     padding-left: 10px; 
     padding-right: 10px; 
   }
-  #navbarNav {
-    display: flex; 
-  }
-  .navbar-nav {
-    display: flex;
-    flex-direction: row; 
+
+ 
+    .navbar-nav {
+    display: flex !important; 
+    flex-direction: row !important; 
     margin-left: 0; 
     align-items: center;
     padding-left: 0;
-  }
+}
   .nav-item {
     white-space: nowrap; 
     display: flex;
@@ -220,6 +219,9 @@ header{
   .footerSection ul li {
     padding: 5px 0;
   }
+   .derechos{
+    margin-left: 30%;
+   }
 
   footer hr {
       width: 80%;
@@ -250,8 +252,10 @@ header{
     height: 28px;
   }
 
+
+
   .inicio{
-  padding-top: 20%;
+  padding-top: 27%;
   }
   .primeraDeLanding {
     flex-direction: column; 
@@ -318,22 +322,29 @@ header{
    
   }
   .accordion-header{
-    width: 50%;
+    width: 37%;
   }
   .organizarh2{
-    width: 190% !important;
-    margin-left: 30%;
-    padding-bottom: 4%;
+    width: 380% !important;
+    margin-left: -5% !important;
+    padding-bottom: 10% !important;
   }
   .paraOrganizarce{
     margin-left: -13% !important;
   }
   .accordion{
-    width: 256% !important;
+    width: 276% !important;
   }
   .accordion-button{
-    width: 200% !important;
-  }.usuarios {
+    width: 270% !important;
+
+  }
+  .accordion-item{
+    width: 150%;
+    margin-left: -10% !important;
+  }
+  
+  .usuarios {
     display: flex;
     flex-direction: column; 
     align-items: center;
@@ -372,8 +383,34 @@ header{
   width: 80% !important;
 }
 
-
-
+.cajaImagen{
+  width: 30% !important;
+  height: 30% !important;
+ padding: 5% !important;
+ margin-bottom: 11% !important;
+}
+.loginRegistrase-box h1{
+  margin-bottom: 11% !important;
+}
+.botonLogIn button{
+  margin-top: 6% !important;
+}
+.siNotenesCuenta{
+  margin-top: 3%;
+}
+.yaTenesCuenta{
+  margin-top: 3%;
+}
+.form-control{
+  width: 75% !important;
+  
+}
+.mb-3{
+  margin-left: 20% !important;
+}
+.form-floating{
+   margin-left: 20% !important
+}
 }
 
 
@@ -663,8 +700,17 @@ footer hr {
   background-color:#3ec8b3 ;
   min-height: 100vh; 
   margin-bottom: 40%;
+  padding-bottom: 200%;
+   height: 100% !important;
+   
 }
 
+.siNotenesCuenta{
+  padding-bottom: 40% !important;
+}
+.yaTenesCuenta{
+  padding-bottom: 10% !important;
+}
 .loginRegistrase-box{
 background-color:#3ec8b3 ;
   margin: 0; 
@@ -677,15 +723,10 @@ background-color:#3ec8b3 ;
 
 .cajaImagen{
   display: flex; 
-  
- 
   margin: 0 auto; 
-  
-
- 
   width: 160px; 
   height: 160px;   
-  padding: 1%;
+  padding: 1.5%;
   background-color: #F2F1F0;
   margin-bottom: 1%;
   border-radius: 100%;

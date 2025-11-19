@@ -33,10 +33,10 @@
         <label for="IdContraseña" style="color: #d9c6a7;">Password</label>
     </div>
 
-    <div class="mb-3">
+    <div class="form-floating mb-3">
         <input class="form-control" type="file" name="fotoFile" id="fotoFile" accept="image/*" required>
     </div>
-
+<div class = "botonLogIn">
     <button type="submit" class="btn btn-primary btn-lg" 
         style="background-color: #d9c6a7; border: #d9c6a7; color:black;">Crear Usuario
     </button>
@@ -44,11 +44,11 @@
 </form>
 
      
- <div class = "botonLogIn">
+ <div/ >
 
      <!-- msj de error -->
  
-    <p>Ya tenés cuenta,  <a href='@Url.Action("DLogin", "Account")'>Log In</a>
+    <p class="yaTenesCuenta">Ya tenés cuenta,  <a href='@Url.Action("DLogin", "Account")'>Log In</a>
     </p> 
      </div>
     </div>
@@ -58,6 +58,5 @@
    
 </section>
 
-<footer class= "footerRegistrar">
 
 </footer>
