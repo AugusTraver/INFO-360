@@ -885,6 +885,89 @@ header.nav-principal .navbar-toggler-icon {
   color: #4bbfaa;
 }
 
+/* Parte de Francisco */
+
+    .st-card {
+        background: #D9C6A7;
+        border-radius: 25px;
+        padding: 2.5%;
+        margin-bottom: 3%;
+    }
+
+    .st-title {
+        font-size: 160%;
+        font-weight: bold;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .st-task {
+        background: #F6F6F6;
+        border-radius: 20px;
+        padding: 12px 18px;
+        margin-bottom: 12px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .st-task strong {
+        font-size: 1rem;
+        color: #333;
+    }
+
+    .st-badge {
+        background: #55c0a9;
+        color: white;
+        padding: 5px 12px;
+        border-radius: 15px;
+        font-size: 0.9rem;
+    }
+
+    .st-input{
+        width: 90%;
+        border-radius: 15px;
+        padding: 10px 14px;
+        border: 1px solid #ddd;
+        margin-bottom: 15px;
+        font-size: 1rem;
+    }
+    
+    .st-select {
+        border-radius: 15px;
+        padding: 10px 14px;
+        border: 1px solid #ddd;
+        margin-bottom: 15px;
+        font-size: 1rem;
+    }
+
+    .st-input:focus, .st-select:focus {
+        outline: none;
+        border-color: #55c0a9;
+    }
+
+    .st-btn-primary {
+        background: #55c0a9;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 20px;
+        font-size: 1rem;
+        width: 100%;
+    }
+    
+
+@media (max-width: 768px) 
+{
+      
+    
+}
+
+
+
+
+
+
 
 
 

@@ -1,73 +1,85 @@
-
 @{
     ViewData["MostrarHeader"] = true;
 }
 
-
-
 @{
     ViewBag.Title = "Cronograma Semanal";
-    Layout = "~/Views/Shared/_Layout.cshtml"; 
+    Layout = "~/Views/Shared/_Layout.cshtml";
 
-    Dictionary<DateTime, Dictionary<double, INFO_360.Models.Tarea>> agenda = ViewBag.AGENDA; 
+    Dictionary<DateTime, Dictionary<double, INFO_360.Models.Tarea>> agenda = ViewBag.AGENDA;
 }
 
-<h2 class="text-center mb-4">Cronograma Semanal</h2>
+<div class="container py-4">
+    <h2 class="text-center mb-4 st-title">Cronograma Semanal</h2>
 
-@if (agenda == null || agenda.Count == 0)
-{
-    <div class="alert alert-warning text-center">
-        No hay tareas programadas para los próximos 7 días.
-    </div>
-}
-else
-{
-    <div class="container">
-        @foreach (DateTime dia in agenda.Keys.OrderBy(d => d))
-        {
-            Dictionary<double, INFO_360.Models.Tarea> tareasDia = agenda[dia];
+    @if (agenda == null || agenda.Count == 0)
+    {
+        <div class="alert alert-warning text-center st-alert">
+            No hay tareas programadas para los próximos 7 días.
+        </div>
+    }
+    else
+    {
+        <div class="row justify-content-center">
 
-            <div class="card mb-4 shadow-sm">
-                <div class="card-header bg-primary text-white">
-                    <h4>@dia.ToString("dddd dd/MM/yyyy")</h4>
-                </div>
-                <div class="card-body">
-                    @if (tareasDia == null || tareasDia.Count == 0)
-                    {
-                        <p>No hay tareas asignadas para este día.</p>
-                    }
-                    else
-                    {
-                        <table class="table table-striped table-bordered">
-                            <thead>
-                                <tr>
-                                    <th>Hora</th>
-                                    <th>Tarea</th>
-                                    <th>Duración</th>
-                                    </tr>
-                            </thead>
-                            <tbody>
-                                @foreach (double hora in tareasDia.Keys.OrderBy(h => h))
-                                {
-                                    INFO_360.Models.Tarea t = tareasDia[hora];
-                                    if (t != null)
-                                    {
-                                        <tr>
-                                            @{
-                                                int horaEntera = (int)Math.Floor(hora);
-                                                int minutos = (int)((hora - horaEntera) * 60);
+            @foreach (DateTime dia in agenda.Keys.OrderBy(d => d))
+            {
+                Dictionary<double, INFO_360.Models.Tarea> tareasDia = agenda[dia];
+
+                <div class="col-12 col-md-10 col-lg-8 mb-4">
+                    <div class="card st-card shadow-sm">
+
+                        <div class="card-header st-card-header">
+                            <h4 class="m-0 st-card-title">
+                                @dia.ToString("dddd dd/MM/yyyy")
+                            </h4>
+                        </div>
+
+                        <div class="card-body">
+
+                            @if (tareasDia == null || tareasDia.Count == 0)
+                            {
+                                <p class="text-muted text-center">No hay tareas asignadas para este día.</p>
+                            }
+                            else
+                            {
+                                <div class="table-responsive">
+                                    <table class="table table-borderless st-table">
+                                        <thead>
+                                            <tr>
+                                                <th>Hora</th>
+                                                <th>Tarea</th>
+                                                <th>Duración</th>
+                                            </tr>
+                                        </thead>
+
+                                        <tbody>
+                                            @foreach (double hora in tareasDia.Keys.OrderBy(h => h))
+                                            {
+                                                var t = tareasDia[hora];
+
+                                                if (t != null)
+                                                {
+                                                    int hE = (int)Math.Floor(hora);
+                                                    int m = (int)((hora - hE) * 60);
+
+                                                    <tr class="st-row">
+                                                        <td>@String.Format("{0:00}:{1:00}", hE, m)</td>
+                                                        <td>@t.Titulo</td>
+                                                        <td>@t.Duracion h</td>
+                                                    </tr>
+                                                }
                                             }
-                                            <td>@String.Format("{0:00}:{1:00}", horaEntera, minutos)</td>
-                                            <td>@t.Titulo</td>
-                                            <td>@t.Duracion h</td>
-                                        </tr>
-                                    }
-                                }
-                            </tbody>
-                        </table>
-                    }
+                                        </tbody>
+                                    </table>
+                                </div>
+                            }
+
+                        </div>
+                    </div>
                 </div>
-            </div>
-        }
-    </div>
-}
+            }
+
+        </div>
+    }
+</div>

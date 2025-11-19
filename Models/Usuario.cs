@@ -28,7 +28,7 @@ namespace INFO_360.Models
         [JsonProperty]
         public Dictionary<DateTime, TiempoLibre> TiempoLibrexDia { get; private set; }
         [JsonProperty]
-        public List<Tarea> ListaTareas { get;  set; }
+        public List<Tarea> ListaTareas { get; set; }
         [JsonProperty]
         public List<Alarmas> ListaAlarmas { get; private set; }
 
@@ -113,7 +113,8 @@ namespace INFO_360.Models
         }
 
         public Dictionary<DateTime, Dictionary<double, Tarea>> OrganizarSemana(Dictionary<double, Tarea> temporales)
-        {
+        {             // --- COMENTADO POR SI ESTOY RINDIENDO CAE ---
+
             Dictionary<DateTime, Dictionary<double, Tarea>> agendaSemanal = new Dictionary<DateTime, Dictionary<double, Tarea>>();
 
             List<TiempoLibre> tiemposLibres = BD.ObtenerTiempoLibre(this.ID);
@@ -126,6 +127,8 @@ namespace INFO_360.Models
             DateTime hoy = DateTime.Today;
             DateTime finSemana = hoy.AddDays(7);
 
+            //Encontrar el tiempo libre en la semana
+
             List<TiempoLibre> tlXsemana = new List<TiempoLibre>();
             for (int i = 0; i < tiemposLibres.Count; i++)
             {
@@ -136,6 +139,7 @@ namespace INFO_360.Models
                 }
             }
 
+            //Ordena de mayor a menor los TLs
             for (int i = 0; i < tlXsemana.Count - 1; i++)
             {
                 for (int j = i + 1; j < tlXsemana.Count; j++)
@@ -149,9 +153,10 @@ namespace INFO_360.Models
                 }
             }
 
+            //Copia las tareas a una lista
             List<Tarea> tareasPendientes = new List<Tarea>();
             double[] clavesTemporales = new double[temporales.Keys.Count];
-            temporales.Keys.CopyTo(clavesTemporales, 0);
+            temporales.Keys.CopyTo(clavesTemporales, 0);             //El 0 es de donde arranca (creo)
             for (int i = 0; i < clavesTemporales.Length; i++)
             {
                 double clave = clavesTemporales[i];
@@ -159,7 +164,7 @@ namespace INFO_360.Models
                 tareasPendientes.Add(t);
             }
 
-
+            //Pone cada tarea en un día
             for (int i = 0; i < tlXsemana.Count; i++)
             {
                 TiempoLibre tl = tlXsemana[i];
@@ -184,7 +189,7 @@ namespace INFO_360.Models
 
                         horaActual += tarea.Duracion;
                         horasDisponibles -= tarea.Duracion;
-                        tareasPendientes.RemoveAt(j); 
+                        tareasPendientes.RemoveAt(j);
                     }
                     else
                     {
@@ -210,7 +215,7 @@ namespace INFO_360.Models
                         }
                         else
                         {
-                            j++; 
+                            j++;
                         }
                     }
                 }
