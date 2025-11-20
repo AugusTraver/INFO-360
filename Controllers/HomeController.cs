@@ -29,6 +29,9 @@ public class HomeController : Controller
         }
         Usuario usuario = Objeto.StringToObject<Usuario>(IDu);
         usuario.ListaTareas = usuario.ObtenerTareas();
+          string f = HttpContext.Session.GetString("usuario");
+        Usuario usuario1 = Objeto.StringToObject<Usuario>(f);
+        ViewBag.Foto = usuario1.Foto;
 
         ViewBag.Tareas = usuario.ListaTareas;
         ViewBag.IDUsuario = usuario.ID;
@@ -106,17 +109,27 @@ public class HomeController : Controller
     }
     public IActionResult DAlarmas()
     {
+
+         string f = HttpContext.Session.GetString("usuario");
+        Usuario usuario = Objeto.StringToObject<Usuario>(f);
+        ViewBag.Foto = usuario.Foto;
         return View("Alarmas");
     }
 
         public IActionResult DTLibre()
     {
+         string f = HttpContext.Session.GetString("usuario");
+        Usuario usuario = Objeto.StringToObject<Usuario>(f);
+        ViewBag.Foto = usuario.Foto;
         return View("TiempoLibre");
     }
     public IActionResult DHorasLibres()
     {
+        string f = HttpContext.Session.GetString("usuario");
+        Usuario usuario = Objeto.StringToObject<Usuario>(f);
+        ViewBag.Foto = usuario.Foto;
         string? x = HttpContext?.Session.GetString("usuario");
-        Usuario? usuario = Objeto.StringToObject<Usuario>(x);
+        Usuario? usuario1 = Objeto.StringToObject<Usuario>(x);
 
 
         ViewBag.DiaTiempoLibre = usuario.TiempoLibrexDia;
@@ -130,6 +143,7 @@ public class HomeController : Controller
     {
         string x = HttpContext.Session.GetString("usuario");
         Usuario usuario = Objeto.StringToObject<Usuario>(x);
+        ViewBag.Foto = usuario.Foto;
         ViewBag.Nombre= usuario.Nombre;
         return View("Perfil");
     }
@@ -139,6 +153,8 @@ public class HomeController : Controller
         Usuario usuario = Objeto.StringToObject<Usuario>(x);
 
         string y = HttpContext.Session.GetString("temporales");
+   
+
         Dictionary<double, Tarea> temporales = Objeto.StringToObject<Dictionary<double, Tarea>>(y);
 
 
@@ -150,6 +166,9 @@ public class HomeController : Controller
     }
     public IActionResult DOrganizador()
     {
+        string f = HttpContext.Session.GetString("usuario");
+        Usuario usuario = Objeto.StringToObject<Usuario>(f);
+        ViewBag.Foto = usuario.Foto;
         string x = HttpContext.Session.GetString("temporales");
         Dictionary<double, Tarea> temporales = new Dictionary<double, Tarea>();
 

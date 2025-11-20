@@ -23,7 +23,7 @@ function AgregarAlarma(){
     SonarAlarma(Alarma, AlarmaNombre)
     }
   }
-const miAudio = new Audio('Alarma.mp3');
+const miAudio = new Audio('/Audio/Alarma.mp3');
 function SonarAlarma(Alarma, AlarmaNombre) {
     let HoraActual = new Date()
     let TiempoRestante = (Alarma - HoraActual)
