@@ -960,8 +960,16 @@ TIEMPO LIBRE — ESTÉTICA STARTTIME
 ================================ */
 
 .tiempoLibre {
-width: 100%;
-padding-top: 4%;
+  width: 100%;
+  padding-top: 5%;
+  }
+
+
+.tiempoLibre .div:first-child {
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 1.5%;
+  color: #42b591  ;
 }
 
 .tiempoLibre .card {
@@ -973,12 +981,12 @@ min-width: 100%;
 
 /* --- HEADER (igual a agenda) --- */
 .tiempoLibre .card-header {
-background-color: #55c0a9 !important;
-color: #ffffff !important;
-padding: 2%;
-border-radius: 25px 25px 0 0 !important;
-text-align: center;
-}
+  background-color: #d9c6a7 !important;
+  color: black !important;
+  padding: 2%;
+  border-radius: 25px 25px 0 0 !important;
+  text-align: center;
+  }
 
 .tiempoLibre h3 {
 font-weight: bold;
