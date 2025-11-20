@@ -130,6 +130,7 @@ public class HomeController : Controller
     {
         string x = HttpContext.Session.GetString("usuario");
         Usuario usuario = Objeto.StringToObject<Usuario>(x);
+        ViewBag.Foto = usuario.Foto;
         ViewBag.Nombre= usuario.Nombre;
         return View("Perfil");
     }
@@ -139,6 +140,8 @@ public class HomeController : Controller
         Usuario usuario = Objeto.StringToObject<Usuario>(x);
 
         string y = HttpContext.Session.GetString("temporales");
+   
+
         Dictionary<double, Tarea> temporales = Objeto.StringToObject<Dictionary<double, Tarea>>(y);
 
 
