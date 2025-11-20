@@ -13,8 +13,7 @@ namespace INFO_360.Models
 {
     public static class BD
     {
-       private static string _connectionString =
-        "Server=localhost\\SQLEXPRESS;Database=StartTime;Integrated Security=True;TrustServerCertificate=True;";
+        private static string _connectionString = @"Server=localhost; DataBase = StartTime; Integrated Security=True; TrustServerCertificate=True;";
           public static Usuario IniciarSesion(string username, string password)
         {
             using (SqlConnection connection = new SqlConnection(_connectionString))
@@ -130,9 +129,9 @@ namespace INFO_360.Models
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
                 string storedProcedure = "DELETE FROM Tarea WHERE ID = @IDT";
-                    connection.Execute(storedProcedure, new { IDT = IDT },
-            commandType: CommandType.Text 
-                );
+                connection.Execute(storedProcedure, new { IDT = IDT },
+        commandType: CommandType.Text
+            );
             }
         }
 
@@ -210,14 +209,14 @@ namespace INFO_360.Models
                 );
             }
         }
-           public static bool VerificarUsuarioExiste(string email, string username)
+        public static bool VerificarUsuarioExiste(string email, string username)
         {
-               using (SqlConnection connection = new SqlConnection(_connectionString))
-        {
-        string query = "SELECT COUNT(*) FROM Usuario WHERE Email = @Email OR Username = @Username";
-        int count = connection.ExecuteScalar<int>(query, new { Email = email, Username = username });
-        return count > 0; // gracias a esto sabes si ya hay usus con esos datos si no t devulve falso 
-        }
+            using (SqlConnection connection = new SqlConnection(_connectionString))
+            {
+                string query = "SELECT COUNT(*) FROM Usuario WHERE Email = @Email OR Username = @Username";
+                int count = connection.ExecuteScalar<int>(query, new { Email = email, Username = username });
+                return count > 0; // gracias a esto sabes si ya hay usus con esos datos si no t devulve falso 
+            }
         }
 
 

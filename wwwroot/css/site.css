@@ -816,82 +816,224 @@ footer{
 
 /* Parte de Francisco */
 
-    .st-card {
-        background: #D9C6A7;
-        border-radius: 25px;
-        padding: 2.5%;
-        margin-bottom: 8%;
-        margin-top: 8%;
-    }
+.organizador .st-card {
+  background: #D9C6A7;
+  border-radius: 25px;
+  padding: 2.5%;
+  margin-bottom: 3%;
+  margin-left: 18%; 
+  margin-right: 7%;
+  width: 60%;
 
-    .st-title {
-      padding-top: 5%;
-        font-size: 160%;
-        font-weight: bold;
-        text-align: center;
-        margin-bottom: 20px;
-    }
+}
 
-    .st-task {
-        background: #F6F6F6;
-        border-radius: 20px;
-        padding: 12px 18px;
-        margin-bottom: 12px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
+.organizador .st-card:first-child {
 
-    .st-task strong {
-        font-size: 1rem;
-        color: #333;
-    }
+    margin-top: 8%;
+}
 
-    .st-badge {
-        background: #55c0a9;
-        color: white;
-        padding: 5px 12px;
-        border-radius: 15px;
-        font-size: 0.9rem;
-    }
+.organizador .st-title {
+  font-size: 160%;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 1.5%;
+}
 
-    .st-input{
-        width: 90%;
-        border-radius: 15px;
-        padding: 10px 14px;
-        border: 1px solid #ddd;
-        margin-bottom: 15px;
-        font-size: 1rem;
-    }
-    
-    .st-select {
-        border-radius: 15px;
-        padding: 10px 14px;
-        border: 1px solid #ddd;
-        margin-bottom: 15px;
-        font-size: 1rem;
-    }
+.organizador .st-task {
+  background: #F6F6F6;
+  border-radius: 20px;
+  padding: 1% 5%; 
+  margin-bottom: 1%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 
-    .st-input:focus, .st-select:focus {
-        outline: none;
-        border-color: #55c0a9;
-    }
+.organizador .st-badge {
+  background: #4bbfaa;
+  color: white;
+  border-radius: 15px;
+  font-size: 90%;
+  padding: 1%; 
+}
 
-    .st-btn-primary {
-        background: #55c0a9;
-        color: white;
-        border: none;
-        padding: 10px 20px;
-        border-radius: 20px;
-        font-size: 1rem;
-        width: 100%;
-    }
-    
+.organizador .st-input{
+  width: 81%;
+  border-radius: 15px;
+  padding: 1.5% 3%; 
+  border: 1px solid #ddd;
+  margin-bottom: 4%;
+}
+
+.organizador .st-select {
+  border-radius: 15px;
+  padding: 1.5% 3%; 
+  border: 1px solid #ddd;
+  margin-bottom: 15px;
+  font-size: 1rem;
+  width: 18%;
+}
+
+.organizador .st-input:focus, .st-select:focus {
+  
+  border-color: #55c0a9;
+}
+
+.organizador .st-btn-primary {
+  background: #55c0a9;
+  color: white;
+  border: none;
+  padding: 1.5%;  
+  border-radius: 20px;
+  width: 100%;
+}
+
 
 @media (max-width: 768px) 
 {
-      
-    
+.organizador .st-card {
+padding: 5%;        
+margin-left: 6%;
+width: 90%;
+
+}
+
+.organizador .st-card:first-child {
+  margin-top: 20%;
+  
+  }
+.organizador .st-input{
+width: 100%;
+padding: 3%;
+
+}
+
+.organizador .st-select {
+width: 100%;
+  padding: 3%;
+
+}
+
+.organizador .st-task {
+
+  padding: 3% 5%; 
+}}
+
+.agenda .st-title {
+font-size: 150%;
+font-weight: 700;
+}
+
+.agenda .st-card {
+background-color: #d9c6a7;
+border: none;
+border-radius: 15px;
+overflow: hidden;
+min-height: 100%;
+padding-bottom: 0%
+}
+
+.agenda .st-card-header {
+background-color: #55c0a9;
+color: #ffffff;
+border-radius: 6%;
+}
+
+.st-table td,
+.st-table th {
+background-color: #d9c6a7 !important;
+}
+
+.agenda .st-card-title {
+font-size: 115%;
+font-weight: bold;
+}
+
+@media (min-width: 600px) {
+.agenda .col-lg-8 {
+  width: 30%;
+}
+}
+
+/* ================================
+TIEMPO LIBRE — ESTÉTICA STARTTIME
+================================ */
+
+.tiempoLibre {
+width: 100%;
+padding-top: 4%;
+}
+
+.tiempoLibre .card {
+background: #d9c6a7;
+border-radius: 25px;
+border: none;
+min-width: 100%;         
+}
+
+/* --- HEADER (igual a agenda) --- */
+.tiempoLibre .card-header {
+background-color: #55c0a9 !important;
+color: #ffffff !important;
+padding: 2%;
+border-radius: 25px 25px 0 0 !important;
+text-align: center;
+}
+
+.tiempoLibre h3 {
+font-weight: bold;
+font-size: 150%;
+}
+
+.tiempoLibre .form-label {
+  font-size: 160%;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 1.5%;
+}
+
+/* --- CAMPOS DE ENTRADA — estilo StartTime --- */
+.tiempoLibre .form-control {
+width: 90%;
+background: #f6f6f6;
+border-radius: 15px;
+padding: 2% 4%;
+border: 1px solid #ddd;
+margin-bottom: 3%;
+color: #000;
+}
+
+.tiempoLibre .form-control:focus {
+outline: none;
+border-color: #55c0a9;
+}
+
+/* --- BOTÓN --- */
+.tiempoLibre .btn-success {
+background: #55c0a9 !important;
+color: white !important;
+border: none;
+padding: 2%;
+border-radius: 25px;
+font-weight: bold;
+width: 100%;
+}
+
+.tiempoLibre .btn-success:hover {
+background: #2e8f7d !important;
+}
+
+/* ----- RESPONSIVE ----- */
+@media (max-width: 768px) {
+.tiempoLibre .card {
+  padding: 6%;
+  width: 100%;     /* Se mantiene al 100% en móviles */
+}
+
+.tiempoLibre .form-control {
+  width: 100%;
+  padding: 4%;
+}
 }
 
 header.nav-principal {

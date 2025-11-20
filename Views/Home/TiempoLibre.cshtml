@@ -1,0 +1,37 @@
+@{
+    ViewData["Title"] = "Ingresar Tiempo Libre";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<section class="tiempoLibre">
+    <div class="container mt-4">
+
+        <div class="card shadow-sm">
+            <div class="card-header bg-primary text-white">
+                <h3 class="mb-0">Registrar Tiempo Libre</h3>
+            </div>
+
+            <div class="card-body">
+
+                <form action="/Home/GuardarTiempoLibre" method="post">
+
+                    <div class="mb-3">
+                        <label class="form-label fw-bold">Día</label>
+                        <input type="date" name="Dia" class="form-control" required />
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label fw-bold">Horas Disponibles</label>
+                        <input type="number" name="Horas" class="form-control" min="1" max="16" required />
+                    </div>
+
+                    <button class="btn btn-success w-100">
+                        Guardar Tiempo Libre
+                    </button>
+
+                </form>
+
+            </div>
+        </div>
+
+    </div>
+</section>

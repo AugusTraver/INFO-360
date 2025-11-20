@@ -1,60 +1,61 @@
-<section class="container my-4">
-    <div class="st-card shadow-sm">
+<section class="organizador">
+    <section class="container my-4">
+        <div class="st-card shadow-sm">
 
 
-    <h2 class="st-title">Organizador de tareas</h2>
+            <h2 class="st-title">Organizador de tareas</h2>
 
-    @if (ViewBag.Temporales != null && ViewBag.Temporales.Count > 0)
-    {
-        foreach (var par in (Dictionary<double, Tarea>)ViewBag.Temporales)
-        {
-            var t = par.Value;
-
-            double totalMinutos = t.Duracion * 60;
-            int horas = (int)(totalMinutos / 60);
-            int minutos = (int)(totalMinutos % 60);
-            string duracion = $"{horas:D2}:{minutos:D2}";
-
-            <div class="st-task">
-                <strong>@t.Titulo</strong>
-                <span class="st-badge">@duracion hs</span>
-            </div>
-        }
-    }
-    else
-    {
-        <p style="text-align:center; color:#666;">No hay tareas cargadas.</p>
-    }
-    </div>  
-    <div class="st-card shadow-sm">
-
-        <!-- FORM AGREGAR -->
-        <form method="post" action='@Url.Action("AgregarTemporal", "Home")'>
-            <input type="text" name="titulo" class="st-input" placeholder="Título" required>
-
-            <select name="duracion" class="st-select">
-                @for (int i = 1; i <= 6; i++)
+            @if (ViewBag.Temporales != null && ViewBag.Temporales.Count > 0)
+            {
+                foreach (var par in (Dictionary<double, Tarea>)ViewBag.Temporales)
                 {
-                    double mTotal = i * 60;
-                    int h = (int)(mTotal / 60);
-                    int m = (int)(mTotal % 60);
-                    <option value="@i">@($"{h:D2}:{m:D2} hs")</option>
+                    var t = par.Value;
+
+                    double totalMinutos = t.Duracion * 60;
+                    int horas = (int)(totalMinutos / 60);
+                    int minutos = (int)(totalMinutos % 60);
+                    string duracion = $"{horas:D2}:{minutos:D2}";
+
+                    <div class="st-task">
+                        <strong>@t.Titulo</strong>
+                        <span class="st-badge">@duracion hs</span>
+                    </div>
                 }
-            </select>
+            }
+            else
+            {
+                <p style="text-align:center; color:#666;">No hay tareas cargadas.</p>
+            }
+        </div>
+        <div class="st-card shadow-sm">
 
-            <button type="submit" class="st-btn-primary">Agregar</button>
-        </form>
+            <form method="post" action='@Url.Action("AgregarTemporal", "Home")'>
+                <input type="text" name="titulo" class="st-input" placeholder="Título" required>
 
-        <div class="mt-3">
-            <form action="@Url.Action("LimpiarTemporales", "Home")" method="post" class="mb-2">
-                <button class="st-btn-primary">Borrar todas</button>
+                <select name="duracion" class="st-select">
+                    @for (int i = 1; i <= 6; i++)
+                    {
+                        double mTotal = i * 60;
+                        int h = (int)(mTotal / 60);
+                        int m = (int)(mTotal % 60);
+                        <option value="@i">@($"{h:D2}:{m:D2} hs")</option>
+                    }
+                </select>
+
+                <button type="submit" class="st-btn-primary">Agregar</button>
             </form>
 
-            <form action="@Url.Action("OrganizarAgenda", "Home")" method="post">
-                <button class="st-btn-primary   ">Organizar Semana</button>
-            </form>
+            <div class="mt-3">
+                <form action="@Url.Action("LimpiarTemporales", "Home")" method="post" class="mb-2">
+                    <button class="st-btn-primary">Borrar todas</button>
+                </form>
+
+                <form action="@Url.Action("OrganizarAgenda", "Home")" method="post">
+                    <button class="st-btn-primary   ">Organizar Semana</button>
+                </form>
+            </div>
+
         </div>
 
-    </div>
-
+    </section>
 </section>
