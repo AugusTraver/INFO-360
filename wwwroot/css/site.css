@@ -2122,4 +2122,27 @@ body {
 [hidden] {
     display: none !important;
 }
+} */    
+
+@media (max-width: 768px) {
+
+    .offcanvas-menu {
+      width: 70% !important;
+      border: none !important;
+    }
+
+    .navbar-nav{
+      display: flex;
+      flex-direction: column !important;
+    }
+
+    .offcanvas-menu .offcanvas-body ul{
+    
+      display: inline-block;
+    }
+
+  .offcanvas-body .nav-item img {
+      width: 22px;
+      margin-right: 6px;
+  }
 }
