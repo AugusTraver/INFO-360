@@ -241,14 +241,16 @@ header{
     width: 70%;
   }
   .accordion-body .tareasImg {
-    width: 120% !important;
+    width: 90% !important;
    
   }
   .accordion-body .GestionImg{
-   width: 100%;
+   width: 90% !important;
   }
-
-
+   
+  .login{
+  min-height: 100vh !important; 
+  }
   header.nav-principal {
     padding: 4px 16px;
   }
@@ -334,7 +336,7 @@ header{
     width: 37%;
   }
   .organizarh2{
-    width: 380% !important;
+    width: 338% !important;
     margin-left: -5% !important;
     padding-bottom: 10% !important;
   }
@@ -349,7 +351,7 @@ header{
 
   }
   .accordion-item{
-    width: 150%;
+    width: 138%;
     margin-left: -10% !important;
   }
   
@@ -406,21 +408,21 @@ header{
 }
 .siNotenesCuenta{
   margin-top: 3%;
-  padding-bottom: 6% !important;
-}
+  
+ }
 .yaTenesCuenta{
   margin-top: 3%;
-}
+ }
 .form-control{
   width: 75% !important;
   
-}
-.mb-3{
+ }
+ .mb-3{
   margin-left: 20% !important;
-}
-.form-floating{
+ }
+ .form-floating{
    margin-left: 20% !important
-}
+ }
  .card {
         width: 90% !important; 
         max-width: 400px !important;
@@ -428,12 +430,11 @@ header{
     }
 }
 
-  .accordion-body .tareasImg {
-    width: 60% !important;
-   
-  }
+.accordion-body .tareasImg{
+  width: 45%;
+}
   .accordion-body .GestionImg{
-   width: 50%;
+   width: 30%;
   }
 
 .footerLogin{
@@ -728,10 +729,10 @@ footer hr {
 }
 
 .siNotenesCuenta{
-  padding-bottom: 63% !important;
+  padding-bottom: 78% ;
 }
 .yaTenesCuenta{
-  padding-bottom: 10% !important;
+  padding-bottom: 25% !important;
 }
 .loginRegistrase-box{
 background-color:#3ec8b3 ;
@@ -785,7 +786,7 @@ margin-bottom: 0%;
 }
 .botonLogIn p{
   margin-bottom: 0%;
-  padding-bottom: 1%;
+  ;
 }
 .btn-lg{
   background-color: #d9c6a7;
@@ -959,9 +960,22 @@ TIEMPO LIBRE — ESTÉTICA STARTTIME
 ================================ */
 
 .tiempoLibre {
+<<<<<<< HEAD
 width: 100%;
 padding-top: 4%;
 
+=======
+  width: 100%;
+  padding-top: 5%;
+  }
+
+
+.tiempoLibre .div:first-child {
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 1.5%;
+  color: #42b591  ;
+>>>>>>> 048afdfed81bf2c39de3ebbe57bfe92f30585c71
 }
 
 .tiempoLibre .card {
@@ -973,12 +987,12 @@ min-width: 100%;
 
 /* --- HEADER (igual a agenda) --- */
 .tiempoLibre .card-header {
-background-color: #55c0a9 !important;
-color: #ffffff !important;
-padding: 2%;
-border-radius: 25px 25px 0 0 !important;
-text-align: center;
-}
+  background-color: #d9c6a7 !important;
+  color: black !important;
+  padding: 2%;
+  border-radius: 25px 25px 0 0 !important;
+  text-align: center;
+  }
 
 .tiempoLibre h3 {
 font-weight: bold;
