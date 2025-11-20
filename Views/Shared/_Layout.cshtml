@@ -11,6 +11,9 @@
 
 </head>
 
+
+
+
    @if (ViewData["MostrarHeader"] == null || (bool)ViewData["MostrarHeader"] == true)
 {
    <header class="nav-principal">
@@ -25,7 +28,7 @@
       <div class="navbar-right">
         <!-- Ícono de persona -->
         <a class="navbar-brand" href="@Url.Action("DPerfil","home")">
-          <img src="/Imagenes/LogoPersona.png" alt="Personita">
+           <img src="/Imagenes/@ViewBag.Foto" alt="Personita"  style="width:40px; height:40px; border-radius:50%; object-fit:cover;"> 
         </a>
 
         <!-- Botón hamburguesa -->
