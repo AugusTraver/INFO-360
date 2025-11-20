@@ -16,7 +16,43 @@
 <body>
     <div class="tareas-page">
         <h1>Tus Tareas</h1>
+<div class="card card-agregar">
 
+        <button type="button" onclick="mostrarFormularioCrear()" id="btnMostrar">
+            Agregar nueva tarea
+        </button>
+
+        <form id="formCrearTarea"
+              action='@Url.Action("CrearTarea", "Home")'
+              method="post"
+              style="display: none;">
+
+            <label for="tituloAgregar">Título:</label>
+            <input type="text" name="Titulo" id="tituloAgregar" required>
+
+            <label for="descripcionAgregar">Descripción:</label>
+            <textarea name="Descripcion" id="descripcionAgregar"></textarea>
+
+            <label for="duracionAgregar">Duración:</label>
+            <select name="Duracion" id="duracionAgregar" required>
+                <option value="0.25">15 minutos</option>
+                <option value="0.5">30 minutos</option>
+                <option value="0.75">45 minutos</option>
+                <option value="1">1 hora</option>
+                <option value="1.5">1 hora y 30 minutos</option>
+                <option value="2">2 horas</option>
+                <option value="3">3 horas</option>
+                <option value="4">4 horas</option>
+            </select>
+
+            <input type="hidden" name="Finalizado" value="false" />
+            <input type="hidden" name="IDusuario" value="@ViewBag.IDUsuario" />
+            <label>Fecha</label>
+
+            <input type="date" id="fecha" name="fecha">
+            <input type="submit" value="Guardar">
+        </form>
+    </div>
         <div id="buscadorContainaer" style="display: none;">
             <input type="text" id="buscador" placeholder="Buscar tarea...">
             <ul id="lista"></ul>
@@ -75,43 +111,7 @@
     </div>
 }</div>
 
-<div class="card card-agregar">
 
-        <button type="button" onclick="mostrarFormularioCrear()" id="btnMostrar">
-            Agregar nueva tarea
-        </button>
-
-        <form id="formCrearTarea"
-              action='@Url.Action("CrearTarea", "Home")'
-              method="post"
-              style="display: none;">
-
-            <label for="tituloAgregar">Título:</label>
-            <input type="text" name="Titulo" id="tituloAgregar" required>
-
-            <label for="descripcionAgregar">Descripción:</label>
-            <textarea name="Descripcion" id="descripcionAgregar"></textarea>
-
-            <label for="duracionAgregar">Duración:</label>
-            <select name="Duracion" id="duracionAgregar" required>
-                <option value="0.25">15 minutos</option>
-                <option value="0.5">30 minutos</option>
-                <option value="0.75">45 minutos</option>
-                <option value="1">1 hora</option>
-                <option value="1.5">1 hora y 30 minutos</option>
-                <option value="2">2 horas</option>
-                <option value="3">3 horas</option>
-                <option value="4">4 horas</option>
-            </select>
-
-            <input type="hidden" name="Finalizado" value="false" />
-            <input type="hidden" name="IDusuario" value="@ViewBag.IDUsuario" />
-            <label>Fecha</label>
-
-            <input type="date" id="fecha" name="fecha">
-            <input type="submit" value="Guardar">
-        </form>
-    </div>
 
     <script src="~/js/tareas.js"></script>
 </body>
