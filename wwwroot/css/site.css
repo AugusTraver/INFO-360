@@ -1277,6 +1277,7 @@ header.nav-principal .navbar-toggler-icon {
       display: flex;
       flex-direction: column;
       gap: 20px;
+      margin-bottom: 1%;
     }
 
   .tareas-page label {
