@@ -240,6 +240,15 @@ header{
   .accordion-body .calendarioImg {
     width: 70%;
   }
+  .accordion-body .tareasImg {
+    width: 120% !important;
+   
+  }
+  .accordion-body .GestionImg{
+   width: 100%;
+  }
+
+
   header.nav-principal {
     padding: 4px 16px;
   }
@@ -397,6 +406,7 @@ header{
 }
 .siNotenesCuenta{
   margin-top: 3%;
+  padding-bottom: 6% !important;
 }
 .yaTenesCuenta{
   margin-top: 3%;
@@ -411,8 +421,20 @@ header{
 .form-floating{
    margin-left: 20% !important
 }
+ .card {
+        width: 90% !important; 
+        max-width: 400px !important;
+        margin: 10px auto !important; 
+    }
 }
 
+  .accordion-body .tareasImg {
+    width: 60% !important;
+   
+  }
+  .accordion-body .GestionImg{
+   width: 50%;
+  }
 
 .footerLogin{
   background-color:  #4bbfaa;
@@ -706,7 +728,7 @@ footer hr {
 }
 
 .siNotenesCuenta{
-  padding-bottom: 40% !important;
+  padding-bottom: 63% !important;
 }
 .yaTenesCuenta{
   padding-bottom: 10% !important;
