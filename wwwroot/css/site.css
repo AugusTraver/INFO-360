@@ -729,10 +729,10 @@ footer hr {
 }
 
 .siNotenesCuenta{
-  padding-bottom: 78% ;
+  padding-bottom: 91% ;
 }
 .yaTenesCuenta{
-  padding-bottom: 25% !important;
+  padding-bottom: 40% !important;
 }
 .loginRegistrase-box{
 background-color:#3ec8b3 ;
@@ -1612,6 +1612,208 @@ width: 90%;
 
 
 
+.alarmas{
+   
+  display:inline-block;
+   background-color: #d9c6a7;
+  align-items: center;
+ 
+  margin-top: 2%;
+  padding-bottom: 1%;
+  padding-top: 1%;
+  border-radius: 20px;
+  width: 25%;
+  margin-left: 2%;
+  margin-right: 2%;
+
+}
+.alarmas:hover{
+  box-shadow:  0 5px 9px grey;
+}
+.contenedorAlarmas{
+ display: flex;
+ 
+  flex-direction: column;
+  
+  align-items: center; 
+  gap: 1px;
+  width: 100%;
+  
+}
+.campana{
+  width: 10%;
+  margin-left: 5%;
+}
+.activado{
+  margin-left: 45%;
+  width: 20%;
+}
+.hora{
+  font-size: 16px;
+  font-weight: bold;
+  margin-left: 10px;
+}
+.alarm-info {
+  display: flex;
+  align-items: center;
+}
+.buscadorContainer{
+  background-color: #d7bf99 !important;
+  width: 23%;
+  margin-left: 39%;
+  padding: 1%;
+  border-radius: 20px;
+}
+.infoBoxCrear{
+  background-color: #d7bf99 !important;
+ width: 23%;
+  margin-left: 39%;
+  padding: 1%;
+  border-radius: 20px;
+}
+.infoBox{
+  background-color: #d7bf99 !important;
+  width: 23%;
+   margin-left: 39%;
+   padding: 1%;
+   border-radius: 20px;
+   margin-bottom: 2%;
+   margin-top: 2%;
+}
+.alarm-info p {
+  font-size: 20px;
+  
+  margin-left: 10px;
+}
+.alarmah1{
+  text-align: center;
+  padding-top: 6%;
+  padding-bottom: 2%;
+}
+.botones-principal{
+  display: flex; 
+  justify-content: center;
+  gap: 10px; 
+  width: 100%;
+  margin-bottom: 20px;
+}
+.botones-superiores {
+
+  display: flex;
+  align-items: center;
+  justify-items:column ;
+  background-color: #4BBFAA; 
+  
+  width: fit-content;
+  padding: 6px 15px; 
+  border-radius: 20px;
+
+  margin-bottom: 1%;
+}
+
+.botones-superiores a.boton {
+  margin-left: 0; 
+  text-decoration: none;
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  background-color: transparent; 
+  padding: 0;
+}
+
+.botones-superiores button {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 0;
+}
+
+.lupa {
+  width: 15px;
+  height: 15px;
+  margin-right: 5px; 
+  padding-left: 0; 
+}
+.signoMas{
+  width: 15px;
+  height: 15px;
+  margin-right: 5px; 
+  padding-left: 0; 
+}
+.toggle-checkbox {
+  display: none;
+}
+.toggle-label {
+  width: 60px;
+  height: 34px;
+  position: relative;
+  display: block;
+  cursor: pointer;
+  background-color: #8D8C86;
+  border-radius: 34px;
+  transition: background-color 0.3s;
+}
+
+.toggle-label::before {
+  content: '';
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 28px;
+  height: 28px;
+  background-color: #EDECEB;
+  border-radius: 50%;
+  transition: transform 0.3s;
+  transform: translateX(0); 
+}
+
+.toggle-container {
+  padding: 20px;
+  background-color: #d9c6a7;
+  display: inline-block;
+  margin-left: 45%;
+}
+
+.toggle-checkbox:checked + .toggle-label::before {
+  transform: translateX(26px); 
+}
+
+.toggle-checkbox:checked + .toggle-label {
+  background-color: #4CAF50; 
+}
+@media (max-width: 768px){
+  .toggle-container{
+      margin-left: 35% !important;
+  }
+ .alarmas{
+  width: 80%;
+  padding-top: 3%;
+  padding-bottom: 3%;
+  border-radius: 20px !important;
+ }
+ .contenedorAlarmas{
+  gap:20px !important;
+ }
+ .alarmah1{
+  padding-top: 9%;
+  padding-bottom: 10% !important;
+ }
+ .botones-principal{
+  padding-bottom: 4%;
+ }
+ .botones-superiores{
+  width: 30%;
+ }
+ .botones-superiores a.boton{
+  
+  margin-left: 5%;
+  font-size: 20px;
+ }
+
+}
 
 
 

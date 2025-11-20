@@ -13,29 +13,39 @@
 </head>
 <header></header>
 <body>
-    <div class="alarmas"> 
+    <div class="alarmas-contenedorPrincipal"> 
         
-        <h1>Alarmas</h1>
-        
-        <div class="alarmas-top-actions">
-            
-            <button type="button" onclick="NuevaAlarma()" class="alarmas-boton-action alarmas-agregar">
-                <span class="alarmas-plus-icon">+</span> Agregar
-            </button>
-            
+        <h1 class="alarmah1">Alarmas </h1>
+        <div class="botones-principal"> 
+    
+
+             <div class="botones-superiores">
+            <img class="signoMas" src="/Imagenes/signoMas.png" alt="">
+              <button type="button" onclick="NuevaAlarma()">Nueva Alarma</button>
+            </div>
+
+              <div class="botones-superiores">
             <button type="button" id="mostrarBuscar" class="alarmas-boton-action alarmas-tipos">
-                 <span class="alarmas-plus-icon">+</span> Buscar Alarma
+                  <img class="lupa" src="/Imagenes/Lupa.png" alt="">
+      <a href="#" type="button" id="mostrarBuscar" class="boton">Buscar Alarma</a>
             </button>
-        </div>
+             </div>
+
+         </div>
+          
+       
+         
         
-        <div id="buscadorContainer" style="display:none;" class="alarmas-buscador-container">
+        
+        <div id="buscadorContainer"  class = "buscadorContainer" style="display:none;" class="alarmas-buscador-container">
             <input type="text" id="buscador" placeholder="Buscar...">
             <ul id="lista"></ul>
         </div>
         
-        <div id="infoBox"></div>
-        
-        <div hidden id="Hidden" class="alarmas-formulario-creacion"> 
+        <div hidden id="infoBox" class= "infoBox"></div>
+           
+      
+        <div hidden id="Hidden" class="infoBoxCrear"> 
             <h2>Crear Nueva Alarma</h2>
             <div class="alarmas-form-group">
                 <label for="NombreAlarma">Nombre</label> 
@@ -55,13 +65,14 @@
         <h2 id="AlarmaCreada"></h2>
         
         <div class="alarmas-lista-alarmas">
+        <img class="lupa" src="/Imagenes/campana(Alarma).png" alt="">
             </div>
     </div>
     
     <script src="~/js/Util.js"></script>
 </body>
-<footer>
+
 @section FooterContent {
     <partial name="_FooterPartial" />
-}</footer>
+}
 </html>

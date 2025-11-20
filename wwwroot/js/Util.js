@@ -85,11 +85,11 @@ document.getElementById('buscador').addEventListener('input', (e) => {
 
 // 
 function mostrarInfoAlarma(alarma) {
-  const infoBox = document.getElementById('infoBox');
-
-  const fechaAlarma = new Date(alarma.Alarma);
-  const ahora = new Date();
-  let diferencia = fechaAlarma - ahora;
+  const infoBox = document.getElementById('infoBox')
+  infoBox.hidden = false
+  const fechaAlarma = new Date(alarma.Alarma)
+  const ahora = new Date()
+  let diferencia = fechaAlarma - ahora
 
   // Calcular tiempo inicial
   const horas = Math.floor(diferencia / (1000 * 60 * 60));
