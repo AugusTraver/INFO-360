@@ -790,100 +790,6 @@ footer{
 }
 
 
-header.nav-principal {
-  width: 100%;
-  background-color: #4bbfaa;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 8px 24px;
-  box-shadow: 0 2px 8px rgba(35, 56, 64, 0.15);
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 1030;
-}
-
-/* Navbar interior */
-header.nav-principal .navbar {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background: transparent !important;
-  padding: 0;
-  margin: 0;
-}
-
-/* Contenedor derecho (persona + menú) */
-.navbar-right {
-  display: flex;
-align-items: center;
-gap: 20px;
-}
-
-/* Logo principal */
-header.nav-principal .navbar-brand img[alt="Logo StartTime"] {
-  height: 50px;
-  width: auto;
-}
-
-/* Ícono de persona */
-header.nav-principal .navbar-brand img[alt="Personita"] {
-  height: 35px;
-  width: auto;
-}
-
-/* Botón hamburguesa */
-header.nav-principal .navbar-toggler {
-  border: none;
-  background: transparent;
-  padding: 0;
-}
-
-header.nav-principal .navbar-toggler-icon {
-  filter: invert(0);
-}
-
-/* ======== OFFCANVAS MENU ======== */
-.offcanvas-menu {
-  background-color: #f5f5f5;
-}
-
-.offcanvas-menu .offcanvas-header h5 {
-  font-weight: bold;
-  color: #233840;
-}
-
-.offcanvas-menu .offcanvas-body ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.offcanvas-menu .offcanvas-body li {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 10px 0;
-}
-
-.offcanvas-menu .offcanvas-body li img {
-  height: 24px;
-  width: 24px;
-}
-
-.offcanvas-menu .offcanvas-body li a {
-  text-decoration: none;
-  color: #233840;
-  font-weight: 500;
-  transition: color 0.2s ease;
-}
-
-.offcanvas-menu .offcanvas-body li a:hover {
-  color: #4bbfaa;
-}
 
 /* Parte de Francisco */
 
@@ -891,10 +797,12 @@ header.nav-principal .navbar-toggler-icon {
         background: #D9C6A7;
         border-radius: 25px;
         padding: 2.5%;
-        margin-bottom: 3%;
+        margin-bottom: 8%;
+        margin-top: 8%;
     }
 
     .st-title {
+      padding-top: 5%;
         font-size: 160%;
         font-weight: bold;
         text-align: center;
@@ -963,11 +871,790 @@ header.nav-principal .navbar-toggler-icon {
     
 }
 
+header.nav-principal {
+  width: 100%;
+  background-color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 24px;
+  box-shadow: 0 2px 8px rgba(35, 56, 64, 0.15);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1030;
+}
+
+/* Navbar interior */
+header.nav-principal .navbar {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: transparent !important;
+  padding: 0;
+  margin: 0;
+}
+
+/* Contenedor derecho (persona + menú) */
+.navbar-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+/* Logo principal */
+header.nav-principal .navbar-brand img[alt="Logo StartTime"] {
+  height: 50px;
+  width: auto;
+}
+
+/* Ícono de persona */
+header.nav-principal .navbar-brand img[alt="Personita"] {
+  height: 35px;
+  width: auto;
+}
+
+/* Botón hamburguesa */
+header.nav-principal .navbar-toggler {
+  border: none;
+  background: transparent;
+  padding: 0;
+}
+
+header.nav-principal .navbar-toggler-icon {
+  filter: invert(0);
+}
+
+/* ======== OFFCANVAS MENU ======== */
+.offcanvas-menu {
+  background-color: #d7bf99 !important; /* beige */
+  padding-top: 30px;
+}
+
+/* Botón cerrar (X) */
+.offcanvas-menu .btn-close {
+  filter: invert(0) !important;
+  width: 26px;
+  height: 26px;
+}
+
+/* UL del menú */
+.offcanvas-menu .offcanvas-body ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+/* Cada opción del menú */
+.offcanvas-menu .offcanvas-body li {
+  background-color: #52c6a4; /* verde agua */
+  padding: 12px 18px;
+  border-radius: 30px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 80%;
+  margin: 0 auto;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+/* Hover */
+.offcanvas-menu .offcanvas-body li:hover {
+  transform: scale(1.05);
+}
+
+/* Iconos */
+.offcanvas-menu .offcanvas-body li img {
+  height: 24px;
+  width: 24px;
+  filter: none;
+}
+
+/* Texto de cada botón */
+.offcanvas-menu .offcanvas-body li a {
+  text-decoration: none;
+  color: #ffffff !important;
+  font-weight: 600;
+  font-size: 17px;
+}
+
+/* ======== LOG OUT ABAJO ======== */
+.offcanvas-menu .logout {
+  margin-top: 60px;
+  text-align: center;
+}
+
+/* Botón Log out */
+.offcanvas-menu .logout button {
+  background-color: #52c6a4;
+  border: none;
+  border-radius: 30px;
+  padding: 12px 22px;
+  font-size: 17px;
+  font-weight: 600;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 auto;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.offcanvas-menu .logout button:hover {
+  transform: scale(1.05);
+}
+
+.offcanvas-menu .logout button img {
+  height: 22px;
+  filter: none;
+}
+
+/* ======== FIX IMPORTANTE ======== */
+/* Evita que PERFIL o LOGOUT aparezcan con fondo beige por defecto */
+.offcanvas-menu a,
+.offcanvas-menu button {
+  background: none !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/* Fuerza estructura uniforme */
+.offcanvas-menu a,
+.offcanvas-menu button,
+.offcanvas-menu li {
+  display: flex !important;
+  align-items: center;
+}
+
+ /*  Tareas  */
+.tareas-page {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f7f7f7;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 60px 20px 40px;
+}
+
+.tareas-page h1 {
+    font-size: 2.5em;
+    font-weight: 700;
+    color: #333;
+    margin-top: 0;
+    margin-bottom: 30px;
+    padding-top: 2%;
+}
+
+.tareas-page h2 {
+    font-weight: 600;
+    font-size: 1.6em;
+    margin: 25px 0 20px 0;
+    color: #444;
+    text-align: center;
+}
+
+.tareas-page a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.tareas-page .top-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 90%;
+    max-width: 600px;
+    margin-top: 0;
+    margin-bottom: 30px;
+}
+
+.tareas-page .top-bar a {
+    font-size: 1.5em;
+    color: #5a4d49;
+    transition: color 0.3s ease;
+}
+
+.tareas-page .top-bar a:hover {
+    color: #52c6a4;
+}
+
+.tareas-page button,
+.tareas-page a.boton {
+    background-color: #52c6a4;
+    color: white;
+    border: none;
+    padding: 10px 25px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.tareas-page button:hover,
+.tareas-page a.boton:hover {
+    background-color: #42b591;
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
+}
+
+.tareas-page .botones-abajo {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.tareas-page .botones-superiores {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin: 20px 0;
+}
+
+.tareas-page .card {
+    background-color: #d7bf99;
+    padding: 30px;
+    border-radius: 25px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    width: 90%;
+    max-width: 350px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.tareas-page label {
+    font-weight: 600;
+    color: #5a4d49;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.tareas-page input[type="text"],
+.tareas-page input[type="date"] {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #c0b094;
+    border-radius: 8px;
+    box-shadow: inset 1px 1px 3px rgba(0, 0, 0, 0.1);
+    font-size: 15px;
+    background-color: #fcfcfc;
+    transition: border-color 0.3s;
+}
+
+.tareas-page input[type="text"]:focus,
+.tareas-page input[type="date"]:focus {
+    border-color: #52c6a4;
+    outline: none;
+    box-shadow: 0 0 5px rgba(82, 198, 164, 0.5);
+}
+
+.tareas-page input[disabled] {
+    background-color: #eee;
+    color: #777;
+    cursor: default;
+    box-shadow: none;
+}
+
+.tareas-page .switch {
+    position: relative;
+    display: inline-block;
+    width: 45px;
+    height: 25px;
+}
+
+.tareas-page .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.tareas-page .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #a0978e;
+    transition: 0.4s;
+    border-radius: 34px;
+}
+
+.tareas-page .slider:before {
+    position: absolute;
+    content: "";
+    height: 19px;
+    width: 19px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    transition: 0.4s;
+    border-radius: 50%;
+}
+
+.tareas-page input:checked + .slider {
+    background-color: #52c6a4;
+}
+
+.tareas-page input:checked + .slider:before {
+    transform: translateX(20px);
+}
+
+.tareas-page .lista-tareas {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 90%;
+    max-width: 450px;
+    margin-top: 20px;
+}
+
+.tareas-page .tarea,
+.tareas-page .tarea-card {
+    background-color: #e9dec9;
+    border-radius: 15px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 20px;
+    font-size: 16px;
+    width: 100%;
+    margin: 0;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+.tareas-page .tarea-card:hover {
+    background-color: #dbc7a6;
+    transform: scale(1.01);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.tareas-page .tarea .icono {
+    font-size: 1.4em;
+    color: #5a4d49;
+}
+
+.tareas-page .tarea .estado {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 500;
+}
+
+.tareas-page .tarea-card .estado {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background-color: #5a4d49;
+    border: 3px solid #d7bf99;
+}
+
+.tareas-page .buscador {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 25px;
+    width: 90%;
+    max-width: 450px;
+}
+
+.tareas-page .buscador input[type="text"] {
+    flex-grow: 1;
+    margin: 0;
+}
+
+.tareas-page .buscador button {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    background-color: #5a4d49;
+    padding: 8px 15px;
+    border-radius: 25px;
+    font-size: 15px;
+    box-shadow: none;
+}
+.tareas-page .card  input[type="submit"] {
+    background-color: #55c0a9;
+    gap: 5px;
+    text-align: center;
+    padding: 8px 15px;
+    padding-top: 2%;
+    border-radius: 25px;
+    font-size: 15px;
+    box-shadow: none;
+    display:  block;
+    margin: 4% auto 0 auto;
+    
+}
+
+.tareas-page .buscador button:hover {
+    background-color: #4a3e3b;
+    transform: none;
+    box-shadow: none;
+}
+
+.tareas-page .hidden {
+    display: none;
+}
+
+
+body {
+    font-family: Arial, sans-serif;
+    background: white;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+
+.volver {
+    padding: 15px;
+    text-align: left;
+}
+
+.btn-volver {
+    font-size: 24px;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.titulo-perfil {
+    margin-top: 10px;
+    font-size: 24px;
+    color: #333;
+    text-align: center;
+}
+.avatar{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 15px;
+}
+.avatar svg {
+    margin-top: 10px;
+    width: 140px;
+    height: 140px;
+    text-align: center;
+}
+
+.nombre-usuario {
+    margin-top: 8px;
+    font-size: 18px;
+    text-align: center;
+}
+
+.caja-editar {
+    background: #d8c1a3;
+    width: 80%;
+    margin: 20px auto;
+    padding: 25px;
+    border-radius: 20px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+    text-align: left;
+}
+
+.caja-editar h3 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.caja-editar label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 16px;
+}
+
+.caja-editar input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 10px;
+    border: none;
+    background: #f1f1f1;
+    box-shadow: 2px 2px 3px rgba(0,0,0,0.25);
+}
+
+
+.btn-guardar {
+    background: #4ec7aa;
+    border: none;
+    color: white;
+    padding: 10px 25px;
+    border-radius: 20px;
+    cursor: pointer;
+    display: block;
+    margin: 0 auto;
+    font-size: 16px;
+}
+
+.btn-cerrar {
+    background: #4ec7aa;
+    border: none;
+    color: white;
+    padding: 12px 30px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.cerrar-contenedor {
+    margin-top: 40px;
+    text-align: center;
+}
+
+/*REVISAR ALARMAS
+.alarmas {
+    font-family: 'Poppins', sans-serif;
+    background-color: #fcfcfc;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px 20px 40px;
+    padding-top: 4%;
+    min-height: 100vh; 
+    width: 100%; 
+}
+
+.alarmas h1 {
+    font-size: 2.5em;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 30px;
+    text-align: center;
+    width: 100%;
+}
+
+.alarmas h2 {
+    font-weight: 600;
+    font-size: 1.6em;
+    margin: 25px 0 20px 0;
+    color: #444;
+    text-align: center;
+}
+
+
+.alarmas-top-actions {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 400px;
+    margin-bottom: 40px;
+    gap: 15px;
+}
+
+.alarmas-boton-action {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    border: none;
+    padding: 12px 0;
+    border-radius: 12px;
+    font-size: 1.1em;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s, transform 0.3s;
+    text-decoration: none;
+}
+
+.alarmas-boton-action.alarmas-agregar,
+.alarmas-boton-action.alarmas-tipos {
+    background-color: #52c6a4;
+}
+
+.alarmas-boton-action:hover {
+    background-color: #42b591;
+    transform: translateY(-1px);
+}
+
+.alarmas-plus-icon {
+    font-size: 1.4em;
+    margin-right: 5px;
+    font-weight: 800;
+}
+
+
+.alarmas-lista-alarmas {
+    width: 100%;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.alarma-card {
+    background-color: #e9dec9;
+    border-radius: 15px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 20px;
+    transition: background-color 0.3s;
+}
+
+.alarma-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.alarma-icon-campana {
+    font-size: 1.4em;
+    color: #5a4d49;
+}
+
+.alarma-card .alarma-hora {
+    font-size: 1.2em;
+    font-weight: 500;
+    color: #333;
+}
 
 
 
+.alarma-switch {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 28px;
+    margin-left: 20px;
+}
+
+.alarma-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.alarma-slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #a0978e;
+    transition: 0.4s;
+    border-radius: 34px;
+}
+
+.alarma-slider:before {
+    position: absolute;
+    content: "";
+    height: 20px;
+    width: 20px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: 0.4s;
+    border-radius: 50%;
+}
+
+.alarma-switch input:checked + .alarma-slider {
+    background-color: #52c6a4;
+}
+
+.alarma-switch input:checked + .alarma-slider:before {
+    transform: translateX(20px);
+}
 
 
+.alarmas-formulario-creacion {
+    width: 100%;
+    max-width: 400px;
+    background-color: #d7bf99;
+    padding: 25px;
+    border-radius: 20px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  
+    display: flex; 
+    flex-direction: column;
+    gap: 15px;
+    
+    
+}
+
+.alarmas-formulario-creacion h2 {
+    color: #5a4d49;
+    margin-bottom: 20px;
+}
+
+.alarmas-form-group {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+
+.alarmas-form-group label {
+    font-weight: 600;
+    color: #5a4d49;
+    flex-basis: 80px;
+    flex-shrink: 0;
+}
+
+.alarmas-formulario-creacion input[type="text"],
+.alarmas-formulario-creacion input[type="datetime-local"] {
+    flex-grow: 1;
+    padding: 10px 12px;
+    border: 1px solid #c0b094;
+    border-radius: 8px;
+    box-shadow: inset 1px 1px 3px rgba(0, 0, 0, 0.1);
+    font-size: 15px;
+    background-color: white;
+}
+
+.alarmas-botones-abajo {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.alarmas-boton {
+    background-color: #52c6a4;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 25px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s;
+}
+
+.alarmas-boton.alarmas-cancelar {
+    background-color: #a0978e;
+}
+
+.alarmas-boton:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+
+[hidden] {
+    display: none !important;
+}
 
 
 

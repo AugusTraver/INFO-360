@@ -42,11 +42,14 @@
     </button>
 
 </form>
-
+    @if(ViewBag.msj != null)
+{
+    <div class="alert alert-danger mt-3">@ViewBag.msj</div>
+} 
      
  <div/ >
 
-     <!-- msj de error -->
+    
  
     <p class="yaTenesCuenta">Ya tenés cuenta,  <a href='@Url.Action("DLogin", "Account")'>Log In</a>
     </p> 

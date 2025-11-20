@@ -13,10 +13,9 @@ namespace INFO_360.Models
 {
     public static class BD
     {
-        private static string _connectionString = @"Server=localhost;
-DataBase=StartTime; Integrated Security=True; TrustServerCertificate=True;";
-
-        public static Usuario IniciarSesion(string username, string password)
+       private static string _connectionString =
+        "Server=localhost\\SQLEXPRESS;Database=StartTime;Integrated Security=True;TrustServerCertificate=True;";
+          public static Usuario IniciarSesion(string username, string password)
         {
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
@@ -130,9 +129,9 @@ DataBase=StartTime; Integrated Security=True; TrustServerCertificate=True;";
         {
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
-                string storedProcedure = "DELETE FROM Tarea WHERE ID = @IDt";
-                connection.Query(storedProcedure, new { IDt = IDT },
-                  commandType: CommandType.StoredProcedure
+                string storedProcedure = "DELETE FROM Tarea WHERE ID = @IDT";
+                    connection.Execute(storedProcedure, new { IDT = IDT },
+            commandType: CommandType.Text 
                 );
             }
         }
@@ -157,12 +156,12 @@ DataBase=StartTime; Integrated Security=True; TrustServerCertificate=True;";
 
                 connection.Execute(storedProcedure, new
                 {
-                    Titulo = tarea.Titulo,
-                    Finalizado = tarea.Finalizado,
-                    Descripcion = tarea.Descripcion,
-                    Duracion = tarea.Duracion,
-                    IDusuario = tarea.IDusuario,
-                    ID = PD
+                    T = tarea.Titulo,
+                    F = tarea.Finalizado,
+                    Des = tarea.Descripcion,
+                    Dur = tarea.Duracion,
+                    I = tarea.IDusuario,
+                    X = PD
                 },
                 commandType: CommandType.StoredProcedure);
             }
@@ -211,6 +210,18 @@ DataBase=StartTime; Integrated Security=True; TrustServerCertificate=True;";
                 );
             }
         }
+           public static bool VerificarUsuarioExiste(string email, string username)
+        {
+               using (SqlConnection connection = new SqlConnection(_connectionString))
+        {
+        string query = "SELECT COUNT(*) FROM Usuario WHERE Email = @Email OR Username = @Username";
+        int count = connection.ExecuteScalar<int>(query, new { Email = email, Username = username });
+        return count > 0; // gracias a esto sabes si ya hay usus con esos datos si no t devulve falso 
+        }
+        }
+
+
+
 
     }
 }

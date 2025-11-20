@@ -123,6 +123,9 @@ public class HomeController : Controller
     }
     public IActionResult DPerfil()
     {
+        string x = HttpContext.Session.GetString("usuario");
+        Usuario usuario = Objeto.StringToObject<Usuario>(x);
+        ViewBag.Nombre= usuario.Nombre;
         return View("Perfil");
     }
     public IActionResult OrganizarAgenda()

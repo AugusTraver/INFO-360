@@ -14,9 +14,13 @@ public class AccountController : Controller
     public IActionResult Login(string username, string contraseña)
     {
         Usuario usuario = BD.IniciarSesion(username, contraseña);
+        //string msj = "";
         if (usuario == null)
         {
+           // msj = "Usuario o Cotnrasñea incorrectos ";
+            //ViewBag.mensaje = msj;
             return View("Login");
+
         }
         else
         {
@@ -34,6 +38,16 @@ public class AccountController : Controller
     public IActionResult Registrarse(string Email, string username, string nombre, string contraseña, IFormFile fotoFile)
     {
         string Foto = null;
+         bool existe = BD.VerificarUsuarioExiste(Email, username);
+        // string msj = "";
+         if (existe)
+         {
+        //string.msj = "Este usuario o email ya existe.";
+        //ViewBag.msj = msj;
+        return View("Registrarse"); 
+        }
+
+
 
         if (fotoFile != null && fotoFile.Length > 0)
         {
@@ -60,7 +74,7 @@ public class AccountController : Controller
         else
         {
             ViewBag.pudo = pudo;
-            return View("Registrar", "Account");
+            return View("Registrarse", "Account");
         }
     }
 }
