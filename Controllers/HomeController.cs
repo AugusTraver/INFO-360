@@ -108,6 +108,11 @@ public class HomeController : Controller
     {
         return View("Alarmas");
     }
+
+        public IActionResult DTLibre()
+    {
+        return View("TiempoLibre");
+    }
     public IActionResult DHorasLibres()
     {
         string? x = HttpContext?.Session.GetString("usuario");
