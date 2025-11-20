@@ -1197,6 +1197,12 @@ header.nav-principal .navbar-toggler-icon {
   display: flex !important;
   align-items: center;
 }
+/*Media del menu*/
+@media (max-width: 768px)
+{
+  
+}
+
 
  /*  Tareas  */
 .tareas-page {
@@ -1591,25 +1597,76 @@ body {
     text-align: center;
     margin-bottom: 2%;
 }
-@media (max-width: 768px) 
-{
-.perfil-contenedor {
-padding: 5%;        
-margin-left: 6%;
-width: 90%;
+@media (max-width: 768px) {
 
+  /* Evita que el botón quede pegado al footer */
+  body {
+      padding-bottom: 80px; 
+  }
 
-}
-.caja-editar
-{
-  width: 30%;
-}
-.btn-cerrar
-{
-  margin-bottom:400% ;
-}
-}
+  .btn-volver {
+      font-size: 20px;
+  }
 
+  .titulo-perfil {
+      font-size: 20px;
+      margin-top: 5px;
+  }
+
+  .avatar {
+      margin-top: 10px;
+  }
+
+  .avatar svg {
+      width: 110px;
+      height: 110px;
+      margin-top: 5px;
+  }
+
+  .nombre-usuario {
+      font-size: 16px;
+      margin-top: 5px;
+  }
+
+  .caja-editar {
+      width: 85%;
+      padding: 15px;
+      margin: 15px auto;
+      border-radius: 15px;
+  }
+
+  .caja-editar h3 {
+      font-size: 18px;
+      margin-bottom: 15px;
+  }
+
+  .caja-editar label {
+      font-size: 14px;
+  }
+
+  .caja-editar input {
+      font-size: 14px;
+      padding: 8px;
+      margin-bottom: 12px;
+  }
+
+  .btn-guardar {
+      padding: 10px 20px;
+      font-size: 14px;
+  }
+
+  /* El botón de cerrar sesión */
+  .btn-cerrar {
+      padding: 12px 24px;
+      font-size: 15px;
+  }
+
+  .cerrar-contenedor {
+      margin-top: 30px;
+      margin-bottom: 40px; /* FUNCIONA en mobile */
+      text-align: center;
+  }
+}
 
 
 
