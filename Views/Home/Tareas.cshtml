@@ -17,13 +17,12 @@
     <div class="tareas-page">
         <h1>Tus Tareas</h1>
 
-        <!-- Buscador -->
-        <div id="buscadorContainer" style="display: none;">
+        <div id="buscadorContainaer" style="display: none;">
             <input type="text" id="buscador" placeholder="Buscar tarea...">
             <ul id="lista"></ul>
         </div>
+<div class="cards-contenedor">
 
-        <!-- Listado de tareas -->
      @foreach (var tarea in ViewBag.Tareas ?? new List<Tarea>())
 {
     <div class="card">
@@ -69,15 +68,15 @@
                 <option value="true">si</option>
                 <option value="false">no</option>
             </select>
-                         <p>Fecha<p>    
-
+            <label>Fecha</label>
             <input type="date" id="fecha" name="fecha">
             <input type="submit" value="Guardar cambios">
         </form>
     </div>
-}
-         <div class="card">
-        <!-- Botón y formulario para crear tarea -->
+}</div>
+
+<div class="card card-agregar">
+
         <button type="button" onclick="mostrarFormularioCrear()" id="btnMostrar">
             Agregar nueva tarea
         </button>
@@ -107,7 +106,7 @@
 
             <input type="hidden" name="Finalizado" value="false" />
             <input type="hidden" name="IDusuario" value="@ViewBag.IDUsuario" />
-                                     <p>Fecha<p>    
+            <label>Fecha</label>
 
             <input type="date" id="fecha" name="fecha">
             <input type="submit" value="Guardar">

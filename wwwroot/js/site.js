@@ -1,6 +1,15 @@
 ﻿function mostrarFormularioCrear() {
     const form = document.getElementById("formCrearTarea");
-    form.style.display = "inline-block";
+
+    if(form.style.display == "inline-block"){
+
+        form.style.display = "none";
+
+    } else{
+
+        form.style.display = "inline-block";
+
+    }
 }
 
 function mostrarFormularioActualizar(idTarea) {
