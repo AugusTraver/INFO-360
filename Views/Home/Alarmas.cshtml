@@ -32,10 +32,6 @@
              </div>
 
          </div>
-          
-       
-         
-        
         
         <div id="buscadorContainer"  class = "buscadorContainer" style="display:none;" class="alarmas-buscador-container">
             <input type="text" id="buscador" placeholder="Buscar...">
@@ -48,15 +44,22 @@
         <div hidden id="Hidden" class="infoBoxCrear"> 
             <h2>Crear Nueva Alarma</h2>
             <div class="alarmas-form-group">
-                <label for="NombreAlarma">Nombre</label> 
-                <input type="text" id="NombreAlarma">
+                   <div class="form-floating mb-3">
+                   <input type="text" class="form-control"  id="NombreAlarma" name="username">
+                <label for="floatingInput" style= "color: #d9c6a7;">Nombre</label> 
+               </div>
+                
             </div>
             <div class="alarmas-form-group">
-                <label for="AlarmaTime">Hora</label>
-                <input type="datetime-local" id="AlarmaTime">
+            <div class="form-floating mb-3">
+                   <input type="datetime-local" class="form-control" id="AlarmaTime" name="username">
+                <label for="floatingInput" style= "color: #d9c6a7;">Hora</label> 
+               </div>
+              
+              
             </div>
             
-            <div class="alarmas-botones-abajo">
+            <div class="botones-Agregar">
                  <button type="button" onclick="AgregarAlarma()" class="alarmas-boton">Agregar</button>
             </div>
         </div>
@@ -64,9 +67,7 @@
         <p id="ErrorCrearAlarma"></p>
         <h2 id="AlarmaCreada"></h2>
         
-        <div class="alarmas-lista-alarmas">
-        <img class="lupa" src="/Imagenes/campana(Alarma).png" alt="">
-            </div>
+        
     </div>
     
     <script src="~/js/Util.js"></script>

@@ -1727,6 +1727,7 @@ body {
   margin-left: 39%;
   padding: 1%;
   border-radius: 20px;
+  margin-bottom:2% ;
 }
 .infoBoxCrear{
   background-color: #d7bf99 !important;
@@ -1734,6 +1735,17 @@ body {
   margin-left: 39%;
   padding: 1%;
   border-radius: 20px;
+ 
+}
+#lista {
+  list-style-type: none;
+
+}
+.infoBoxCrear .alarmas-form-group{
+  text-align: center;
+}
+.alarmas-contenedorPrincipal{
+  text-align: center;
 }
 .infoBox{
   background-color: #d7bf99 !important;
@@ -1773,6 +1785,30 @@ body {
   border-radius: 20px;
 
   margin-bottom: 1%;
+}
+
+.botones-Agregar{
+  display: flex;
+  align-items: center;
+  justify-items:column ;
+  background-color: #4BBFAA; 
+  
+  width: fit-content;
+  padding: 6px 15px; 
+  border-radius: 20px;
+
+  margin-bottom: 1%;
+  margin-left:35%;
+}
+.botones-Agregar button{
+  margin-left: 0; 
+  text-decoration: none;
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  background-color: transparent; 
+  padding: 0;
+  border: none;
 }
 
 .botones-superiores a.boton {
