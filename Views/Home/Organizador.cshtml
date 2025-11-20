@@ -1,3 +1,9 @@
+
+@{
+    ViewData["MostrarHeader"] = true;
+}
+
+
 <section class="organizador">
     <section class="container my-4">
         <div class="st-card shadow-sm">
@@ -58,4 +64,8 @@
         </div>
 
     </section>
+    
 </section>
+   @section FooterContent {
+    <partial name="_FooterPartial" />
+}

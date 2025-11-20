@@ -1,6 +1,9 @@
 @{
     ViewData["MostrarHeader"] = true;
 }
+@section FooterContent {
+    <partial name="_FooterPartial" /> 
+}
 
 <h1>Tenés @(ViewBag.TiempoLibre) horas libres</h1>
 
