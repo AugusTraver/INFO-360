@@ -1022,9 +1022,18 @@ background: #2e8f7d !important;
 @media (max-width: 768px) {
 .tiempoLibre .card {
   padding: 6%;
-  width: 100%;  
-}
+  width: 100%; 
+  margin-top: 20% !important;
+  margin-bottom: 20% !important;
 
+}
+#buscador.form-control{
+  margin-left: 4.5%;
+  width: 90% !important;
+}
+#palabaraBuscar{
+ margin-left: 4.5%;
+}
 .tiempoLibre .form-control {
   width: 100%;
   padding: 4%;
@@ -1740,8 +1749,16 @@ body {
  
 }
 #lista {
-  list-style-type: none;
+  list-style-type: none ;
+  margin-left: -1%;
 
+}
+#lista  li{
+  background-color: #4bbfaa !important;
+  margin-bottom: 3%;
+  border-radius: 20px;
+  margin-top: 2%;
+  width: 90%;
 }
 .infoBoxCrear .alarmas-form-group{
   text-align: center;
@@ -1795,15 +1812,15 @@ body {
   justify-items:column ;
   background-color: #4BBFAA; 
   
-  width: fit-content;
+  width: 40%;
   padding: 6px 15px; 
   border-radius: 20px;
 
   margin-bottom: 1%;
-  margin-left:35%;
+  margin-left:30%;
 }
 .botones-Agregar button{
-  margin-left: 0; 
+  margin-left: 20%; 
   text-decoration: none;
   color: white;
   font-size: 18px;
@@ -1941,10 +1958,14 @@ body {
   }
 
   .botones-Agregar {
-    width: 100% !important;
-    margin-left: 0 !important;
+    width: 50% !important;
+    margin-left: 25% !important;
     display: flex;
     justify-content: center;
+  }
+  .botones-Agregar button {
+   text-align: center !important;
+   width: 30%;
   }
 
   .alarmas {

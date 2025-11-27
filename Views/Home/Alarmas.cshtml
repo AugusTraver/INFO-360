@@ -34,8 +34,11 @@
          </div>
         
         <div id="buscadorContainer"  class = "buscadorContainer" style="display:none;" class="alarmas-buscador-container">
-            <input type="text" id="buscador" placeholder="Buscar...">
+             <div class="form-floating mb-3" id="cajaBuscador">
+            <input type="text"  class="form-control"  id="buscador" placeholder="Buscar...">
+            <label for="floatingInput" style= "color: #d9c6a7;" id= "palabaraBuscar">Buscar...</label> 
             <ul id="lista"></ul>
+              </div>
         </div>
         
         <div hidden id="infoBox" class= "infoBox"></div>
@@ -64,7 +67,7 @@
             </div>
         </div>
         
-        <p id="ErrorCrearAlarma"></p>
+        <p style= "color: red" id="ErrorCrearAlarma"></p>
         <h2 id="AlarmaCreada"></h2>
         
         
