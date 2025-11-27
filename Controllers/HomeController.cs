@@ -159,6 +159,9 @@ public class HomeController : Controller
 
 
         Dictionary<DateTime, Dictionary<double, Tarea>> AGENDA = usuario.OrganizarSemana(temporales);
+         string f = HttpContext.Session.GetString("usuario");
+        Usuario usuario1 = Objeto.StringToObject<Usuario>(f);
+        ViewBag.Foto = usuario1.Foto;
 
         ViewBag.AGENDA = AGENDA;
 

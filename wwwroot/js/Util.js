@@ -1,5 +1,7 @@
 const Hidden = document.getElementById('Hidden')
-
+const AlarmaCreada = document.getElementById('AlarmaCreada');
+AlarmaCreada.innerHTML = "La alarma se creo con exito"
+AlarmaCreada.hidden = true
 let ListaDeAlarmas = [] 
 function NuevaAlarma(){
   Hidden.hidden = false
@@ -12,7 +14,17 @@ function AgregarAlarma(){
     }else{
     document.getElementById('ErrorCrearAlarma').hidden = true
     Hidden.hidden = true
-    document.getElementById('AlarmaCreada').innerHTML = "La alarma ha sido creada con exito"
+    AlarmaCreada.style.opacity = "1";
+    AlarmaCreada.hidden = false
+    setTimeout(() => {
+      AlarmaCreada.style.transition = "opacity 0.5s ease";
+      AlarmaCreada.style.opacity = "0";
+      setTimeout(() => {
+        AlarmaCreada.hidden = true;
+      }, 1500);
+  }, 2000);
+  
+
     document.getElementById('AlarmaCreada').hidden = false
     const Alarma = new Date(document.getElementById("AlarmaTime").value) 
     const AlarmaNombre = document.getElementById("NombreAlarma").value
@@ -21,6 +33,7 @@ function AgregarAlarma(){
     localStorage.setItem('alarmas', JSON.stringify(ListaDeAlarmas))
 
     SonarAlarma(Alarma, AlarmaNombre)
+    
     }
   }
 const miAudio = new Audio('/Audio/Alarma.mp3');
@@ -51,15 +64,15 @@ function mostrarListaAlarmas() {
   ListaDeAlarmas = alarmasGuardadas;
 
   alarmasGuardadas.forEach((alarma) => {
-    const li = document.createElement('li');
+    const li = document.createElement('li')
     li.textContent = alarma.AlarmaNombre;
-    li.style.cursor = 'pointer';
+    li.style.cursor = 'pointer'
 
     li.addEventListener('click', () => {
-      mostrarInfoAlarma(alarma);
+      mostrarInfoAlarma(alarma)
     });
 
-    lista.appendChild(li);
+    lista.appendChild(li)
   });
 
 

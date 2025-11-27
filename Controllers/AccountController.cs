@@ -17,7 +17,6 @@ public class AccountController : Controller
         string mensaje = "";
         if (usuario == null )
         {
-            Console.WriteLine("Usuario nulo");
             mensaje = "Usuario o Cotnrasñea incorrectos ";
             ViewBag.mensaje = mensaje;
             return View("Login");
