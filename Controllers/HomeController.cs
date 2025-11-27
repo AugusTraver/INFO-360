@@ -65,7 +65,7 @@ public class HomeController : Controller
         HttpContext.Session.SetString("usuario", Objeto.ObjectToString(usuario));
         ViewBag.Tareas = usuario.ListaTareas;
         ViewBag.IDUsuario = usuario.ID;
-        return View("Tareas");
+        return RedirectToAction("DTareas");
     }
     public IActionResult BorrarTarea(int idTarea)
     {
@@ -79,7 +79,7 @@ public class HomeController : Controller
         HttpContext.Session.SetString("usuario", Objeto.ObjectToString(usuario));
         ViewBag.Tareas = usuario.ListaTareas;
         ViewBag.IDUsuario = usuario.ID;
-        return View("Tareas");
+        return RedirectToAction("DTareas");
     }
     public IActionResult CrearAlarma(string Tipo, string Nombre, DateTime Dia, int Duracion, int IDusuario, bool Activo)
     {
@@ -182,6 +182,25 @@ public class HomeController : Controller
 
         return View("Organizador");
     }
+
+         public IActionResult GuardarTiempoLibre(DateTime Dia, int Horas){
+
+
+        string? x = HttpContext?.Session.GetString("usuario");
+        Usuario? usuario = Objeto.StringToObject<Usuario>(x);
+
+
+        usuario.guardarTL(Dia, Horas, usuario.ID);
+
+
+        HttpContext.Session.SetString("usuario", Objeto.ObjectToString(usuario));
+
+
+        return RedirectToAction("DTLibre");
+
+
+     }
+
 
     [HttpPost]
     public IActionResult AgregarTemporal(string titulo, int duracion)
