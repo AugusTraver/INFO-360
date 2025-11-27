@@ -61,6 +61,10 @@ function mostrarListaAlarmas() {
 
     lista.appendChild(li);
   });
+
+
+
+  
 }
 
 document.getElementById('buscador').addEventListener('input', (e) => {

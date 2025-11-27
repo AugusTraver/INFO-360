@@ -14,11 +14,12 @@ public class AccountController : Controller
     public IActionResult Login(string username, string contraseña)
     {
         Usuario usuario = BD.IniciarSesion(username, contraseña);
-        //string msj = "";
-        if (usuario == null)
+        string mensaje = "";
+        if (usuario == null )
         {
-           // msj = "Usuario o Cotnrasñea incorrectos ";
-            //ViewBag.mensaje = msj;
+            Console.WriteLine("Usuario nulo");
+            mensaje = "Usuario o Cotnrasñea incorrectos ";
+            ViewBag.mensaje = mensaje;
             return View("Login");
 
         }
@@ -39,11 +40,11 @@ public class AccountController : Controller
     {
         string Foto = null;
          bool existe = BD.VerificarUsuarioExiste(Email, username);
-        // string msj = "";
+        string mensaje = "";
          if (existe)
          {
-        //string.msj = "Este usuario o email ya existe.";
-        //ViewBag.msj = msj;
+        mensaje = "Este usuario o email ya existe.";
+        ViewBag.mensaje = mensaje;
         return View("Registrarse"); 
         }
 

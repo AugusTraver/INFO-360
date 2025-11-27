@@ -14,6 +14,9 @@ namespace INFO_360.Models
     public static class BD
     {
         private static string _connectionString = @"Server=localhost; DataBase = StartTime; Integrated Security=True; TrustServerCertificate=True;";
+
+
+
           public static Usuario IniciarSesion(string username, string password)
         {
             using (SqlConnection connection = new SqlConnection(_connectionString))

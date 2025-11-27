@@ -1736,6 +1736,7 @@ body {
   margin-left: 39%;
   padding: 1%;
   border-radius: 20px;
+  margin-bottom: 3%;
  
 }
 #lista {
@@ -1755,7 +1756,7 @@ body {
    padding: 1%;
    border-radius: 20px;
    margin-bottom: 2%;
-   margin-top: 2%;
+   margin-top: 3%;
 }
 .alarm-info p {
   font-size: 20px;
@@ -1885,281 +1886,127 @@ body {
 .toggle-checkbox:checked + .toggle-label {
   background-color: #4CAF50; 
 }
-@media (max-width: 768px){
-  .toggle-container{
-      margin-left: 35% !important;
+
+@media (max-width: 768px) {
+
+
+  .alarmah1 {
+    padding-top: 15% !important;
+    padding-bottom: 5% !important;
+    font-size: 26px;
   }
- .alarmas{
-  width: 80%;
-  padding-top: 3%;
-  padding-bottom: 3%;
-  border-radius: 20px !important;
- }
- .contenedorAlarmas{
-  gap:20px !important;
- }
- .alarmah1{
-  padding-top: 9%;
-  padding-bottom: 10% !important;
- }
- .botones-principal{
-  padding-bottom: 4%;
- }
- .botones-superiores{
-  width: 30%;
- }
- .botones-superiores a.boton{
-  
-  margin-left: 5%;
-  font-size: 20px;
- }
 
-}
-
-
-
-
-
-/*REVISAR ALARMAS
-.alarmas {
-    font-family: 'Poppins', sans-serif;
-    background-color: #fcfcfc;
-    display: flex;
-    flex-direction: column;
+  .botones-principal {
+    flex-direction: column !important;
+    gap: 15px !important;
+    width: 100%;
     align-items: center;
-    padding: 30px 20px 40px;
-    padding-top: 4%;
-    min-height: 100vh; 
-    width: 100%; 
-}
-
-.alarmas h1 {
-    font-size: 2.5em;
-    font-weight: 700;
-    color: #333;
-    margin-bottom: 30px;
+  }
+  .botones-superiores {
+    width: 90% !important;
+    justify-content: center !important;
+  }
+  .botones-superiores a.boton,
+  .botones-superiores button {
+    font-size: 18px !important;
+    width: 100%;
     text-align: center;
-    width: 100%;
-}
+  }
 
-.alarmas h2 {
-    font-weight: 600;
-    font-size: 1.6em;
-    margin: 25px 0 20px 0;
-    color: #444;
-    text-align: center;
-}
-
-
-.alarmas-top-actions {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    max-width: 400px;
-    margin-bottom: 40px;
-    gap: 15px;
-}
-
-.alarmas-boton-action {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    border: none;
-    padding: 12px 0;
-    border-radius: 12px;
-    font-size: 1.1em;
-    font-weight: 600;
-    cursor: pointer;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: background-color 0.3s, transform 0.3s;
-    text-decoration: none;
-}
-
-.alarmas-boton-action.alarmas-agregar,
-.alarmas-boton-action.alarmas-tipos {
-    background-color: #52c6a4;
-}
-
-.alarmas-boton-action:hover {
-    background-color: #42b591;
-    transform: translateY(-1px);
-}
-
-.alarmas-plus-icon {
-    font-size: 1.4em;
-    margin-right: 5px;
-    font-weight: 800;
-}
-
-
-.alarmas-lista-alarmas {
-    width: 100%;
-    max-width: 400px;
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
+  .buscadorContainer,
+  .infoBoxCrear,
+  .infoBox {
+    width: 90% !important;
+    margin-left: 0 !important;
+    margin-right: auto !important; 
     margin-top: 20px;
+  }
+
+  .infoBoxCrear {
+    padding: 20px !important;
+    text-align: center;
+ 
+  }
+  .form-floating.mb-3 {
+    width: 90%;
+    margin-left: auto !important; 
+    margin-right: auto !important;
+    margin-bottom: 15px !important; 
+    margin-top: 15px !important;
 }
 
-.alarma-card {
-    background-color: #e9dec9;
-    border-radius: 15px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 18px 20px;
-    transition: background-color 0.3s;
-}
-
-.alarma-info {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-}
-
-.alarma-icon-campana {
-    font-size: 1.4em;
-    color: #5a4d49;
-}
-
-.alarma-card .alarma-hora {
-    font-size: 1.2em;
-    font-weight: 500;
-    color: #333;
-}
-
-
-
-.alarma-switch {
-    position: relative;
-    display: inline-block;
-    width: 50px;
-    height: 28px;
-    margin-left: 20px;
-}
-
-.alarma-switch input {
-    opacity: 0;
-    width: 0;
-    height: 0;
-}
-
-.alarma-slider {
-    position: absolute;
-    cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: #a0978e;
-    transition: 0.4s;
-    border-radius: 34px;
-}
-
-.alarma-slider:before {
-    position: absolute;
-    content: "";
-    height: 20px;
-    width: 20px;
-    left: 4px;
-    bottom: 4px;
-    background-color: white;
-    transition: 0.4s;
-    border-radius: 50%;
-}
-
-.alarma-switch input:checked + .alarma-slider {
-    background-color: #52c6a4;
-}
-
-.alarma-switch input:checked + .alarma-slider:before {
-    transform: translateX(20px);
-}
-
-
-.alarmas-formulario-creacion {
-    width: 100%;
-    max-width: 400px;
-    background-color: #d7bf99;
-    padding: 25px;
-    border-radius: 20px;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  .infoBoxCrear input {
+    width: 100% !important;
   
-    display: flex; 
-    flex-direction: column;
-    gap: 15px;
-    
-    
-}
+  }
 
-.alarmas-formulario-creacion h2 {
-    color: #5a4d49;
-    margin-bottom: 20px;
-}
-
-.alarmas-form-group {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 10px;
-}
-
-.alarmas-form-group label {
-    font-weight: 600;
-    color: #5a4d49;
-    flex-basis: 80px;
-    flex-shrink: 0;
-}
-
-.alarmas-formulario-creacion input[type="text"],
-.alarmas-formulario-creacion input[type="datetime-local"] {
-    flex-grow: 1;
-    padding: 10px 12px;
-    border: 1px solid #c0b094;
-    border-radius: 8px;
-    box-shadow: inset 1px 1px 3px rgba(0, 0, 0, 0.1);
-    font-size: 15px;
-    background-color: white;
-}
-
-.alarmas-botones-abajo {
+  .botones-Agregar {
+    width: 100% !important;
+    margin-left: 0 !important;
     display: flex;
     justify-content: center;
-    gap: 15px;
-    margin-top: 15px;
-}
+  }
 
+  .alarmas {
+    width: 90% !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    display: block;
+  }
+
+  .contenedorAlarmas {
+    width: 100% !important;
+    gap: 15px !important;
+  }
 .alarmas-boton {
-    background-color: #52c6a4;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 25px;
-    font-size: 15px;
-    font-weight: 600;
-    cursor: pointer;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-    transition: all 0.3s;
+    width: 90%; 
+    display: block; 
+     margin: 0 auto;
 }
 
-.alarmas-boton.alarmas-cancelar {
-    background-color: #a0978e;
+  .toggle-container {
+    margin-left: 0 !important;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+   .infoBox,
+  .infoBoxCrear,
+  .buscadorContainer,
+  .alarmas {
+    width: 90% !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    display: block !important;
+  }
+
+  #AlarmaCreada,
+  #ErrorCrearAlarma {
+    text-align: center !important;
+    width: 100% !important;
+    margin-top: 10px;
+  }
+
+  #buscadorContainer[style*="display:none"] {
+      display: none !important;
+  }
+
+  
+  #buscadorContainer:not([style*="display:none"]) {
+      width: 90% !important;
+      margin: 15px auto !important;
+      
+  }
+
+  .alarmas-form-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    box-sizing: border-box;
 }
-
-.alarmas-boton:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
-
-
-[hidden] {
-    display: none !important;
-}
-} */    
-
 @media (max-width: 768px) {
 
     .offcanvas-menu {
