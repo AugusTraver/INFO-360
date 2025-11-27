@@ -60,8 +60,8 @@ footer {
 }
 
 .logo{
-  width: 20%;
-  height: 20%;
+  width: 15%;
+  height: 15%;
 }
 .container-fluid {
   background-color: #4bbfaa;
@@ -421,12 +421,19 @@ header{
   margin-left: 20% !important;
  }
  .form-floating{
-   margin-left: 20% !important
+   margin-left: 22% !important
  }
  .card {
         width: 90% !important; 
         max-width: 400px !important;
         margin: 10px auto !important; 
+    }
+    #cajaBuscador.form-floating.mb-3{
+      margin-left: 12% !important;
+    }
+    .contenedorCrearAlarma{
+      margin-left: -10% !important;
+      width: 101%;
     }
 }
 
@@ -505,7 +512,7 @@ footer hr {
 
 .inicio{
   text-align: center;
-  margin-top: 2%;
+  margin-top: 0%;
 }
 .inicio h1{
   font-size: 80px;
@@ -1020,6 +1027,35 @@ background: #2e8f7d !important;
 }
 
 @media (max-width: 768px) {
+
+
+  #navbarNav .navbar-nav {
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 10px;
+    width: auto !important;
+    margin: 0;
+    padding: 0;
+  }
+
+  #navbarNav .nav-item {
+    width: auto !important;
+    margin: 0 !important;
+    display: inline-block;
+  }
+
+  #navbarNav .nav-link {
+    font-size: 12px !important;
+    padding: 6px 12px !important;
+    white-space: nowrap;
+    margin: 0 !important;
+  }
+
+  .container-fluid {
+     flex-wrap: nowrap !important;
+  }
 .tiempoLibre .card {
   padding: 6%;
   width: 100%; 
@@ -1743,7 +1779,7 @@ body {
 .infoBoxCrear{
   background-color: #d7bf99 !important;
  width: 23%;
-  margin-left: 39%;
+  margin-left: 38.5%;
   padding: 1%;
   border-radius: 20px;
   margin-bottom: 3%;
@@ -1757,7 +1793,7 @@ body {
 #lista  li{
   background-color: #4bbfaa !important;
   margin-bottom: 3%;
-  border-radius: 20px;
+  border-radius: 10px;
   margin-top: 2%;
   width: 90%;
 }
@@ -1786,6 +1822,7 @@ body {
   padding-top: 6%;
   padding-bottom: 2%;
 }
+
 .botones-principal{
   display: flex; 
   justify-content: center;
@@ -1800,11 +1837,12 @@ body {
   justify-items:column ;
   background-color: #4BBFAA; 
   
-  width: fit-content;
+  
   padding: 6px 15px; 
   border-radius: 20px;
 
   margin-bottom: 1%;
+
 }
 
 .botones-Agregar{
@@ -1907,28 +1945,37 @@ body {
 
 @media (max-width: 768px) {
 
-
   .alarmah1 {
-    padding-top: 15% !important;
+    padding-top: 17% !important;
     padding-bottom: 5% !important;
     font-size: 26px;
   }
-
+ 
   .botones-principal {
-    flex-direction: column !important;
-    gap: 15px !important;
+    display: flex !important;
+    flex-direction: row !important; /* Esto los pone al lado */
+    justify-content: center !important;
+    gap: 10px !important;
     width: 100%;
     align-items: center;
   }
+ 
   .botones-superiores {
-    width: 90% !important;
+    width: 40% !important; /* Menos del 50% para que entren los dos */
     justify-content: center !important;
+    display: flex;
+    align-items: center;
+    padding: 5px !important;
+    margin-left: 2%;
+    margin-right: 2%;
   }
+ 
   .botones-superiores a.boton,
   .botones-superiores button {
-    font-size: 18px !important;
+    font-size: 18px !important; /* Letra un poco más chica para que entre */
     width: 100%;
     text-align: center;
+    white-space: nowrap; /* Evita que el texto se rompa en dos lineas */
   }
 
   .buscadorContainer,
@@ -1946,8 +1993,8 @@ body {
  
   }
   .form-floating.mb-3 {
-    width: 90%;
-    margin-left: auto !important; 
+    width: 75%;
+    margin-left: 22% !important;
     margin-right: auto !important;
     margin-bottom: 15px !important; 
     margin-top: 15px !important;
@@ -2037,7 +2084,7 @@ body {
     }
 
     .navbar-nav{
-      display: flex;
+      display: flex !important;
       flex-direction: column !important;
     }
 
