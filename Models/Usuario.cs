@@ -227,6 +227,16 @@ namespace INFO_360.Models
             return agendaSemanal;
         }
 
+        public void guardarTL(DateTime Dia, int Horas, int IDu){
+
+
+            TiempoLibre tl = new TiempoLibre(Dia, Horas, IDu);
+            BD.CrearTiempoLibre(tl);
+
+
+        }
+    
+
 
 
     }
