@@ -65,7 +65,7 @@ public class HomeController : Controller
         HttpContext.Session.SetString("usuario", Objeto.ObjectToString(usuario));
         ViewBag.Tareas = usuario.ListaTareas;
         ViewBag.IDUsuario = usuario.ID;
-        return View("Tareas");
+        return RedirectToAction("DTareas");
     }
     public IActionResult BorrarTarea(int idTarea)
     {
@@ -79,7 +79,7 @@ public class HomeController : Controller
         HttpContext.Session.SetString("usuario", Objeto.ObjectToString(usuario));
         ViewBag.Tareas = usuario.ListaTareas;
         ViewBag.IDUsuario = usuario.ID;
-        return View("Tareas");
+        return RedirectToAction("DTareas");
     }
     public IActionResult CrearAlarma(string Tipo, string Nombre, DateTime Dia, int Duracion, int IDusuario, bool Activo)
     {
