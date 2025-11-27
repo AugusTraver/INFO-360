@@ -25,5 +25,12 @@ namespace INFO_360.Models
 
         }
 
+        public TiempoLibre(DateTime pDia, int pHoras, int pIDusuario)
+        {
+            Dia = pDia;
+            Horas = pHoras;
+            IDusuario = pIDusuario;
+        }
+
     }
 }

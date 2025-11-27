@@ -13,20 +13,23 @@
 
             @if (ViewBag.Temporales != null && ViewBag.Temporales.Count > 0)
             {
-                foreach (var par in (Dictionary<double, Tarea>)ViewBag.Temporales)
+               foreach (double clave in ((Dictionary<double, Tarea>)ViewBag.Temporales).Keys)
                 {
-                    var t = par.Value;
+                        Tarea t = ((Dictionary<double, Tarea>)ViewBag.Temporales)[clave];
 
-                    double totalMinutos = t.Duracion * 60;
-                    int horas = (int)(totalMinutos / 60);
-                    int minutos = (int)(totalMinutos % 60);
-                    string duracion = $"{horas:D2}:{minutos:D2}";
 
-                    <div class="st-task">
-                        <strong>@t.Titulo</strong>
-                        <span class="st-badge">@duracion hs</span>
-                    </div>
+                        double totalMinutos = t.Duracion * 60;
+                        int horas = (int)(totalMinutos / 60);
+                        int minutos = (int)(totalMinutos % 60);
+                        string duracion = $"{horas:D2}:{minutos:D2}";
+
+
+                        <div class="st-task">
+                            <strong>@t.Titulo</strong>
+                            <span class="st-badge">@duracion hs</span>
+                        </div>
                 }
+
             }
             else
             {
