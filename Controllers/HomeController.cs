@@ -147,7 +147,7 @@ public class HomeController : Controller
         ViewBag.Nombre= usuario.Nombre;
         return View("Perfil");
     }
-    public IActionResult OrganizarAgenda(int inicio, int fin)
+    public IActionResult OrganizarAgenda()
     {
         string x = HttpContext.Session.GetString("usuario");
         Usuario usuario = Objeto.StringToObject<Usuario>(x);
@@ -158,7 +158,7 @@ public class HomeController : Controller
         Dictionary<double, Tarea> temporales = Objeto.StringToObject<Dictionary<double, Tarea>>(y);
 
 
-        Dictionary<DateTime, Dictionary<double, Tarea>> AGENDA = usuario.OrganizarSemana(temporales, inicio, fin);
+        Dictionary<DateTime, Dictionary<double, Tarea>> AGENDA = usuario.OrganizarSemana(temporales);
          string f = HttpContext.Session.GetString("usuario");
         Usuario usuario1 = Objeto.StringToObject<Usuario>(f);
         ViewBag.Foto = usuario1.Foto;
@@ -172,12 +172,14 @@ public class HomeController : Controller
         string f = HttpContext.Session.GetString("usuario");
         Usuario usuario = Objeto.StringToObject<Usuario>(f);
         ViewBag.Foto = usuario.Foto;
-        string x = HttpContext.Session.GetString("temporales");
-        Dictionary<double, Tarea> temporales = new Dictionary<double, Tarea>();
+
+        string clave = "temporales" + usuario.ID;
+        string x = HttpContext.Session.GetString(clave);        Dictionary<double, Tarea> temporales = new Dictionary<double, Tarea>();
 
         if (!string.IsNullOrEmpty(x))
+        {
             temporales = Objeto.StringToObject<Dictionary<double, Tarea>>(x);
-
+        }
         ViewBag.Temporales = temporales;
 
         return View("Organizador");
@@ -205,7 +207,12 @@ public class HomeController : Controller
     [HttpPost]
     public IActionResult AgregarTemporal(string titulo, int duracion)
     {
-        string x = HttpContext.Session.GetString("temporales");
+            string a = HttpContext.Session.GetString("usuario");
+    Usuario usuario = Objeto.StringToObject<Usuario>(a);
+
+    string clave = "temporales" + usuario.ID;
+
+        string x = HttpContext.Session.GetString(clave);
         Dictionary<double, Tarea> temporales = new Dictionary<double, Tarea>();
 
         if (x != null)
@@ -216,10 +223,10 @@ public class HomeController : Controller
 
         Tarea t = new Tarea(titulo, duracion);
 
-        double clave = temporales.Count + 1;
-        temporales[clave] = t;
+        double b = temporales.Count + 1;  //Es un insert esto (creo)
+        temporales[b] = t;
 
-        HttpContext.Session.SetString("temporales", Objeto.ObjectToString(temporales));
+HttpContext.Session.SetString(clave, Objeto.ObjectToString(temporales));
 
         return RedirectToAction("DOrganizador");
     }
@@ -227,8 +234,14 @@ public class HomeController : Controller
     [HttpPost]
     public ActionResult LimpiarTemporales()
     {
-        HttpContext.Session.Remove("temporales");
-        return RedirectToAction("DOrganizador");
+         string u = HttpContext.Session.GetString("usuario");
+    Usuario usuario = Objeto.StringToObject<Usuario>(u);
+
+    string clave = "temporales_" + usuario.ID;
+
+    HttpContext.Session.Remove(clave);
+
+    return RedirectToAction("DOrganizador");
     }
 
 }

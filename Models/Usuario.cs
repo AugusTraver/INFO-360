@@ -112,121 +112,135 @@ namespace INFO_360.Models
             return TiempoLibreTotal;
         }
 
-        public Dictionary<DateTime, Dictionary<double, Tarea>> OrganizarSemana(Dictionary<double, Tarea> temporales, int inicio, int fin)
-        {             // --- COMENTADO POR SI ESTOY RINDIENDO CAE ---
+public Dictionary<DateTime, Dictionary<double, Tarea>> OrganizarSemana(Dictionary<double, Tarea> temporales)
+{
+    // -- COMENTADO POR SI ESTOY RINDIENDO EL CAE --
+    //relevante para entender la función: https://docs.google.com/spreadsheets/d/1uqw3PreoGD4LIFHwlWqppqMp9pgVlC-ieNxSh6B4FXQ/edit?gid=0#gid=0
 
-            Dictionary<DateTime, Dictionary<double, Tarea>> agendaSemanal = new Dictionary<DateTime, Dictionary<double, Tarea>>();
+    Dictionary<DateTime, Dictionary<double, Tarea>> agendaSemanal = new Dictionary<DateTime, Dictionary<double, Tarea>>();
 
-            List<TiempoLibre> tiemposLibres = BD.ObtenerTiempoLibre(this.ID);
+    List<TiempoLibre> tiemposLibres = BD.ObtenerTiempoLibre(this.ID);
 
-            if (tiemposLibres == null || tiemposLibres.Count == 0 || temporales == null || temporales.Count == 0)
+    if (tiemposLibres == null || tiemposLibres.Count == 0 || //Hay TL
+        temporales == null || temporales.Count == 0)//Hay Tareas
+    {
+        return agendaSemanal;
+    }
+
+    DateTime hoy = DateTime.Today;
+    DateTime finSemana = hoy.AddDays(7);
+
+    List<TiempoLibre> tlXsemana = new List<TiempoLibre>();
+
+    for (int i = 0; i < tiemposLibres.Count; i++)
+    {
+        TiempoLibre tl = tiemposLibres[i];
+
+        if (tl.Dia >= hoy && tl.Dia < finSemana) // verificar si es esta semana
+        {
+            tlXsemana.Add(tl);
+        }
+    }
+
+    // Ordenar TL por fecha y hora
+    for (int i = 0; i < tlXsemana.Count - 1; i++)
+    {
+        for (int j = i + 1; j < tlXsemana.Count; j++)
+        {
+            if (tlXsemana[i].Dia > tlXsemana[j].Dia)
             {
-                return agendaSemanal;
+                TiempoLibre aux = tlXsemana[i];
+                tlXsemana[i] = tlXsemana[j];
+                tlXsemana[j] = aux;
             }
+        }
+    }
 
-            DateTime hoy = DateTime.Today;
-            DateTime finSemana = hoy.AddDays(7);
+    // Pasar tareas temporales a lista
+    List<Tarea> tareasPendientes = new List<Tarea>();
+    foreach (double a in temporales.Keys)
+    {
+        tareasPendientes.Add(temporales[a]);
+    }
 
-            //Encontrar el tiempo libre en la semana
+    for (int i = 0; i < tlXsemana.Count; i++) // Recorrer cada bloque de tiempo libre 
+    {
+        TiempoLibre tl = tlXsemana[i];
 
-            List<TiempoLibre> tlXsemana = new List<TiempoLibre>();
-            for (int i = 0; i < tiemposLibres.Count; i++)
-            {
-                TiempoLibre t = tiemposLibres[i];
-                if (t.Dia >= hoy && t.Dia < finSemana)
-                {
-                    tlXsemana.Add(t);
-                }
-            }
+        // La fecha del día SIN hora para indexar agendaSemanal
+        DateTime fechaDia = tl.Dia.Date;
 
-            //Ordena de mayor a menor los TLs
-            for (int i = 0; i < tlXsemana.Count - 1; i++)
-            {
-                for (int j = i + 1; j < tlXsemana.Count; j++)
-                {
-                    if (tlXsemana[i].Dia > tlXsemana[j].Dia)
-                    {
-                        TiempoLibre a = tlXsemana[i];
-                        tlXsemana[i] = tlXsemana[j];
-                        tlXsemana[j] = a;
-                    }
-                }
-            }
-
-            //Copia las tareas a una lista
-            List<Tarea> tareasPendientes = new List<Tarea>();
-            double[] clavesTemporales = new double[temporales.Keys.Count];
-            temporales.Keys.CopyTo(clavesTemporales, 0);             //El 0 es de donde arranca (creo)
-            for (int i = 0; i < clavesTemporales.Length; i++)
-            {
-                double clave = clavesTemporales[i];
-                Tarea t = temporales[clave];
-                tareasPendientes.Add(t);
-            }
-
-            //Pone cada tarea en un día
-            for (int i = 0; i < tlXsemana.Count; i++)
-            {
-                TiempoLibre tl = tlXsemana[i];
-                double horasDisponibles = tl.Horas;
-
-                Dictionary<double, Tarea> agendaDia = new Dictionary<double, Tarea>();
-                int horaActual = inicio;
-                int j = 0;
-
-                while (j < tareasPendientes.Count && horasDisponibles > 0)
-                {
-                    Tarea tarea = tareasPendientes[j];
-
-                    if (tarea.Duracion <= horasDisponibles && horaActual + tarea.Duracion <= fin)
-                    {
-                        double final = horaActual + tarea.Duracion;
-
-                        for (double h = horaActual; h < fin; h += 0.25)
-                        {
-                            agendaDia[h] = tarea;
-                        }
-
-                        horaActual += tarea.Duracion;
-                        horasDisponibles -= tarea.Duracion;
-                        tareasPendientes.RemoveAt(j);
-                    }
-                    else
-                    {
-                        double duracionParcial = Math.Min(horasDisponibles, 20.0 - horaActual);
-
-                        if (duracionParcial > 0)
-                        {
-                            double final = horaActual + duracionParcial;
-
-                            for (double h = horaActual; h < fin; h += 0.25)
-                            {
-                                agendaDia[h] = tarea;
-                            }
-
-                            tarea.modificarDur((int)duracionParcial);
-                            //horaActual += duracionParcial; Cambiar esto a int
-                            horasDisponibles -= duracionParcial;
-                        }
-
-                        if (tarea.Duracion <= 0)
-                        {
-                            tareasPendientes.RemoveAt(j);
-                        }
-                        else
-                        {
-                            j++;
-                        }
-                    }
-                }
-
-                agendaSemanal[tl.Dia] = agendaDia;
-            }
-
-
-            return agendaSemanal;
+        // Asegurar que exista entrada para ese día
+        if (!agendaSemanal.ContainsKey(fechaDia))
+        {
+            agendaSemanal[fechaDia] = new Dictionary<double, Tarea>();
         }
 
+        Dictionary<double, Tarea> agendaDia = agendaSemanal[fechaDia];
+
+        // Calcular hora de inicio real (sale del DateTime completo)
+        double horaActual = tl.Dia.Hour + (tl.Dia.Minute / 60.0);
+
+        // Calcular hora de fin del TL
+        double horaFinTL = horaActual + tl.Horas;
+
+        // Quedan horas disponibles
+        double horasDisponibles = tl.Horas;
+
+        int idxTarea = 0;
+
+        // Colocar tareas dentro del bloque de tiempo libre
+        while (idxTarea < tareasPendientes.Count && horasDisponibles > 0)
+        {
+            Tarea t = tareasPendientes[idxTarea];
+
+            // Si la tarea entra completa dentro del bloque
+            if (t.Duracion <= horasDisponibles)
+            {
+                double horaFin = horaActual + t.Duracion;
+
+                // Asignar cada 15 minutos dentro del bloque
+                for (double h = horaActual; h < horaFin; h += 0.25)
+                {
+                    agendaDia[h] = t;
+                }
+
+                horaActual = horaFin;
+                horasDisponibles -= t.Duracion;
+                tareasPendientes.RemoveAt(idxTarea);
+            }
+            else // Si solo entra una parte de la tarea
+            {
+                double duracionPosible = horasDisponibles;
+
+                double horaFin = horaActual + duracionPosible;
+
+                for (double h = horaActual; h < horaFin; h += 0.25)
+                {
+                    agendaDia[h] = t;
+                }
+
+                // Reducir duración restante
+                t.modificarDur((int)duracionPosible);
+
+                horaActual = horaFin;
+                horasDisponibles = 0;
+
+                if (t.Duracion <= 0)
+                {
+                    tareasPendientes.RemoveAt(idxTarea);
+                }
+                else
+                {
+                    idxTarea++;
+                }
+            }
+        }
+    }
+
+    return agendaSemanal;
+}
+     
         public void guardarTL(DateTime Dia, int Horas, int IDu){
 
 
