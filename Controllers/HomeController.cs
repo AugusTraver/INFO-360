@@ -147,7 +147,7 @@ public class HomeController : Controller
         ViewBag.Nombre= usuario.Nombre;
         return View("Perfil");
     }
-    public IActionResult OrganizarAgenda()
+    public IActionResult OrganizarAgenda(int inicio, int fin)
     {
         string x = HttpContext.Session.GetString("usuario");
         Usuario usuario = Objeto.StringToObject<Usuario>(x);
@@ -158,7 +158,7 @@ public class HomeController : Controller
         Dictionary<double, Tarea> temporales = Objeto.StringToObject<Dictionary<double, Tarea>>(y);
 
 
-        Dictionary<DateTime, Dictionary<double, Tarea>> AGENDA = usuario.OrganizarSemana(temporales);
+        Dictionary<DateTime, Dictionary<double, Tarea>> AGENDA = usuario.OrganizarSemana(temporales, inicio, fin);
          string f = HttpContext.Session.GetString("usuario");
         Usuario usuario1 = Objeto.StringToObject<Usuario>(f);
         ViewBag.Foto = usuario1.Foto;

@@ -112,7 +112,7 @@ namespace INFO_360.Models
             return TiempoLibreTotal;
         }
 
-        public Dictionary<DateTime, Dictionary<double, Tarea>> OrganizarSemana(Dictionary<double, Tarea> temporales)
+        public Dictionary<DateTime, Dictionary<double, Tarea>> OrganizarSemana(Dictionary<double, Tarea> temporales, int inicio, int fin)
         {             // --- COMENTADO POR SI ESTOY RINDIENDO CAE ---
 
             Dictionary<DateTime, Dictionary<double, Tarea>> agendaSemanal = new Dictionary<DateTime, Dictionary<double, Tarea>>();
@@ -171,16 +171,16 @@ namespace INFO_360.Models
                 double horasDisponibles = tl.Horas;
 
                 Dictionary<double, Tarea> agendaDia = new Dictionary<double, Tarea>();
-                double horaActual = 8.0;
+                int horaActual = inicio;
                 int j = 0;
 
                 while (j < tareasPendientes.Count && horasDisponibles > 0)
                 {
                     Tarea tarea = tareasPendientes[j];
 
-                    if (tarea.Duracion <= horasDisponibles && horaActual + tarea.Duracion <= 20.0)
+                    if (tarea.Duracion <= horasDisponibles && horaActual + tarea.Duracion <= fin)
                     {
-                        double fin = horaActual + tarea.Duracion;
+                        double final = horaActual + tarea.Duracion;
 
                         for (double h = horaActual; h < fin; h += 0.25)
                         {
@@ -197,7 +197,7 @@ namespace INFO_360.Models
 
                         if (duracionParcial > 0)
                         {
-                            double fin = horaActual + duracionParcial;
+                            double final = horaActual + duracionParcial;
 
                             for (double h = horaActual; h < fin; h += 0.25)
                             {
@@ -205,7 +205,7 @@ namespace INFO_360.Models
                             }
 
                             tarea.modificarDur((int)duracionParcial);
-                            horaActual += duracionParcial;
+                            //horaActual += duracionParcial; Cambiar esto a int
                             horasDisponibles -= duracionParcial;
                         }
 
