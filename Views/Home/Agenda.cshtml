@@ -55,14 +55,13 @@
 
                                             <tbody>
 @{
-    // Obtener las horas ordenadas del día
-    var horas = tareasDia.Keys.OrderBy(h => h).ToList();
-
     int i = 0;
 
-    while (i < horas.Count)
+    double[] arregloHoras = tareasDia.Keys.OrderBy(x => x).ToArray(); // pasar todo a un []
+
+    while (i < arregloHoras.Length)
     {
-        double horaInicio = horas[i];
+        double horaInicio = arregloHoras[i];
         Tarea tareaActual = tareasDia[horaInicio];
 
         if (tareaActual == null)
@@ -71,17 +70,17 @@
             continue;
         }
 
-        // Avanzar mientras la misma tarea continúe en el horario
+        // Calcular duración agrupando todos los bloques de 0.25 h
         double duracion = 0;
         int j = i;
 
-        while (j < horas.Count && tareasDia[horas[j]] == tareaActual)
+        while (j < arregloHoras.Length && tareasDia[arregloHoras[j]] == tareaActual)
         {
             duracion += 0.25;
             j++;
         }
 
-        // Convertir la hora a formato hh:mm
+        // pasar a hh:mm
         int hE = (int)Math.Floor(horaInicio);
         int m = (int)((horaInicio - hE) * 60);
 
@@ -91,9 +90,10 @@
             <td>@duracion h</td>
         </tr>
 
-        i = j; // saltar al siguiente bloque de tarea distinta
+        i = j;
     }
 }
+
 </tbody>
                                         </table>
                                     </div>

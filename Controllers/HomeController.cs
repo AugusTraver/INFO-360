@@ -152,7 +152,8 @@ public class HomeController : Controller
         string x = HttpContext.Session.GetString("usuario");
         Usuario usuario = Objeto.StringToObject<Usuario>(x);
 
-        string y = HttpContext.Session.GetString("temporales");
+        string clave = "temporales" + usuario.ID;
+        string y = HttpContext.Session.GetString(clave); // ESTO NO ANDABA Y ANTE A DUDA ES CULPA DE ALGÚN TOBI
    
 
         Dictionary<double, Tarea> temporales = Objeto.StringToObject<Dictionary<double, Tarea>>(y);
@@ -174,7 +175,9 @@ public class HomeController : Controller
         ViewBag.Foto = usuario.Foto;
 
         string clave = "temporales" + usuario.ID;
-        string x = HttpContext.Session.GetString(clave);        Dictionary<double, Tarea> temporales = new Dictionary<double, Tarea>();
+        string x = HttpContext.Session.GetString(clave);        
+        
+        Dictionary<double, Tarea> temporales = new Dictionary<double, Tarea>();
 
         if (!string.IsNullOrEmpty(x))
         {
@@ -208,9 +211,9 @@ public class HomeController : Controller
     public IActionResult AgregarTemporal(string titulo, int duracion)
     {
             string a = HttpContext.Session.GetString("usuario");
-    Usuario usuario = Objeto.StringToObject<Usuario>(a);
+        Usuario usuario = Objeto.StringToObject<Usuario>(a);
 
-    string clave = "temporales" + usuario.ID;
+        string clave = "temporales" + usuario.ID;
 
         string x = HttpContext.Session.GetString(clave);
         Dictionary<double, Tarea> temporales = new Dictionary<double, Tarea>();
@@ -226,7 +229,7 @@ public class HomeController : Controller
         double b = temporales.Count + 1;  //Es un insert esto (creo)
         temporales[b] = t;
 
-HttpContext.Session.SetString(clave, Objeto.ObjectToString(temporales));
+        HttpContext.Session.SetString(clave, Objeto.ObjectToString(temporales));
 
         return RedirectToAction("DOrganizador");
     }
@@ -237,7 +240,7 @@ HttpContext.Session.SetString(clave, Objeto.ObjectToString(temporales));
          string u = HttpContext.Session.GetString("usuario");
     Usuario usuario = Objeto.StringToObject<Usuario>(u);
 
-    string clave = "temporales_" + usuario.ID;
+    string clave = "temporales" + usuario.ID;
 
     HttpContext.Session.Remove(clave);
 

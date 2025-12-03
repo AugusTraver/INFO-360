@@ -114,7 +114,7 @@ namespace INFO_360.Models
 
 public Dictionary<DateTime, Dictionary<double, Tarea>> OrganizarSemana(Dictionary<double, Tarea> temporales)
 {
-    // -- COMENTADO POR SI ESTOY RINDIENDO EL CAE --
+    // -- COMENTADO POR SI ESTOY RINDIENDO EL CAE ASÍ LOS TOBIS PUEDEN DECIR ALGO -- //
     //relevante para entender la función: https://docs.google.com/spreadsheets/d/1uqw3PreoGD4LIFHwlWqppqMp9pgVlC-ieNxSh6B4FXQ/edit?gid=0#gid=0
 
     Dictionary<DateTime, Dictionary<double, Tarea>> agendaSemanal = new Dictionary<DateTime, Dictionary<double, Tarea>>();
@@ -142,10 +142,9 @@ public Dictionary<DateTime, Dictionary<double, Tarea>> OrganizarSemana(Dictionar
         }
     }
 
-    // Ordenar TL por fecha y hora
     for (int i = 0; i < tlXsemana.Count - 1; i++)
     {
-        for (int j = i + 1; j < tlXsemana.Count; j++)
+        for (int j = i + 1; j < tlXsemana.Count; j++)     // Ordenar TL por fecha y hora
         {
             if (tlXsemana[i].Dia > tlXsemana[j].Dia)
             {
@@ -156,7 +155,7 @@ public Dictionary<DateTime, Dictionary<double, Tarea>> OrganizarSemana(Dictionar
         }
     }
 
-    // Pasar tareas temporales a lista
+    // Pasar tareas temporales a una lista
     List<Tarea> tareasPendientes = new List<Tarea>();
     foreach (double a in temporales.Keys)
     {
@@ -167,10 +166,9 @@ public Dictionary<DateTime, Dictionary<double, Tarea>> OrganizarSemana(Dictionar
     {
         TiempoLibre tl = tlXsemana[i];
 
-        // La fecha del día SIN hora para indexar agendaSemanal
-        DateTime fechaDia = tl.Dia.Date;
+        DateTime fechaDia = tl.Dia;
 
-        // Asegurar que exista entrada para ese día
+        // Si no hay nada a esa hora
         if (!agendaSemanal.ContainsKey(fechaDia))
         {
             agendaSemanal[fechaDia] = new Dictionary<double, Tarea>();
@@ -178,10 +176,9 @@ public Dictionary<DateTime, Dictionary<double, Tarea>> OrganizarSemana(Dictionar
 
         Dictionary<double, Tarea> agendaDia = agendaSemanal[fechaDia];
 
-        // Calcular hora de inicio real (sale del DateTime completo)
         double horaActual = tl.Dia.Hour + (tl.Dia.Minute / 60.0);
 
-        // Calcular hora de fin del TL
+        // Calcular final del TL
         double horaFinTL = horaActual + tl.Horas;
 
         // Quedan horas disponibles
@@ -189,12 +186,12 @@ public Dictionary<DateTime, Dictionary<double, Tarea>> OrganizarSemana(Dictionar
 
         int idxTarea = 0;
 
-        // Colocar tareas dentro del bloque de tiempo libre
+        // Poner tareas en el TL
         while (idxTarea < tareasPendientes.Count && horasDisponibles > 0)
         {
             Tarea t = tareasPendientes[idxTarea];
 
-            // Si la tarea entra completa dentro del bloque
+            // Si la tarea entra completa en el bloque
             if (t.Duracion <= horasDisponibles)
             {
                 double horaFin = horaActual + t.Duracion;
@@ -220,7 +217,7 @@ public Dictionary<DateTime, Dictionary<double, Tarea>> OrganizarSemana(Dictionar
                     agendaDia[h] = t;
                 }
 
-                // Reducir duración restante
+                // Bajar la duracion que queda
                 t.modificarDur((int)duracionPosible);
 
                 horaActual = horaFin;
